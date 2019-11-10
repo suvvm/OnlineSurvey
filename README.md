@@ -93,3 +93,5 @@
 2019年11月10日 GMT+8 下午8:50	[添加.gitattributes配置文件](https://github.com/suvvm/OnlineSurvey/commit/321fa8ba7296604263d77ba9962abe9a1ee12eb8) 
 
 2019年11月10日 GMT+8 下午9:21	[创建后台工程](https://github.com/suvvm/OnlineSurvey/commit/2979d49e78eb2b726c5d42747d84c9dcd57bc72e) 
+
+2019年11月10日 GMT+8 下午9:21	[添加数据字典](https://github.com/suvvm/OnlineSurvey/commit/6e8dc719b6ca7b891f59a649171fb501b7533279) 
