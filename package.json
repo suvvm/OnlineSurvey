@@ -1,0 +1,11 @@
+{
+  "name": "onlinesurvey",
+  "version": "1.0.0",
+  "description": "simple online survey project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "suvvm",
+  "license": "ISC"
+}
