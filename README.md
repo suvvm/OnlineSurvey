@@ -87,3 +87,7 @@
 2019年11月10日 GMT+8 下午8:05	[初始化npm项目创建package.json]( https://github.com/suvvm/OnlineSurvey/commit/680e96c9b494a9f0b264fdede8fed1c631fa3cd9 )
 
 2019年11月10日 GMT+8 下午8:09	[安装vant组件库]( https://github.com/suvvm/OnlineSurvey/commit/4d8429464f210302bafed86ac50d459978119884 )
+
+2019年11月10日 GMT+8 下午8:44	[add README.md]( https://github.com/suvvm/OnlineSurvey/commit/f15e7f518790ef6df0eedf07023a41ee60899a08 ) 
+
+2019年11月10日 GMT+8 下午8:50	[添加.gitattributes配置文件](https://github.com/suvvm/OnlineSurvey/commit/321fa8ba7296604263d77ba9962abe9a1ee12eb8) 
