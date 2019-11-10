@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "suvvm",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vant": "^2.2.13-beta.0"
+  }
 }
