@@ -99,3 +99,5 @@
 2019年11月11日 GMT+8 上午8:58	[完成vant使用配置](https://github.com/suvvm/OnlineSurvey/commit/dbcccfb5593dcf10d2f9357dfb39160f88f74f98) 
 
 2019年11月11日 GMT+8 上午9:12	[添加log4j配置文件](https://github.com/suvvm/OnlineSurvey/commit/dd55199917ccb70044b19a10984f7b18bc97f923) 
+
+2019年11月11日 GMT+8 下午8:06	[添加数据库脚本文件](https://github.com/suvvm/OnlineSurvey/commit/075fb9967d084d397f0d143fce520b39f40e8bec) 
