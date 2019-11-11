@@ -2,16 +2,24 @@
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="text-area">
-			<text class="title">{{title}}</text>
+			<van-button type="default">默认按钮</van-button>
+			<van-button type="primary">主要按钮</van-button>
+			<van-button type="info">信息按钮</van-button>
+			<van-button type="warning">警告按钮</van-button>
+			
 		</view>
+		<view><van-checkbox v-model="checked">复选框</van-checkbox></view>
 	</view>
 </template>
 
 <script>
+	
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello',
+				username: 'Hello',
+				password: 'Hello'
 			}
 		},
 		onLoad() {
@@ -24,6 +32,8 @@
 </script>
 
 <style>
+	@import 'vant/lib/index.css';
+
 	.content {
 		display: flex;
 		flex-direction: column;
