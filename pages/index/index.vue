@@ -1,14 +1,29 @@
 <template>
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<van-button type="default">默认按钮</van-button>
-			<van-button type="primary">主要按钮</van-button>
-			<van-button type="info">信息按钮</van-button>
-			<van-button type="warning">警告按钮</van-button>
-			
-		</view>
-		<view><van-checkbox v-model="checked">复选框</van-checkbox></view>
+		<van-cell-group class="username">
+			<van-field
+				v-model="pnum"
+				required
+				clearable
+				label="用户名"
+				right-icon="question-o"
+				placeholder="请输入用户名"
+				@click-right-icon="$toast('可输入用户名手机号或邮箱')"
+				rows="1"
+				autosize
+			/>
+		</van-cell-group> 
+		<van-cell-group class="username">
+			<van-field
+				v-model="password"
+				type="password"
+				label="密	码"
+				placeholder="请输入密码"
+				required
+				:error-message="loginerr"
+			/>
+		</van-cell-group>
 	</view>
 </template>
 
@@ -17,9 +32,11 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello',
-				username: 'Hello',
-				password: 'Hello'
+				title: 'index',
+				username: '',
+				password: '',
+				pnum: '',
+				loginerr:''
 			}
 		},
 		onLoad() {
@@ -59,4 +76,19 @@
 		font-size: 36rpx;
 		color: #8f8f94;
 	}
+	
+	.username{
+			width: 80%;
+			display: block;
+			padding:0 0 ;
+			background: #ffffff;
+			border: 0;
+			font-size: 1em;
+			font-family: "Microsoft YaHei";
+			-webkit-box-shadow: #8f9bad 0px 0px 20px;
+			-moz-box-shadow: #8f9bad 0px 0px 20px;
+			box-shadow: #8f9bad 0px 0px 20px;
+			text-align: center;
+			height: 80rpx;
+		}
 </style>
