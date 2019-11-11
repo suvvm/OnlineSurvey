@@ -47,4 +47,24 @@ create table tags (
     description nvarchar(200)
 )auto_increment=400000001 default charset=utf8;
 
+create table usertag (
+	uid int not null,
+    tid int not null,
+    foreign key(uid) references users(id),
+    foreign key(tid) references tags(id)
+)default charset=utf8;
 
+create table invtag (
+	iid int not null,
+    tid int not null,
+    foreign key(iid) references investigates(id),
+    foreign key(tid) references tags(id)
+)default charset=utf8;
+
+create table userresults (
+	uid int not null,
+    iid int not null,
+    ans mediumtext,
+    foreign key(iid) references investigates(id),
+    foreign key(uid) references users(id)
+)default charset=utf8;
