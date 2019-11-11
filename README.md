@@ -95,3 +95,7 @@
 2019年11月10日 GMT+8 下午9:21	[创建后台工程](https://github.com/suvvm/OnlineSurvey/commit/2979d49e78eb2b726c5d42747d84c9dcd57bc72e) 
 
 2019年11月10日 GMT+8 下午9:21	[添加数据字典](https://github.com/suvvm/OnlineSurvey/commit/6e8dc719b6ca7b891f59a649171fb501b7533279) 
+
+2019年11月11日 GMT+8 上午8:58	[完成vant使用配置](https://github.com/suvvm/OnlineSurvey/commit/dbcccfb5593dcf10d2f9357dfb39160f88f74f98) 
+
+2019年11月11日 GMT+8 上午9:12	[添加log4j配置文件](https://github.com/suvvm/OnlineSurvey/commit/dd55199917ccb70044b19a10984f7b18bc97f923) 
