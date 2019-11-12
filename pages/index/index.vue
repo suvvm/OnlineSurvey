@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
-		<van-cell-group class="username">
+		<van-cell-group class="uinfoGroup">
 			<van-field
 				v-model="pnum"
 				required
@@ -14,7 +14,7 @@
 				autosize
 			/>
 		</van-cell-group> 
-		<van-cell-group class="username">
+		<van-cell-group class="uinfoGroup">
 			<van-field
 				v-model="password"
 				type="password"
@@ -23,6 +23,11 @@
 				required
 				:error-message="loginerr"
 			/>
+		</van-cell-group>
+		<van-cell-group class="btnGroup">
+			<van-button plain class="submit" type="primary"  size="large" @click="toRegister" hairline >立刻注册</van-button>
+			<van-button class="submit" type="primary"  size="large" @click="handleClick">确定</van-button>
+			<van-button plain class="submit" type="primary"  size="large" @click="toFVlogin" hairline>人脸识别登录</van-button>
 		</van-cell-group>
 	</view>
 </template>
@@ -43,7 +48,17 @@
 
 		},
 		methods: {
-
+			toFVlogin(){
+				this.$router.push({
+					path: '/pages/loginFV/loginFV', 
+				})
+			},
+			toRegister(){
+				this.$router.push({
+					path: '/pages/register/register', 
+				})
+			},
+			
 		}
 	}
 </script>
@@ -77,18 +92,28 @@
 		color: #8f8f94;
 	}
 	
-	.username{
-			width: 80%;
-			display: block;
-			padding:0 0 ;
-			background: #ffffff;
-			border: 0;
-			font-size: 1em;
-			font-family: "Microsoft YaHei";
-			-webkit-box-shadow: #8f9bad 0px 0px 20px;
-			-moz-box-shadow: #8f9bad 0px 0px 20px;
-			box-shadow: #8f9bad 0px 0px 20px;
-			text-align: center;
-			height: 80rpx;
-		}
+	.uinfoGroup{
+		width: 80%;
+		display: block;
+		padding:0 0 ;
+		background: #ffffff;
+		border: 0;
+		font-size: 1em;
+		font-family: "Microsoft YaHei";
+		-webkit-box-shadow: #8f9bad 0px 0px 20px;
+		-moz-box-shadow: #8f9bad 0px 0px 20px;
+		box-shadow: #8f9bad 0px 0px 20px;
+		text-align: center;
+		height: 80rpx;
+	}
+	.submit{
+		width: 27%;
+		height: 80rpx;
+		display: inline-block;
+	}
+	.btnGroup{
+		width: 100%;
+		text-align: center;
+		margin-top: 30rpx;
+	}
 </style>
