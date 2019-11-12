@@ -6,7 +6,15 @@
 				"navigationBarTitleText": "uni-app"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/loginFV/loginFV",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
