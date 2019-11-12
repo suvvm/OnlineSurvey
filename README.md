@@ -115,4 +115,3 @@
 2019年11月12日 GMT+8 上午11:54	[完善用户注册页面]( https://github.com/suvvm/OnlineSurvey/commit/b5d46c6caeacf984474c1337480278a3e61bfcb9 )
 
 2019年11月12日 GMT+8 上午11:54	[添加logo图片资源]( https://github.com/suvvm/OnlineSurvey/commit/54bc66dbe38952dd2fb9cec5b330b607ef8d605e )
-
