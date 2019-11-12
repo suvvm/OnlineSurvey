@@ -115,3 +115,19 @@
 2019年11月12日 GMT+8 上午11:54	[完善用户注册页面]( https://github.com/suvvm/OnlineSurvey/commit/b5d46c6caeacf984474c1337480278a3e61bfcb9 )
 
 2019年11月12日 GMT+8 上午11:54	[添加logo图片资源]( https://github.com/suvvm/OnlineSurvey/commit/54bc66dbe38952dd2fb9cec5b330b607ef8d605e )
+
+2019年11月12日 GMT+8 下午4:37	[添加yml配置文件](https://github.com/suvvm/OnlineSurvey/commit/8123c119d0d06b6759fa8dc13ff88ba51bb2708a) 
+
+2019年11月12日 GMT+8 下午4:38	[更新数据库连接url](https://github.com/suvvm/OnlineSurvey/commit/501c3f271d1fd5e4984a607fcfb95291c027b091) 
+
+2019年11月12日 GMT+8 下午4:39	[更新数据字典](https://github.com/suvvm/OnlineSurvey/commit/ebdbec7f4212ce68e429db50fd075c4cc056bcaa) 
+
+2019年11月12日 GMT+8 下午4:39	[更新数据库脚本文件](https://github.com/suvvm/OnlineSurvey/commit/af89a3dd8fab0771e9ebf2b246bdcbcf5c81ea71) 
+
+2019年11月12日 GMT+8 下午5:00	[创建数据库表对应JavaBean](https://github.com/suvvm/OnlineSurvey/commit/beeb078464de349d89a399fb332a3073e8abfafc) 
+
+2019年11月12日 GMT+8 下午5:01	[完成属性添加与getter与setter创建](https://github.com/suvvm/OnlineSurvey/commit/42fc0e9496d2061d699ecfcb96691e7a70e7882a) 
+
+2019年11月12日 GMT+8 下午5:02	[更新数据库脚本文件](https://github.com/suvvm/OnlineSurvey/commit/d15e6326c4efd45eb135ec667392148c83fdb0ba) 
+
+2019年11月12日 GMT+8 下午5:04	[完成druid数据监控配置](https://github.com/suvvm/OnlineSurvey/commit/0eed5d76c0677076a11883c3d710717d691553ec) 
