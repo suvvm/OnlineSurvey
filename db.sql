@@ -4,7 +4,7 @@ use onlinesurvey;
 create table users (
 	id int primary key not null auto_increment,
     username nvarchar(20) not null,
-    possword nvarchar(200) not null,
+    password nvarchar(200) not null,
     name nvarchar(200),
     pnum nvarchar(20),
     email nvarchar(20),
