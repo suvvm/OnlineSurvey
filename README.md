@@ -101,3 +101,18 @@
 2019年11月11日 GMT+8 上午9:12	[添加log4j配置文件](https://github.com/suvvm/OnlineSurvey/commit/dd55199917ccb70044b19a10984f7b18bc97f923) 
 
 2019年11月11日 GMT+8 下午8:06	[添加数据库脚本文件](https://github.com/suvvm/OnlineSurvey/commit/075fb9967d084d397f0d143fce520b39f40e8bec) 
+
+2019年11月11日 GMT+8 下午10:02	[设计index页面直接为登录页，添加部分表单组件](https://github.com/suvvm/OnlineSurvey/commit/ebd54125ed7c70eacd461a519c10ef6702ad2ea2) 
+
+2019年11月12日 GMT+8 上午10:48	[新建人脸识别登录页面loginFV](https://github.com/suvvm/OnlineSurvey/commit/e932a7e91688d08539004e638818324beced7e99) 
+
+2019年11月12日 GMT+8 上午10:49	[新建用户注册页面](https://github.com/suvvm/OnlineSurvey/commit/93621c6c3b7fabcb059e5c4703d8823e870bcace) 
+
+2019年11月12日 GMT+8 上午10:49	[将新页面注册至pages.json](https://github.com/suvvm/OnlineSurvey/commit/2481b43ee1f3c388a1b12423b4ab21fad8bc4e1c) 
+
+2019年11月12日 GMT+8 上午11:54	[完善人脸登录页面]( https://github.com/suvvm/OnlineSurvey/commit/25dc74073bacc0ca3ba858195677a29d0afad758 )
+
+2019年11月12日 GMT+8 上午11:54	[完善用户注册页面]( https://github.com/suvvm/OnlineSurvey/commit/b5d46c6caeacf984474c1337480278a3e61bfcb9 )
+
+2019年11月12日 GMT+8 上午11:54	[添加logo图片资源]( https://github.com/suvvm/OnlineSurvey/commit/54bc66dbe38952dd2fb9cec5b330b607ef8d605e )
+
