@@ -13,10 +13,14 @@ create table users (
     imgbase64 mediumtext,
     power int
 )auto_increment=100000001 default charset=utf8;
+drop table companys;
 
 create table companys (
 	id int primary key not null auto_increment,
     name nvarchar(50),
+	description nvarchar(200),
+    forms nvarchar(20),
+    domain nvarchar(20),
     ownerid int,
     foreign key(ownerid) references users(id)
 )auto_increment=200000001 default charset=utf8;
