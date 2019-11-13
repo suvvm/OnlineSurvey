@@ -141,3 +141,13 @@
 2019年11月13日 GMT+8 下午2:34	[完成前后端通信测试代码](https://github.com/suvvm/OnlineSurvey/commit/f21a5138ca6e47dda7eea590b08e48dd4e637416) 
 
 2019年11月13日 GMT+8 下午2:40	[安装lrz图片压缩工具](https://github.com/suvvm/OnlineSurvey/commit/e612dd62d322e2ca756285d26245737643835b08) 
+
+2019年11月13日 GMT+8 下午8:08	[完成跨域访问配置](https://github.com/suvvm/OnlineSurvey/commit/352ae7a0511115c5b744d607f1d55e0706f44044) 
+
+2019年11月13日 GMT+8 下午8:08	[添加获取手机验证码的Controller](https://github.com/suvvm/OnlineSurvey/commit/7172a5af678e1cab9f252e3259704a5fd4f42cb2) 
+
+2019年11月13日 GMT+8 下午8:10	[添加gson与阿里云Alibaba Cloud SDK的依赖](https://github.com/suvvm/OnlineSurvey/commit/84c47f49f954be48e8b87efe98c1d580711166ae) 
+
+2019年11月13日 GMT+8 下午8:11	[修改部分样式](https://github.com/suvvm/OnlineSurvey/commit/0d88eda8adb29b2245b043b336f594180a457359) 
+
+2019年11月13日 GMT+8 下午11:22	[添加计划表](https://github.com/suvvm/OnlineSurvey/commit/7a9e1547d99ebb64fd1ada7caa4dcd002a6db596) 
