@@ -9,6 +9,8 @@
   "author": "suvvm",
   "license": "ISC",
   "dependencies": {
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
     "vant": "^2.2.13-beta.0"
   }
 }
