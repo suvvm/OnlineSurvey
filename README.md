@@ -131,3 +131,14 @@
 2019年11月12日 GMT+8 下午5:02	[更新数据库脚本文件](https://github.com/suvvm/OnlineSurvey/commit/d15e6326c4efd45eb135ec667392148c83fdb0ba) 
 
 2019年11月12日 GMT+8 下午5:04	[完成druid数据监控配置](https://github.com/suvvm/OnlineSurvey/commit/0eed5d76c0677076a11883c3d710717d691553ec) 
+
+2019年11月13日 GMT+8 下午2:06	[添加数据传输测试Controller](https://github.com/suvvm/OnlineSurvey/commit/1d13ac61b00e2b9b6b43deb2fd1a08dd27099fb8) 
+
+2019年11月13日 GMT+8 下午2:06	[新建并注册测试界面test](https://github.com/suvvm/OnlineSurvey/commit/ffdc32da52b7ea58a796296cb797107b38dca636) 
+
+2019年11月13日 GMT+8 下午2:11	[安装request-promise](https://github.com/suvvm/OnlineSurvey/commit/78f3be0cbad3c45f8ea63bc2b0fc152b23bc6938) 
+
+2019年11月13日 GMT+8 下午2:34	[完成前后端通信测试代码](https://github.com/suvvm/OnlineSurvey/commit/f21a5138ca6e47dda7eea590b08e48dd4e637416) 
+
+2019年11月13日 GMT+8 下午2:40	[安装lrz图片压缩工具](https://github.com/suvvm/OnlineSurvey/commit/e612dd62d322e2ca756285d26245737643835b08) 
+
