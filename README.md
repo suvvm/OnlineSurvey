@@ -1,4 +1,4 @@
-# 简单在线调查工具
+# Pop Survey简单在线调查工具
 
 ## 1.开发描述
 
@@ -141,4 +141,3 @@
 2019年11月13日 GMT+8 下午2:34	[完成前后端通信测试代码](https://github.com/suvvm/OnlineSurvey/commit/f21a5138ca6e47dda7eea590b08e48dd4e637416) 
 
 2019年11月13日 GMT+8 下午2:40	[安装lrz图片压缩工具](https://github.com/suvvm/OnlineSurvey/commit/e612dd62d322e2ca756285d26245737643835b08) 
-
