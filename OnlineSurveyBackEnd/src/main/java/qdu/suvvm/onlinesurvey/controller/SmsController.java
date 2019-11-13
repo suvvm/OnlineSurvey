@@ -1,5 +1,6 @@
 package qdu.suvvm.onlinesurvey.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
@@ -35,9 +36,15 @@ public class SmsController {
         request.putQueryParameter("TemplateParam", code);
         try {
             CommonResponse response = client.getCommonResponse(request);
-            Map map = (Map)JSON
+            Map map = (Map) JSON.parse(response.getData());
+            if(map.get("Code").equals("OK")) {
+                return "success";
+            } else {
+                return "error";
+            }
         } catch (ClientException e) {
             e.printStackTrace();
+            return "error";
         }
     }
 }
