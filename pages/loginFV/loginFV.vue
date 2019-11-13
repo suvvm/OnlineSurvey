@@ -38,9 +38,12 @@
 
 <style>
 	.logo {
-			height: 500upx;
-			width: 400upx;
-			margin-top: 100upx;
+			height: 500rpx;
+			width: 400rpx;
+			margin-top: 200rpx;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 50rpx;
 		}
 	.content{
 		text-align: center;

@@ -79,8 +79,7 @@
 		<text v-if="imgfile != ''">选择完成</text>
 		<van-checkbox v-model="checked">同意<van-button @click="showPopup" class="xieyi">《注册协议》</van-button></van-checkbox>
 			<van-popup v-model="show" >《注册协议》</van-popup>
-		<van-button class="submit" type="info" @click="handleClick">注册</van-button>				
-						
+		<van-button class="submit" type="info" @click="handleClick">注册</van-button>							
 	</view>
 </template>
 
@@ -93,6 +92,7 @@
 				checked: true,
 				show: false,
 				username: '',
+				email: '',
 				name:'',
 				pnum:'',
 				password: '',
@@ -107,81 +107,31 @@
 			}
 		},
 		methods: {
-			
+			onPswChanged() {
+				if(this.password != this.password1) {
+					this.err = "两次输入不一致"
+				} else {
+					this.err = ""
+				}
+			},
+			onPnumChanged(){
+				if(this.pnum.length != 11){
+					this.errpnum = "手机号格式错误"
+				}else{
+					this.errpnum = ""
+				}
+			},
 		}
 	}
 </script>
 
 <style>
-	.point{
-	    padding: 6% 5%;
-	}
+
 	.xieyi{
 		background: #EFEFF4;
 		font-size:18px; 
 		font-style: italic;
 	}
-	.content form input:not(:nth-child(6)){
-	    border: 0;
-	    border-bottom: 1px solid #c3c3c5;
-	}
-	.content form{
-	    width: 100%;
-	    height: 35.21%;
-	} 
-	.message{
-	    background: #ffffff;
-	    padding:2% 5% 0 5%;
-	    position: relative;
-	}
-	.message input{
-	    width: 90%;
-	    padding: 4% 0 4% 10%;
-	    font-size: 0.875em;
-	    font-family: "Microsoft YaHei";
-	}
-	.message .icons b{
-	    position: absolute;
-	    width: 3.75%;
-	    height: 4%;
-	    top: 7%;
-	    left: 7%;
-	}
-	.message .icons b img{
-	    width: 100%;
-	}
-	.message .icons b:nth-child(2){
-	    width: 5%;
-	    top: 26%;
-	    left: 6%;
-	}
-	.message .icons b:nth-child(3){
-	    top: 43%;
-	}
-	.message .icons b:nth-child(4){
-	    top: 61%;
-	}
-	.code{
-	    position: absolute;
-	    top: 60%;
-	    right:10%;
-	    color: #21a9f5;
-	    font-size: 0.875em;
-	    font-family: "Microsoft YaHei";
-	}
-	select{
-	    width: 33%;
-	    padding: 2% 1%;
-	    margin: 5%;
-	    font-size: 1em;
-	    color: #909093;
-	    border: solid 1px #909093;
-	    font-family: "Microsoft YaHei";
-	}
-	.agree{
-	    margin: 6% 5%;
-	}
-
 	.submit{
 	    width: 84%;
 	    margin: 2% 8%;
@@ -190,8 +140,5 @@
 	    border: 0;
 	    font-size: 1em;
 	    font-family: "Microsoft YaHei";
-	}
-	form .agree input[type="checkbox"] :default{
-	    outline: 2px solid #21a9f5;
 	}
 </style>
