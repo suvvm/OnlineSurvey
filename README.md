@@ -151,3 +151,13 @@
 2019年11月13日 GMT+8 下午8:11	[修改部分样式](https://github.com/suvvm/OnlineSurvey/commit/0d88eda8adb29b2245b043b336f594180a457359) 
 
 2019年11月13日 GMT+8 下午11:22	[添加计划表](https://github.com/suvvm/OnlineSurvey/commit/7a9e1547d99ebb64fd1ada7caa4dcd002a6db596) 
+
+2019年11月13日 GMT+8 下午11:46	[添加阿里fastjson依赖](https://github.com/suvvm/OnlineSurvey/commit/a056a09cfb496d7a01bbfe6d863577b9f2b6c6e0) 
+
+2019年11月13日 GMT+8 下午11:47	[完成手机验证码发送配置](https://github.com/suvvm/OnlineSurvey/commit/0953659a368f90fc25ef5a937a8f6b94ea0fa70f) 
+
+2019年11月14日 GMT+8 下午4:44	[完善handleClick函数](https://github.com/suvvm/OnlineSurvey/commit/7a4d65a9166f94abfa04ab664ceaa571828b08c9) 
+
+2019年11月14日 GMT+8 下午10:00	[添加MapperScan注解配置](https://github.com/suvvm/OnlineSurvey/commit/2cc436371606fba9c4886aca8e81ff4303eb97a7) 
+
+2019年11月14日 GMT+8 下午10:01	[配置针对users的数据访问方法](https://github.com/suvvm/OnlineSurvey/commit/575ffdc9ed3233fbfcc5039aea618f807f318bc6) 
