@@ -17,16 +17,17 @@ import java.util.List;
 public interface UserMapper {
     // 根据id查询user
     @SelectProvider(type = UserMapperProvider.class, method="findUser")
-    public List<User> getUserbyId(Integer id);
+    public List<User> getUserById(Integer id);
     // 根据id删除user
     @Delete("delete from users where id=#{id}")
-    public int deleteUserbyId(Integer id);
+    public int deleteUserById(Integer id);
     // 根据插入user并获取自增id
     @Options(useGeneratedKeys = true,keyProperty = "id")
     @Insert("insert into user(username,password,name,pnum,email,gender,avatar,imgbase64,power) values{#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power}}")
     public int insertUser(User user);
 
-
+    @UpdateProvider(type = UserMapperProvider.class, method = "updateUser")
+    public int updateUserById(Integer id);
     /**
      * @ClassName: UserMapperProvider
      * @Description: user动态sql的Provider类
@@ -73,7 +74,48 @@ public interface UserMapper {
                 }
             }.toString();
         }
-
+        /**
+         * @FunctionName: updateUser
+         * @Description: 用于生成更新用户动态sql
+         * @Parameter:
+         *  user 需更新数据封装的用户类
+         * @Return: 返回对应的查询语句
+         */
+        public String updateUser(User user) {
+            return new SQL() {
+                {
+                    UPDATE("users");
+                    if(user.getUsername() != null) {
+                        SET("username = #{username}");
+                    }
+                    if(user.getPassword() != null) {
+                        SET("password = #{password}");
+                    }
+                    if(user.getEmail() != null) {
+                        SET("email = #{email}");
+                    }
+                    if(user.getPnum() != null) {
+                        SET("pnum = #{pnum}");
+                    }
+                    if(user.getGender() != null) {
+                        SET("gender= #{gender}");
+                    }
+                    if(user.getName() != null) {
+                        SET("name = #{name}");
+                    }
+                    if(user.getAvatar() != null) {
+                        SET("avatar = #{avatar}");
+                    }
+                    if(user.getImgbase64() != null) {
+                        SET("imgbase64 = #{imgbase64}");
+                    }
+                    if(user.getPower() != null) {
+                        SET("power = #{power}");
+                    }
+                    WHERE("id = #{id}");
+                }
+            }.toString();
+        }
     }
 
 }
