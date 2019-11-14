@@ -10,14 +10,14 @@ import java.util.List;
 
 /**
  * @ClassName: UserMapper
- * @Description: dao层 针对users的数据访问
+ * @Description: dao层 针对users的数据访问方法
  * @Author: SUVVM
  * @Date: 2019/11/14 20:46
  */
 public interface UserMapper {
-    // 根据id查询user
+    // 根据动态sql查询user
     @SelectProvider(type = UserMapperProvider.class, method="findUser")
-    public List<User> getUserById(Integer id);
+    public List<User> getUser(User user);
     // 根据id删除user
     @Delete("delete from users where id=#{id}")
     public int deleteUserById(Integer id);
@@ -25,7 +25,7 @@ public interface UserMapper {
     @Options(useGeneratedKeys = true,keyProperty = "id")
     @Insert("insert into user(username,password,name,pnum,email,gender,avatar,imgbase64,power) values{#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power}}")
     public int insertUser(User user);
-
+    // 根据id更新user
     @UpdateProvider(type = UserMapperProvider.class, method = "updateUser")
     public int updateUserById(Integer id);
     /**
@@ -36,7 +36,7 @@ public interface UserMapper {
      */
     class UserMapperProvider {
         /**
-         * @FunctionName: UserMapperProvider
+         * @FunctionName: findUser
          * @Description: 用于生成查询用户动态sql
          * @Parameter:
          *  user 查询数据封装的用户类
