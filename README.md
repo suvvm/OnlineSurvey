@@ -161,3 +161,9 @@
 2019年11月14日 GMT+8 下午10:00	[添加MapperScan注解配置](https://github.com/suvvm/OnlineSurvey/commit/2cc436371606fba9c4886aca8e81ff4303eb97a7) 
 
 2019年11月14日 GMT+8 下午10:01	[配置针对users的数据访问方法](https://github.com/suvvm/OnlineSurvey/commit/575ffdc9ed3233fbfcc5039aea618f807f318bc6) 
+
+2019年11月15日 GMT+8 上午12:11	[创建包含companies的数据访问方法的mapper CmpMapper](https://github.com/suvvm/OnlineSurvey/commit/2899825de80ae2445e665fccdeabbaf57ffd0ab6) 
+
+2019年11月15日 GMT+8 上午12:11	[添加公司Update方法](https://github.com/suvvm/OnlineSurvey/commit/48f644985d437e3f5f6c94afa94d465012dd8872) 
+
+2019年11月15日 GMT+8 上午12:13	[创建company动态sql的Provider类CmpMapperProvider 添加select方法](https://github.com/suvvm/OnlineSurvey/commit/7a38cde3311d7cb2a9aad314b49185d2046b0a56) 
