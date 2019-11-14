@@ -3,7 +3,7 @@
 		<image class="logo" src="/static/logo.png"></image>
 		<van-cell-group class="uinfoGroup">
 			<van-field
-				v-model="pnum"
+				v-model="username"
 				required
 				clearable
 				label="用户名"
@@ -40,7 +40,6 @@
 				title: 'index',
 				username: '',
 				password: '',
-				pnum: '',
 				loginerr:''
 			}
 		},
@@ -48,17 +47,38 @@
 
 		},
 		methods: {
-			toFVlogin(){
+			toFVlogin() {
 				this.$router.push({
 					path: '/pages/loginFV/loginFV', 
 				})
 			},
-			toRegister(){
+			toRegister() {
 				this.$router.push({
 					path: '/pages/register/register', 
 				})
 			},
-			
+			handleClick() {
+				var rp = require('request-promise');
+				var options = {
+				    method: 'POST',
+				    uri: '',
+				    form: {
+				        // Like <input type="text" name="name">
+				        username: this.username,
+						password: this.password
+				    },
+				    headers: {
+				        /* 'content-type': 'application/x-www-form-urlencoded' */ // Is set automatically
+				    }
+				};
+				rp(options).then(res => {
+				        // POST succeeded...
+					console.log(res)
+				}).catch(err => {
+				        // POST failed...
+					console.log(err)
+				});
+			}
 		}
 	}
 </script>

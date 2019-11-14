@@ -68,12 +68,12 @@
 		
 		<van-cell-group>
 			<label>上传头像</label>
-			<van-uploader :after-read="afterRead" capture="camera"  multiple :max-count="1"/>
-			<text v-if="imgfile != ''">选择完成</text>
+			<van-uploader :after-read="afterReadAvatar" capture="camera"  multiple :max-count="1"/>
+			<text v-if="avatar != ''">选择完成</text>
 		</van-cell-group>
 		<van-cell-group>
 			<label>人脸识别验证数据</label>
-			<van-uploader :after-read="afterRead" capture="camera"  multiple :max-count="1"/>
+			<van-uploader :after-read="afterReadFace" capture="camera"  multiple :max-count="1"/>
 			<text v-if="imgfile != ''">选择完成</text>
 		</van-cell-group>
 		<text v-if="imgfile != ''">选择完成</text>
@@ -95,13 +95,15 @@
 				email: '',
 				name:'',
 				pnum:'',
+				gender: '',
 				password: '',
 				password1:'',
 				sms:'',
 				err:'',
 				errpnum:'',
 				identifyCode: '123',
-				imgfile:'',
+				imgfile: '',
+				avatar: '',
 				time: 0,
 				count: 60
 			}
@@ -121,6 +123,63 @@
 					this.errpnum = ""
 				}
 			},
+			afterReadAvatar(file) {
+				// 压缩图片
+				lrz(file.file, {
+					quality: 0.7 
+				}).then(rst=> {
+					// 处理成功会执行
+					this.avatar = rst.base64.slice(23);	 
+				}).catch(err => {
+					// 处理失败会执行
+					this.$toast.fail("上传失败")
+				})
+				this.avatar = file.content.slice(23);
+				console.log(file.content.slice(23));
+			},
+			afterReadFace(file) {
+				// 压缩图片
+				lrz(file.file, {
+					quality: 0.7 
+				}).then(rst=> {
+					// 处理成功会执行
+					this.imgfile = rst.base64.slice(23);	 
+				}).catch(err => {
+					// 处理失败会执行
+					this.$toast.fail("上传失败")
+				})
+				this.imgfile = file.content.slice(23);
+				console.log(file.content.slice(23));
+			},
+			handleClick() {
+				var rp = require('request-promise');
+				var options = {
+					method: 'POST',
+					uri: '',
+					form: {
+						// Like <input type="text" name="name">
+						username:this.username,
+						password: this.password,
+						name: this.name,
+						pnum: this.pnum,
+						email: this.email,
+						gender: this.gender,
+						avatar: this.avatar,
+						imgbase64: this.imgfile,
+						power: '0'
+					},
+				    headers: {
+				        /* 'content-type': 'application/x-www-form-urlencoded' */ // Is set automatically
+				    }
+				};
+				rp(options).then(res => {
+				        // POST succeeded...
+					console.log(res)
+				}).catch(err => {
+				        // POST failed...
+					console.log(err)
+				});
+			}
 		}
 	}
 </script>
