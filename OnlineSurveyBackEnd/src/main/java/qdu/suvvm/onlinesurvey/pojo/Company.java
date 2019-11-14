@@ -10,7 +10,7 @@ public class Company {
     private String description;
     private String forms;
     private String domain;
-    private Integer ownerid;
+    private User owner;
 
     public Integer getId() {
         return id;
@@ -52,11 +52,11 @@ public class Company {
         this.domain = domain;
     }
 
-    public Integer getOwnerid() {
-        return ownerid;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setOwnerid(Integer ownerid) {
-        this.ownerid = ownerid;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
