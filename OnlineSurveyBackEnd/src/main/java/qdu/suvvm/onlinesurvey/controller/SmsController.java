@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 /**
+ * @ClassName: SmsController
+ * @Description: Controller层 实现接收前端数据调用阿里对应短信服务
  * @Author: SUVVM
  * @Date: 2019/11/13 19:17
  */

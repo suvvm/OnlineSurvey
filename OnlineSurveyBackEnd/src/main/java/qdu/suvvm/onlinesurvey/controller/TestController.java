@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * @ClassName: TestController
+ * @Description: Controller层 与前端数据交互测试 接收text1与text2并打印 之后返回json yes
  * @Author: SUVVM
- * @Date: 2019/11/13 13:54
+ * @Date: 2019/11/12 21:45
  */
 @RestController
 public class TestController {
