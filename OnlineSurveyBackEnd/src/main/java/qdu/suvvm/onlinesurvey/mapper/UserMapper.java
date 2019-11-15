@@ -21,9 +21,9 @@ public interface UserMapper {
     // 根据id删除user
     @Delete("delete from users where id=#{id}")
     public int deleteUserById(Integer id);
-    // 根据插入user并获取自增id
+    // 插入user并获取自增id
     @Options(useGeneratedKeys = true,keyProperty = "id")
-    @Insert("insert into user(username,password,name,pnum,email,gender,avatar,imgbase64,power) values{#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power}}")
+    @Insert("insert into user(username,password,name,pnum,email,gender,avatar,imgbase64,power) values(#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power})")
     public int insertUser(User user);
     // 根据id更新user
     @UpdateProvider(type = UserMapperProvider.class, method = "updateUser")
@@ -40,7 +40,7 @@ public interface UserMapper {
          * @Description: 用于生成查询用户动态sql
          * @Parameter:
          *  user 查询数据封装的用户类
-         * @Return: 返回对应的查询语句
+         * @Return: 返回对应的sql语句
          */
         public String findUser(User user) {
             return new SQL() {
@@ -79,7 +79,7 @@ public interface UserMapper {
          * @Description: 用于生成更新用户动态sql
          * @Parameter:
          *  user 需更新数据封装的用户类
-         * @Return: 返回对应的查询语句
+         * @Return: 返回对应sql语句
          */
         public String updateUser(User user) {
             return new SQL() {
