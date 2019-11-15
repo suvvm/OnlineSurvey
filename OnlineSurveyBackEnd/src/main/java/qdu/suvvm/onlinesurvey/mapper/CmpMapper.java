@@ -1,9 +1,6 @@
 package qdu.suvvm.onlinesurvey.mapper;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.UpdateProvider;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
 import qdu.suvvm.onlinesurvey.pojo.Company;
 
@@ -23,6 +20,7 @@ public interface CmpMapper {
     @Delete("delete from companies where id=#{id}")
     public int deleteCmpById(Integer id);
     // 插入user并获取自增id
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     @Insert("insert into companies(name,decription,forms,domain,ownerid) values(#{name},#{decription},#{froms},#{domain})")
     public int insertCmp(Company cmp);
     // 根据id更新company
@@ -63,7 +61,7 @@ public interface CmpMapper {
          * @FunctionName: updateCmp
          * @Description: 用于生成更新company动态sql
          * @Parameter:
-         *  cmp 查询数据封装的公司类
+         *  cmp 更新数据封装的公司类
          * @Return: 返回对应sql语句
          */
         public String updateCmp(Company cmp) {
