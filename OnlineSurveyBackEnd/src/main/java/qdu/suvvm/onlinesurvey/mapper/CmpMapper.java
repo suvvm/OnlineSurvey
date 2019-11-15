@@ -1,6 +1,9 @@
 package qdu.suvvm.onlinesurvey.mapper;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.UpdateProvider;
 import org.apache.ibatis.jdbc.SQL;
 import qdu.suvvm.onlinesurvey.pojo.Company;
 
@@ -16,7 +19,15 @@ public interface CmpMapper {
     // 根据动态sql查询company
     @SelectProvider(type = CmpMapperProvider.class, method="findCmp")
     public List<Company> getCompanies(Company cmp);
-
+    // 根据id删除company
+    @Delete("delete from companies where id=#{id}")
+    public int deleteCmpById(Integer id);
+    // 插入user并获取自增id
+    @Insert("insert into companies(name,decription,forms,domain,ownerid) values(#{name},#{decription},#{froms},#{domain})")
+    public int insertCmp(Company cmp);
+    // 根据id更新company
+    @UpdateProvider(type = CmpMapperProvider.class, method = "updateCmp")
+    public int updateCmp(Company cmp);
     /**
      * @ClassName: CmpMapperProvider
      * @Description: company动态sql的Provider类
@@ -29,7 +40,7 @@ public interface CmpMapper {
          * @Description: 用于生成查询company动态sql
          * @Parameter:
          *  cmp 查询数据封装的公司类
-         * @Return: 返回对应的查询语句
+         * @Return: 返回对应sql语句
          */
         public String findCmp(Company cmp) {
             return new SQL() {
@@ -48,5 +59,33 @@ public interface CmpMapper {
                 }
             }.toString();
         }
+        /**
+         * @FunctionName: updateCmp
+         * @Description: 用于生成更新company动态sql
+         * @Parameter:
+         *  cmp 查询数据封装的公司类
+         * @Return: 返回对应sql语句
+         */
+        public String updateCmp(Company cmp) {
+            return new SQL() {
+                {
+                    UPDATE("companies");
+                    if(cmp.getName() != null) {
+                        SET("name = #{name}");
+                    }
+                    if(cmp.getDescription() != null) {
+                        SET("description = #{description}");
+                    }
+                    if(cmp.getForms() != null) {
+                        SET("forms = #{forms}");
+                    }
+                    if(cmp.getDomain() != null) {
+                        SET("domain = #{domain}");
+                    }
+                    WHERE("id = #{id}");
+                }
+            }.toString();
+        }
     }
+
 }
