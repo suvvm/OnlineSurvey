@@ -167,3 +167,12 @@
 2019年11月15日 GMT+8 上午12:11	[添加公司Update方法](https://github.com/suvvm/OnlineSurvey/commit/48f644985d437e3f5f6c94afa94d465012dd8872) 
 
 2019年11月15日 GMT+8 上午12:13	[创建company动态sql的Provider类CmpMapperProvider 添加select方法](https://github.com/suvvm/OnlineSurvey/commit/7a38cde3311d7cb2a9aad314b49185d2046b0a56) 
+
+2019年11月15日 GMT+8 上午10:21	[UserMapper修复updateUser SQL语句问题](https://github.com/suvvm/OnlineSurvey/commit/6fe96daf55917262cdbdcd0914bf6089b05332fe) 
+
+2019年11月15日 GMT+8 上午10:23	[CmpMapper完成插入删除更新](https://github.com/suvvm/OnlineSurvey/commit/387bd14d865365a36bcb54660b5d50c32aeb6799) 
+
+2019年11月15日 GMT+8 上午11:00	[CmpMapper修改错误注释 添加插入方法Options配置](https://github.com/suvvm/OnlineSurvey/commit/814f47f1f3526be539901fd11a7ae217996f1618) 
+
+2019年11月15日 GMT+8 上午11:02	 [创建TagMapper配置针对taps的数据访问方法](https://github.com/suvvm/OnlineSurvey/commit/3a65518287200a55f7e8cce202da3de51cbe990a) 
+
