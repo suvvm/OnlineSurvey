@@ -48,7 +48,18 @@
 				@blur="onPswChanged"		
 			/>						
 		</van-cell-group>
-				
+		<van-cell-group>
+			<van-radio-group v-model="gender">
+			  <van-cell-group>
+			    <van-cell title="我是男性" clickable @click="gender = '0'">
+			      <van-radio slot="right-icon" name="0" />
+			    </van-cell>
+			    <van-cell title="我是女性" clickable @click="gender = '1'">
+			      <van-radio slot="right-icon" name="1" />
+			    </van-cell>
+			  </van-cell-group>
+			</van-radio-group>
+		</van-cell-group>
 		<van-cell-group>
 			<van-field
 				v-model="sms"
@@ -65,7 +76,7 @@
 					</van-button>
 			</van-field>
 		</van-cell-group>
-		
+		<text v-if="imgfile != avatar">两张图片不同</text>
 		<van-cell-group>
 			<label>上传头像</label>
 			<van-uploader :after-read="afterReadAvatar" capture="camera"  multiple :max-count="1"/>
@@ -76,7 +87,6 @@
 			<van-uploader :after-read="afterReadFace" capture="camera"  multiple :max-count="1"/>
 			<text v-if="imgfile != ''">选择完成</text>
 		</van-cell-group>
-		<text v-if="imgfile != ''">选择完成</text>
 		<van-checkbox v-model="checked">同意<van-button @click="showPopup" class="xieyi">《注册协议》</van-button></van-checkbox>
 			<van-popup v-model="show" >《注册协议》</van-popup>
 		<van-button class="submit" type="info" @click="handleClick">注册</van-button>							
@@ -95,13 +105,13 @@
 				email: '',
 				name:'',
 				pnum:'',
-				gender: '',
+				gender: '0',
 				password: '',
 				password1:'',
 				sms:'',
 				err:'',
 				errpnum:'',
-				identifyCode: '123',
+				identifyCode: '',
 				imgfile: '',
 				avatar: '',
 				time: 0,
@@ -137,6 +147,7 @@
 				this.avatar = file.content.slice(23);
 				console.log(file.content.slice(23));
 			},
+			
 			afterReadFace(file) {
 				// 压缩图片
 				lrz(file.file, {
@@ -151,14 +162,70 @@
 				this.imgfile = file.content.slice(23);
 				console.log(file.content.slice(23));
 			},
+			sentIdentify() {
+				// 发送验证码按钮倒计时
+				const TIME_COUNT = 60;
+				if (!this.time) {
+					this.count = TIME_COUNT;
+					this.disabled = true;
+					this.time = setInterval(() => {
+						if(this.count > 0 && this.count <= TIME_COUNT) {
+							this.count--;
+						} else {
+							this.disabled = false;
+							clearInterval(this.time);
+							this.time = 0;
+							this.count = TIME_COUNT
+						}
+					}, 1000)
+				}
+				
+				// 生成4位随机手机验证码
+				var i = Math.random()*(999999-100000)+100000; 
+				var j = parseInt(i,10); 
+				this.identifyCode = j;
+				
+				var rp = require('request-promise');
+				// 以表单形式向后端SmsController发送post请求
+				var options = {
+					method: 'POST',
+					uri: 'http://localhost:8080/getSms',
+					form: {
+						// 发送手机号和验证码格式化的json串
+						mobile: this.pnum,
+						code: "{\"code\":\""+this.identifyCode+"\"}"
+					},
+				};
+				rp(options).then(res => {
+				    // POST 成功
+					if (res != 'error') {
+						this.$toast.success('发送成功');
+					} else {
+						this.$toast.fail('发送失败，请检查网络连接');
+					}
+						
+				}).catch(err => {
+				    // POST 失败
+					console.log(err);
+					this.$toast.fail('发送失败，请检查网络连接');
+				});
+			},
 			handleClick() {
+				if(this.sms != this.identifyCode || this.sms == ''){
+					this.$toast.fail('验证码错误，请准确填写验证码！');
+					return;
+				}
+					
+				console.log("username:" + this.username + "password:" 
+				+ this.password + " name:" + this.name + " pnum:" + this.pnum 
+				+ " email:" + this.email + " gender:" + this.gender);
 				var rp = require('request-promise');
 				var options = {
 					method: 'POST',
-					uri: '',
+					uri: 'http://localhost:8080/insertUser',
 					form: {
-						// Like <input type="text" name="name">
-						username:this.username,
+						// 模拟表单的形式向UserController发送insertUser请求
+						username: this.username,
 						password: this.password,
 						name: this.name,
 						pnum: this.pnum,
@@ -168,15 +235,15 @@
 						imgbase64: this.imgfile,
 						power: '0'
 					},
-				    headers: {
-				        /* 'content-type': 'application/x-www-form-urlencoded' */ // Is set automatically
-				    }
+					headers: {
+						/* 'content-type': 'application/x-www-form-urlencoded' */ // Is set automatically
+					}
 				};
 				rp(options).then(res => {
-				        // POST succeeded...
+						// POST succeeded...
 					console.log(res)
 				}).catch(err => {
-				        // POST failed...
+						// POST failed...
 					console.log(err)
 				});
 			}
