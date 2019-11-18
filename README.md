@@ -176,3 +176,30 @@
 
 2019年11月15日 GMT+8 上午11:02	 [创建TagMapper配置针对taps的数据访问方法](https://github.com/suvvm/OnlineSurvey/commit/3a65518287200a55f7e8cce202da3de51cbe990a) 
 
+2019年11月18日 GMT+8 上午9:01	[添加UserController](https://github.com/suvvm/OnlineSurvey/commit/f70bb4fde180ca32f358281a1d51f304db17cc65) 
+
+2019年11月18日 GMT+8 上午9:01	[添加数据库测试Controller DBTestController](https://github.com/suvvm/OnlineSurvey/commit/77697ccbdcb733b54bd14a6803fa5a89b809d554) 
+
+2019年11月18日 GMT+8 上午9:02	[编写数据库测试模块](https://github.com/suvvm/OnlineSurvey/commit/c68b5ffcdae21a854e6d3ad2f8426d1b6630e998) 
+
+2019年11月18日 GMT+8 下午8:31	[添加手机验证码发送测试方法](https://github.com/suvvm/OnlineSurvey/commit/82b5a4be8610b67563a5682915d063f928a3ecfd) 
+
+2019年11月18日 GMT+8 下午9:53	[UserMapper修正更新与插入中表名错误问题](https://github.com/suvvm/OnlineSurvey/commit/877a9193562dcf717be57665e4842c85647bfaf6) 
+
+2019年11月18日 GMT+8 下午9:54	[junit添加用户插入测试方法](https://github.com/suvvm/OnlineSurvey/commit/0d246c1186d1b991ea3c67a27de03287d890151b) 
+
+2019年11月18日 GMT+8 下午9:56	[UserController完成针对接收前端数据新增用户的配置](https://github.com/suvvm/OnlineSurvey/commit/7417ce471a47ea53bcc42d282c345bf001401942) 
+
+2019年11月18日 GMT+8 下午9:56	[添加测试用户信息](https://github.com/suvvm/OnlineSurvey/commit/3ecbf42aca83e8377a63dac9c37a71201d151555) 
+
+2019年11月18日 GMT+8 下午9:57	[添加lrz图片压缩工具的import](https://github.com/suvvm/OnlineSurvey/commit/14a51cc479ae42d9aa94520698a8de6873797e44) 
+
+2019年11月18日 GMT+8 下午10:02	[register页面逻辑基本完成](https://github.com/suvvm/OnlineSurvey/commit/ff60b153429bfac29fbb88168a524a317d30791a) 
+
+2019年11月18日 GMT+8 下午10:08	[创建用于处理人脸识别请求的Controller FVerifyController](https://github.com/suvvm/OnlineSurvey/commit/a5ca6cdbe284684b9f042cb60dabc134bb47d68a) 
+
+2019年11月18日 GMT+8 下午10:29	[创建人脸识别配置工具 FVerifyUtil](https://github.com/suvvm/OnlineSurvey/commit/823733f9d96376e39ae33c0cafb2287c1f612276) 
+
+2019年11月18日 GMT+8 下午10:30	[完成人脸识别配置工具 FVerifyUtil](https://github.com/suvvm/OnlineSurvey/commit/b54ba1f4cd1592988729b82b653fa8fb91334d74) 
+
+2019年11月18日 GMT+8 下午10:33	[完成FVerifyController](https://github.com/suvvm/OnlineSurvey/commit/6e06ab1a259cd5bb587ef2cce827d2f4cce08366) 
