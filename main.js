@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App'
-import Vant from 'vant';
-
+import Vant from 'vant'
+import lrz from 'lrz'
 Vue.use(Vant);
 Vue.config.productionTip = false
 
