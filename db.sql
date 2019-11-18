@@ -13,6 +13,7 @@ create table users (
     imgbase64 mediumtext,
     power int
 )auto_increment=100000001 default charset=utf8;
+
 drop table companys;
 
 create table companys (
