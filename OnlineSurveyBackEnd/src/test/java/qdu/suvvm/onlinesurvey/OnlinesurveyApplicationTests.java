@@ -17,7 +17,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import qdu.suvvm.onlinesurvey.mapper.TagMapper;
+import qdu.suvvm.onlinesurvey.mapper.UserMapper;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
+import qdu.suvvm.onlinesurvey.pojo.User;
 
 import java.util.List;
 
@@ -32,6 +34,8 @@ class OnlinesurveyApplicationTests {
     @Autowired
     private TagMapper tagMapper;
 
+    @Autowired
+    private UserMapper userMapper;
     /**
      * @FunctionName: selectTest
      * @Description: 用于测试数据库查询
@@ -45,6 +49,28 @@ class OnlinesurveyApplicationTests {
         for(Tag tag : tags){
             System.out.println(tag.getId() + " " + tag.getName() + " " + tag.getDescription());
         }
+    }
+
+    /**
+     * @FunctionName: selectTest
+     * @Description: 用于测试插入用户
+     */
+    @Test
+    public void insertUserTest() {
+        User user = new User();
+        user.setUsername("suvvm");
+        user.setPassword("poiuytrewq");
+        user.setName("江民");
+        user.setPnum("15098997526");
+        user.setEmail("suvvm@foxmail.com");
+        user.setGender("0");
+        user.setAvatar("asdasd");
+        user.setImgbase64("asdasd");
+        user.setPower(0);
+        // t.setId(400000001);
+
+        userMapper.insertUser(user);
+
     }
 
     /**
