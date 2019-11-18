@@ -23,7 +23,7 @@ public interface UserMapper {
     public int deleteUserById(Integer id);
     // 插入user并获取自增id
     @Options(useGeneratedKeys = true,keyProperty = "id")
-    @Insert("insert into user(username,password,name,pnum,email,gender,avatar,imgbase64,power) values(#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power})")
+    @Insert("insert into users(username,password,name,pnum,email,gender,avatar,imgbase64,power) values(#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power})")
     public int insertUser(User user);
     // 根据id更新user
     @UpdateProvider(type = UserMapperProvider.class, method = "updateUser")
@@ -46,7 +46,7 @@ public interface UserMapper {
             return new SQL() {
                 {
                     SELECT("*");
-                    FROM("user");
+                    FROM("users");
                     if(user.getId() != null) {
                         WHERE("id = #{id}");
                     }
