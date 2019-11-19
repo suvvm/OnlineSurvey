@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @ClassName: FVerifyController
- * @Description: TODO
+ * @Description: 处理人脸识别的相关请求
  * @Author: SUVVM
  * @Date: 2019/11/18 22:06
  */
