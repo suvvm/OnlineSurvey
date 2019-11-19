@@ -25,12 +25,62 @@
 	export default {
 		data() {
 			return {
-				username: '',
+				pnum: '',
 				imgfile: '',
 				err: '',
 			}
 		},
 		methods: {
+			afterRead(file) {
+				this.$toast.loading({
+					duration: 0,	// 持续展示 toast
+					forbidClick: true,	// 禁用背景点击
+					message: '识别中'
+				});
+				// 压缩图片
+				lrz(file.file, {
+					quality: 0.7 
+				}).then(rst=> {
+					// 处理成功会执行
+					var rp = require('request-promise');
+					var options = {
+						method: 'POST',
+						uri: 'http://localhost:8080/fVerify',
+						form: { 
+							pnum: this.pnum,
+							content_1: rst.base64.slice(23)
+						}
+					};
+					// post发送对应人脸识别请求
+					rp(options).then(res => {
+						this.$toast.clear();
+					    // POST 成功
+						console.log(res);
+						if (res != 'error') {
+							var faceInfo = JSON.parse(res);
+							if(faceInfo.confidence >= 80) {
+								this.$toast.success('登录成功');
+								this.$cookies.set("id", faceInfo.id, 60 * 60  * 24 * 7);
+							} else {
+								this.$toast.fail('非本人');
+							}
+						} else {
+							this.$toast.fail('识别失败，请检查账号信息');
+						}	
+					}).catch(err => {
+					    // POST 失败
+						this.$toast.clear();
+						console.log(err);
+						this.$toast.fail('识别失败，请检查网络连接');
+					});
+					
+				}).catch(err => {
+					// 处理失败会执行
+					this.$toast.fail("图片获取失败！")
+				})
+				this.imgfile = file.content.slice(23);
+				// console.log(file.content.slice(23));
+			},
 			
 		}
 	}
