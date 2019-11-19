@@ -21,7 +21,7 @@ public interface CmpMapper {
     public int deleteCmpById(Integer id);
     // 插入user并获取自增id
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into companies(name,decription,forms,domain,ownerid) values(#{name},#{decription},#{froms},#{domain})")
+    @Insert("insert into companies(name,description,forms,domain,ownerid) values(#{name},#{description},#{forms},#{domain},#{owner.id})")
     public int insertCmp(Company cmp);
     // 根据id更新company
     @UpdateProvider(type = CmpMapperProvider.class, method = "updateCmp")
