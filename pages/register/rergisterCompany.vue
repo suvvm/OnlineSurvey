@@ -81,6 +81,9 @@
 					this.$toast.clear();
 					this.$cookies.set("userInfo", this.userInfo, 60 * 60  * 24 * 7);
 					this.$toast.success('提交成功');
+					this.$router.push({
+						path: '/pages/user/user', 
+					});
 					console.log(res)
 				}).catch(err => {
 					this.$toast.clear();

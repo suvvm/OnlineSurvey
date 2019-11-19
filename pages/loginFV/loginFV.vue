@@ -64,6 +64,9 @@
 							if(faceInfo.confidence >= 80) {	// 相似度大于80%判定为同一人
 								this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
 								this.$toast.success('登录成功');
+								this.$router.push({
+									path: '/pages/user/user', 
+								});
 							} else {
 								this.$toast.fail('非本人');
 							}

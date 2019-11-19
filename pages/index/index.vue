@@ -78,6 +78,9 @@
 						var userInfo = JSON.parse(res);
 						this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
 						this.$toast.success('登录成功');
+						this.$router.push({
+							path: '/pages/user/user', 
+						})
 					}
 					console.log(res)
 				}).catch(err => {
