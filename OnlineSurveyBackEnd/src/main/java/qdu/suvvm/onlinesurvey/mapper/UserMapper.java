@@ -27,7 +27,7 @@ public interface UserMapper {
     public int insertUser(User user);
     // 根据id更新user
     @UpdateProvider(type = UserMapperProvider.class, method = "updateUser")
-    public int updateUserById(Integer id);
+    public int updateUserById(User user);
     /**
      * @ClassName: UserMapperProvider
      * @Description: user动态sql的Provider类
