@@ -37,7 +37,19 @@
 		},
 		methods: {
 			submit() {
-				
+				if(this.radio == 1) {
+					this.$router.push({
+						path: '/pages/register/registerOrdinaryUsers', 
+					});
+				} else if(this.radio == 2) {
+					this.$router.push({
+						path: '/pages/register/registerCompleted', 
+					});
+				} else {
+					this.$router.push({
+						path: '/pages/register/registerAdmin', 
+					});
+				}
 			}
 		}
 	}
