@@ -11,6 +11,7 @@
 - 数据源与数据监控使用阿里的Druid
 - 后端服务器租用阿里云服务器
 - 短信发送、邮件发送与人脸识别功能均使用阿里的对应服务
+- 如阿里云accessKey等敏感信息本项目单独用了一个配置文件application-privateInfo.yml进行配置，该文件并未上传，需要在后端src/main/resources中新建该文件并添加对应配置。
 
 ## 2.项目简介
 
@@ -203,3 +204,18 @@
 2019年11月18日 GMT+8 下午10:30	[完成人脸识别配置工具 FVerifyUtil](https://github.com/suvvm/OnlineSurvey/commit/b54ba1f4cd1592988729b82b653fa8fb91334d74) 
 
 2019年11月18日 GMT+8 下午10:33	[完成FVerifyController](https://github.com/suvvm/OnlineSurvey/commit/6e06ab1a259cd5bb587ef2cce827d2f4cce08366) 
+
+2019年11月19日 GMT+8 下午3:59	[更新忽略文件 忽略隐私信息配置文件application-privateInfo.yml](https://github.com/suvvm/OnlineSurvey/commit/4e3c45f8fbfd943036c45df7ecf828cced04ea51) 
+
+2019年11月19日 GMT+8 下午4:01	[FVerifyController.java人脸识别时将一并把用户详细数据返回给前端](https://github.com/suvvm/OnlineSurvey/commit/98d72914fcd9ae77632a5a8fd79ffa4289943ff3) 
+
+2019年11月19日 GMT+8 下午4:05	[登录页与注册页添加提交加载的显示](https://github.com/suvvm/OnlineSurvey/commit/6c412b44990e370bdb3c4efdbd76458c39256fd0) 
+
+2019年11月19日 GMT+8 下午4:06	[基本完成前端人脸识别登录的逻辑](https://github.com/suvvm/OnlineSurvey/commit/12e3d70b045ad5864726fc7bdeb92ae9d6ac25e8) 
+
+2019年11月19日 GMT+8 下午4:44	[安装vue-cookies](https://github.com/suvvm/OnlineSurvey/commit/54856489a75dc35d04bd8820255960f89aaff140)
+
+2019年11月19日 GMT+8 下午4:49	[将阿里云accessKey相关敏感信息保存在配置文件application-privateInfo.yml中](https://github.com/suvvm/OnlineSurvey/commit/2a949add8ed4bf21dbaf60a040ed61aaf617f55d) 
+
+2019年11月19日 GMT+8 下午4:49	[添加敏感信息读取测试](https://github.com/suvvm/OnlineSurvey/commit/7f016d18203163769b3024c9d9075c2b34621602) 
+
