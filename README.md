@@ -219,3 +219,34 @@
 
 2019年11月19日 GMT+8 下午4:49	[添加敏感信息读取测试](https://github.com/suvvm/OnlineSurvey/commit/7f016d18203163769b3024c9d9075c2b34621602) 
 
+2019年11月19日 GMT+8 下午5:16	[前端添加并注册角色选择页](https://github.com/suvvm/OnlineSurvey/commit/6aa12dbc38ad7e99a30e0f8aef104fb6189b0080) 
+
+2019年11月19日 GMT+8 下午10:23	[修正CmpMapper中insterCmp sql语句错误](https://github.com/suvvm/OnlineSurvey/commit/173c7e4eff1d6c3e8f908df76658e9a4db7f59d5) 
+
+2019年11月19日 GMT+8 下午10:25	[UserMapper修正updateUserById传值错误](https://github.com/suvvm/OnlineSurvey/commit/86d61f1216e1ae0e5d8f67b3ce346b0cbecee429) 
+
+2019年11月19日 GMT+8 下午10:26	[封装MD5加密工具](https://github.com/suvvm/OnlineSurvey/commit/9de65f511847bf7712420f031551deba6901ef6e) 
+
+2019年11月19日 GMT+8 下午10:27	[创建处理公司相关请求的Controller CmpController](https://github.com/suvvm/OnlineSurvey/commit/a3bb52c4776f6bf339ca6eddda7e0b63ba3f0b1f)
+
+2019年11月19日 GMT+8 下午10:29	[添加注册完成页](https://github.com/suvvm/OnlineSurvey/commit/0ea2c112bd9fe28bcd74f6251a980fad88e63b65) 
+
+2019年11月19日 GMT+8 下午10:29	[添加注册普通用户页](https://github.com/suvvm/OnlineSurvey/commit/a90faf21a5cffefcae00f3a3995e8ce45ae05338) 
+
+2019年11月19日 GMT+8 下午10:30	[添加注册公司页](https://github.com/suvvm/OnlineSurvey/commit/cee6f2a887a968c5be69d97697f4b41847e6fb2b) 
+
+2019年11月19日 GMT+8 下午10:30	[添加tag页](https://github.com/suvvm/OnlineSurvey/commit/33618c392f000d2f8e98a241cb33ea1c527e01dc) 
+
+2019年11月19日 GMT+8 下午10:30	[添加用户信息页](https://github.com/suvvm/OnlineSurvey/commit/0d8f751b52bcd2c15a3af7dd4364d6a969cc323d) 
+
+2019年11月19日 GMT+8 下午10:31	[注册新页面](https://github.com/suvvm/OnlineSurvey/commit/bba0a55dce45d4ad08c2c3d21c9ec5124bd9c8d2) 
+
+2019年11月19日 GMT+8 下午10:32	[完成登录标识](https://github.com/suvvm/OnlineSurvey/commit/4935ccbb2cf9d0b76a4cb2e7cc318c7d8466949f) 
+
+2019年11月19日 GMT+8 下午10:32	[完成用户选择页](https://github.com/suvvm/OnlineSurvey/commit/f004634c52d6e119928a93c5cf98dd40db62dda2) 
+
+2019年11月19日 GMT+8 下午10:36	[完善页面路由](https://github.com/suvvm/OnlineSurvey/commit/948ca11b7bf37eaae799bf5bb358e3edaf0688da) 
+
+2019年11月19日 GMT+8 下午10:40	[新增管理员申请页面](https://github.com/suvvm/OnlineSurvey/commit/d21cd30b60571ea155e44b60eeacdcbea83f4fe9) 
+
+2019年11月19日 GMT+8 下午10:40	[完成用户注册分类路由](https://github.com/suvvm/OnlineSurvey/commit/f4a3442fddd43fd6cc5778dd91003f7b1ac3a7a0) 
