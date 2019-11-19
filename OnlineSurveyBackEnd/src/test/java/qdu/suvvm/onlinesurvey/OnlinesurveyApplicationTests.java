@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -87,6 +88,16 @@ class OnlinesurveyApplicationTests {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Value("${privateInfo.accessKeyId}")
+    private String ak_id;
+
+    @Value("${privateInfo.accessKeySecret}")
+    private String ak_secret;
+    @Test
+    public void showAccessKeyInfo () {
+        System.out.println(ak_id + " " + ak_secret);
     }
 
 
