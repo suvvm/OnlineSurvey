@@ -2,7 +2,11 @@ import Vue from 'vue'
 import App from './App'
 import Vant from 'vant'
 import lrz from 'lrz'
-Vue.use(Vant);
+import VueCookies from 'vue-cookies'
+
+Vue.use(VueCookies)
+Vue.use(Vant)
+
 Vue.config.productionTip = false
 
 App.mpType = 'app'
