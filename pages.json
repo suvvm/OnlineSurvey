@@ -30,6 +30,32 @@
 				"navigationBarTitleText": "选择注册角色"
 			}
 		}
+		,{
+			"path" : "pages/register/registerOrdinaryUsers",
+			"style" : {
+				"navigationBarTitleText": "普通用户"
+			}
+		},{
+			"path" : "pages/tag/addTag",
+			"style" : {
+				"navigationBarTitleText": "添加标签"
+			}
+		},{
+			"path" : "pages/register/rergisterCompany",
+			"style" : {
+				"navigationBarTitleText": "注册公司"
+			}
+		},{
+			"path" : "pages/register/registerCompleted",
+			"style" : {
+				"navigationBarTitleText": "注册完成"
+			}
+		}
+		
+        ,{
+            "path" : "pages/user/user",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
