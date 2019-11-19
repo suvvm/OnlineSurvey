@@ -43,6 +43,7 @@ public class FVerifyController {
             String res = null;
             try {
                 res = FVerifyUtil.sendPost(url, body, ak_id, ak_secret);
+                System.out.println(res);
                 JSONObject resObj = JSON.parseObject(res);
                 resObj.put("id", users.get(0).getId());
                 resObj.put("username", users.get(0).getUsername());

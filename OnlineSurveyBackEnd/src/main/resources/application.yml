@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: privateInfo
   datasource:
     username: root
     password: root

@@ -8,6 +8,7 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,9 +23,16 @@ import java.util.Map;
  */
 @RestController
 public class SmsController {
+
+    @Value("${privateInfo.accessKeyId}")
+    private String ak_id;
+
+    @Value("${privateInfo.accessKeySecret}")
+    private String ak_secret;
+
     @PostMapping(value = "/getSms")
     public String test(@RequestParam("mobile") String mobile, @RequestParam("code") String code) {
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "yourAccessKid", "yourSecret");
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", ak_id, ak_secret);
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setMethod(MethodType.POST);
