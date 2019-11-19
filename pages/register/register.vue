@@ -243,9 +243,18 @@
 					}
 				};
 				rp(options).then(res => {
-						// POST succeeded...
+					// POST succeeded...
 					this.$toast.clear();
 					this.$toast.fail('注册成功！');
+					// 以对应用户信息构建JSONObject
+					var userInfo = {"username":this.username,"name":this.name,"pnum":this.pnum,
+					"email":this.email,"gender":this.gender,"power":this.power};
+					// 存cookies
+					this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
+					// 跳转到角色选择页
+					this.$router.push({
+						path: '/pages/register/registerRole', 
+					})
 					console.log(res)
 				}).catch(err => {
 					this.$toast.clear();

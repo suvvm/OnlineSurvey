@@ -21,7 +21,6 @@
 				label="密	码"
 				placeholder="请输入密码"
 				required
-				:error-message="loginerr"
 			/>
 		</van-cell-group>
 		<van-cell-group class="btnGroup">
@@ -37,10 +36,8 @@
 	export default {
 		data() {
 			return {
-				title: 'index',
 				username: '',
 				password: '',
-				loginerr:''
 			}
 		},
 		onLoad() {
@@ -67,21 +64,25 @@
 				var rp = require('request-promise');
 				var options = {
 				    method: 'POST',
-				    uri: '',
+				    uri: 'http://localhost:8080/login',
 				    form: {
-				        // Like <input type="text" name="name">
 				        username: this.username,
 						password: this.password
-				    },
-				    headers: {
-				        /* 'content-type': 'application/x-www-form-urlencoded' */ // Is set automatically
 				    }
 				};
 				rp(options).then(res => {
-				        // POST succeeded...
+					this.$toast.clear();
+					if(res == null) {
+						this.$toast.fail('用户名或密码错误');
+					} else {
+						var userInfo = JSON.parse(res);
+						this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
+						this.$toast.success('登录成功');
+					}
 					console.log(res)
 				}).catch(err => {
-				        // POST failed...
+					this.$toast.clear();
+					this.$toast.fail('网络连接出错');
 					console.log(err)
 				});
 			}

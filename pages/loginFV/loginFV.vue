@@ -58,9 +58,12 @@
 						console.log(res);
 						if (res != 'error') {
 							var faceInfo = JSON.parse(res);
-							if(faceInfo.confidence >= 80) {
+							// 提取用户信息
+							var userInfo = {"username":faceInfo.username,"name":faceInfo.name,"pnum":faceInfo.pnum,
+							"email":faceInfo.email,"gender":faceInfo.gender,"power":faceInfo.power};
+							if(faceInfo.confidence >= 80) {	// 相似度大于80%判定为同一人
+								this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
 								this.$toast.success('登录成功');
-								// this.$cookies.set("id", faceInfo.id, 60 * 60  * 24 * 7);
 							} else {
 								this.$toast.fail('非本人');
 							}
