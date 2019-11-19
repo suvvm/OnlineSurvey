@@ -51,7 +51,12 @@
 				"navigationBarTitleText": "注册完成"
 			}
 		}
-		
+		,{
+			"path" : "pages/register/registerAdmin",
+			"style" : {
+				"navigationBarTitleText": "注册管理员"
+			}
+		}
         ,{
             "path" : "pages/user/user",
             "style" : {}
