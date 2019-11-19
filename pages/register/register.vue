@@ -202,8 +202,7 @@
 						this.$toast.success('发送成功');
 					} else {
 						this.$toast.fail('发送失败，请检查网络连接');
-					}
-						
+					}	
 				}).catch(err => {
 				    // POST 失败
 					console.log(err);
@@ -211,14 +210,21 @@
 				});
 			},
 			handleClick() {
+				this.$toast.loading({
+					duration: 0,	// 持续展示 toast
+					forbidClick: true,	// 禁用背景点击
+					message: '注册中'
+				});
+				
 				if(this.sms != this.identifyCode || this.sms == ''){
+					this.$toast.clear();
 					this.$toast.fail('验证码错误，请准确填写验证码！');
 					return;
 				}
 					
-				console.log("username:" + this.username + "password:" 
-				+ this.password + " name:" + this.name + " pnum:" + this.pnum 
-				+ " email:" + this.email + " gender:" + this.gender);
+				// console.log("username:" + this.username + "password:" 
+				// + this.password + " name:" + this.name + " pnum:" + this.pnum 
+				// + " email:" + this.email + " gender:" + this.gender);
 				var rp = require('request-promise');
 				var options = {
 					method: 'POST',
@@ -234,15 +240,16 @@
 						avatar: this.avatar,
 						imgbase64: this.imgfile,
 						power: '0'
-					},
-					headers: {
-						/* 'content-type': 'application/x-www-form-urlencoded' */ // Is set automatically
 					}
 				};
 				rp(options).then(res => {
 						// POST succeeded...
+					this.$toast.clear();
+					this.$toast.fail('注册成功！');
 					console.log(res)
 				}).catch(err => {
+					this.$toast.clear();
+					this.$toast.fail('注册失败，请检查网络连接！');
 						// POST failed...
 					console.log(err)
 				});

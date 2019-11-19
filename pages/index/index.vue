@@ -58,6 +58,12 @@
 				})
 			},
 			handleClick() {
+				this.$toast.loading({
+					duration: 0,	// 持续展示 toast
+					forbidClick: true,	// 禁用背景点击
+					message: '登录中'
+				});
+				
 				var rp = require('request-promise');
 				var options = {
 				    method: 'POST',
