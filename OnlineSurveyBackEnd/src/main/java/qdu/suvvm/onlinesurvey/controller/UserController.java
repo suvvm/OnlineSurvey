@@ -23,6 +23,13 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * @FunctionName: insertUser
+     * @Description: 处理插入用户的请求
+     * @Parameter:
+     *  request 客户机请求
+     * @Return: 插入成功返回字符串"success"失败返回字符串"error"
+     */
     @PostMapping("/insertUser")
     public String insertUser(HttpServletRequest request) {
         User user = new User();
@@ -43,6 +50,14 @@ public class UserController {
         return "error";
     }
 
+    /**
+     * @FunctionName: login
+     * @Description: 处理登录请求
+     * @Parameter:
+     *  username 客户机请求参数中的用户识别信息
+     *  password 客户机请求参数中的用户密码信息
+     * @Return: 无法查找到用户返回"null",查询成功返回由对应用户信息构成的JSON串,失败返回字符串"error"
+     */
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
         User user = new User();

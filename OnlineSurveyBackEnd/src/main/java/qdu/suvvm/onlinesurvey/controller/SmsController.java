@@ -30,8 +30,16 @@ public class SmsController {
     @Value("${privateInfo.accessKeySecret}")
     private String ak_secret;
 
+    /**
+     * @FunctionName: getSms
+     * @Description: 处理发送验证码请求
+     * @Parameter:
+     *  mobile 客户机请求参数中的手机号信息
+     *  password 客户机请求参数中的验证码信息
+     * @Return: 发送成功返回字符串"success",失败返回字符串"error"
+     */
     @PostMapping(value = "/getSms")
-    public String test(@RequestParam("mobile") String mobile, @RequestParam("code") String code) {
+    public String getSms(@RequestParam("mobile") String mobile, @RequestParam("code") String code) {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", ak_id, ak_secret);
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();

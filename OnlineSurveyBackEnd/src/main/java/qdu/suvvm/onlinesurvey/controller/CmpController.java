@@ -24,6 +24,13 @@ public class CmpController {
     @Autowired
     private UserMapper userMapper;
 
+    /**
+     * @FunctionName: insertCmp
+     * @Description: 处理插入公司的请求
+     * @Parameter:
+     *  request 客户机请求
+     * @Return: 插入成功返回字符串"success"失败返回字符串"error"
+     */
     @PostMapping("/insertCmp")
     public String insertCmp(HttpServletRequest request) {
         Company company = new Company();
