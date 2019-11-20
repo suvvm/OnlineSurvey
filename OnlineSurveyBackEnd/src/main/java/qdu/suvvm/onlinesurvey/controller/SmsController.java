@@ -43,9 +43,12 @@ public class SmsController {
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", ak_id, ak_secret);
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
-        request.setMethod(MethodType.POST);
-        request.setDomain("dysmsapi.aliyuncs.com");
-        request.setVersion("2017-05-25");
+        request.setSysMethod(MethodType.POST);
+//        request.setMethod(MethodType.POST);
+        request.setSysDomain("dysmsapi.aliyuncs.com");
+//        request.setDomain("dysmsapi.aliyuncs.com");
+        request.setSysVersion("2017-05-25");
+//        request.setVersion("2017-05-25");
         request.setSysAction("SendSms");
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", mobile);
