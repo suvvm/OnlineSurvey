@@ -16,7 +16,12 @@
 			</view>
 		</view>
 		<!-- 判断公司用户 管理员 普通用户后再做具体实现 -->
-			
+		<van-tabbar route>
+		  <van-tabbar-item icon="home-o" to="/home">标签</van-tabbar-item>
+		  <van-tabbar-item icon="search" to="/home">标签</van-tabbar-item>
+		  <van-tabbar-item icon="friends-o" to="/home">标签</van-tabbar-item>
+		  <van-tabbar-item icon="manager" to="/home">我的</van-tabbar-item>
+		</van-tabbar>
 	</view>
 </template>
 
