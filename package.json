@@ -9,6 +9,7 @@
   "author": "suvvm",
   "license": "ISC",
   "dependencies": {
+    "js-pinyin": "^0.1.9",
     "lrz": "^4.9.40",
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
