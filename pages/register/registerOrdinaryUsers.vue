@@ -193,6 +193,9 @@
 				rp(options).then(res => {
 					this.$toast.clear();
 					this.$toast.success('成功');
+					this.$router.push({
+						path: '/pages/register/registerCompleted', 
+					});
 					console.log(res);
 				}).catch(err => {
 					this.$toast.clear();
