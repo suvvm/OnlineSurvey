@@ -38,13 +38,23 @@ class OnlinesurveyApplicationTests {
      * @Description: 用于测试数据库查询
      */
     @Test
-    public void selectTest() {
+    public void selectTag() {
         Tag t = new Tag();
         // t.setId(400000001);
         t.setName("秃头");
         List<Tag> tags = tagMapper.selectTags(t);
         for(Tag tag : tags){
-            System.out.println(tag.getId() + " " + tag.getName() + " " + tag.getDescription());
+            System.out.println(tag.toString());
+        }
+    }
+
+    @Test
+    public void selectUser() {
+        User u = new User();
+        u.setName("江民民");
+        List<User> users = userMapper.getUser(u);
+        for(User user : users) {
+            System.out.println(user.toString());
         }
     }
 
