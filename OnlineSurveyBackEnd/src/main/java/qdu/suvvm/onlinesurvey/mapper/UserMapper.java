@@ -17,7 +17,16 @@ import java.util.List;
 public interface UserMapper {
     // 根据动态sql查询user
     @SelectProvider(type = UserMapperProvider.class, method="findUser")
+    @Results({
+            @Result(property = "id", column = "id", id = true),
+            @Result(property = "tags", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.TagMapper.getTagByUserId"))
+    })
     public List<User> getUser(User user);
+
+    // 根据tag id查询用户
+    @Select("select * from users u inner join usertag ut on u.id=ut.uid where ut.tid=#{tid}")
+    public User getUserByTagId(Integer tid);
+
     // 根据id删除user
     @Delete("delete from users where id=#{id}")
     public int deleteUserById(Integer id);
@@ -41,6 +50,21 @@ public interface UserMapper {
          * @Parameter:
          *  user 查询数据封装的用户类
          * @Return: 返回对应的sql语句
+         */
+        /*
+            select
+                *
+            from
+                user b
+            　　inner join
+               　　 tags m
+            　　on
+               　　 b.bid=m.m_bid
+            　　inner join
+               　　 category c
+            　　on
+            　　    m.m_cid=c.cid
+
          */
         public String findUser(User user) {
             return new SQL() {

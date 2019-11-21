@@ -3,6 +3,7 @@ package qdu.suvvm.onlinesurvey.mapper;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
+import qdu.suvvm.onlinesurvey.pojo.User;
 
 import java.util.List;
 
@@ -15,7 +16,16 @@ import java.util.List;
 public interface TagMapper {
     // 根据动态sql查询tag
     @SelectProvider(type = TagMapperProvider.class, method = "findTag")
+    @Results({
+            @Result(property = "id", column = "id", id = true),
+            @Result(property = "users", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.UserMapper.getUserByTagId"))
+    })
     public List<Tag> selectTags(Tag tag);
+
+    // 根据tag id查询用户
+    @Select("select * from tags t inner join usertag ut on t.id=ut.tid where ut.uid=#{uid}")
+    public Tag getTagByUserId(Integer uid);
+
     // 根据id删除tag
     @Delete("delete from tags where id = #{id}")
     public int deleteTagById(Integer id);

@@ -1,5 +1,7 @@
 package qdu.suvvm.onlinesurvey.pojo;
 
+import java.util.List;
+
 /**
  * @Author: SUVVM
  * @Date: 2019/11/12 16:43
@@ -15,6 +17,7 @@ public class User {
     private String avatar;
     private String imgbase64;
     private Integer power;
+    private List<Tag> tags;
 
     public Integer getId() {
         return id;
@@ -94,5 +97,30 @@ public class User {
 
     public void setPower(Integer power) {
         this.power = power;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", pnum='" + pnum + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", imgbase64='" + imgbase64 + '\'' +
+                ", power=" + power +
+                ", tags=" + tags +
+                '}';
     }
 }
