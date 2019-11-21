@@ -30,13 +30,20 @@ public interface UserMapper {
     // 根据id删除user
     @Delete("delete from users where id=#{id}")
     public int deleteUserById(Integer id);
+
     // 插入user并获取自增id
     @Options(useGeneratedKeys = true,keyProperty = "id")
     @Insert("insert into users(username,password,name,pnum,email,gender,avatar,imgbase64,power) values(#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power})")
     public int insertUser(User user);
+
     // 根据id更新user
     @UpdateProvider(type = UserMapperProvider.class, method = "updateUser")
     public int updateUserById(User user);
+
+    // 添加user与tag关系
+    @Insert("insert into usertag values(#{uid},#{tid})")
+    public int insertUserTag(Integer uid, Integer tid);
+
     /**
      * @ClassName: UserMapperProvider
      * @Description: user动态sql的Provider类

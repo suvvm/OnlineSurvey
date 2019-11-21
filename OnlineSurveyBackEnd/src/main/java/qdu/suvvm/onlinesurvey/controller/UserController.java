@@ -1,5 +1,6 @@
 package qdu.suvvm.onlinesurvey.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -86,9 +87,20 @@ public class UserController {
         resObj.put("email", users.get(0).getEmail());
         resObj.put("gender", users.get(0).getGender().toString());
         resObj.put("power", users.get(0).getPower());
-        // resObj.put("avatar", users.get(0).getAvatar());
+//        resObj.put("avatar", users.get(0).getAvatar());
 
         // 将JSON对象转为JSON串发送给前端
         return resObj.toJSONString();
+    }
+
+    @PostMapping("/insertUserTag")
+    public void insertUserTag(@RequestParam("tags") String tagIdList, @RequestParam("uid") String uid) {
+//        System.out.println(tagIdList);
+        List<Integer> tags = JSONArray.parseArray(tagIdList, Integer.class);
+
+        for(Integer tid : tags) {
+//            System.out.println(tid);
+            userMapper.insertUserTag(Integer.parseInt(uid), tid);
+        }
     }
 }
