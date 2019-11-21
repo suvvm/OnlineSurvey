@@ -12,8 +12,7 @@ public class Investigate {
     private Boolean visible;
     private String description;
     private String details;
-    private String result;
-    private Integer ownerid;
+    private User owner;
     private Integer number;
     private Date time;
 
@@ -57,20 +56,12 @@ public class Investigate {
         this.details = details;
     }
 
-    public String getResult() {
-        return result;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public Integer getOwnerid() {
-        return ownerid;
-    }
-
-    public void setOwnerid(Integer ownerid) {
-        this.ownerid = ownerid;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public Integer getNumber() {
