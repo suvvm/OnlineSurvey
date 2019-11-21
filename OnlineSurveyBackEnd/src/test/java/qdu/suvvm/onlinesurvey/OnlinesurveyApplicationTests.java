@@ -48,8 +48,17 @@ class OnlinesurveyApplicationTests {
         }
     }
 
+    @Test
+    public void insertTag() {
+        Tag t = new Tag();
+        t.setName("体罚");
+        t.setDescription("听说，你在训练中有打骂体罚战士的现象？ 有。 好样的！");
+        int res = tagMapper.insertTag(t);
+        System.out.println(res);
+    }
+
     /**
-     * @FunctionName: selectTest
+     * @FunctionName: insertUserTest
      * @Description: 用于测试插入用户
      */
     @Test
