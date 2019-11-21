@@ -13,7 +13,7 @@ create table users (
     imgbase64 mediumtext,
     power int
 )auto_increment=100000001 default charset=utf8;
-
+delete from users where id = 100000002;
 drop table companys;
 
 create table companys (
@@ -31,21 +31,13 @@ create table investigates (
     name nvarchar(200) not null,
     visible bool not null,
     description nvarchar(200),
-    details nvarchar(100),
-    result nvarchar(100),
+    details mediumtext,
     ownerid int,
     number int,
     time datetime,
     foreign key(ownerid) references users(id)
 )auto_increment=300000001 default charset=utf8;
 
-/*create table invdetils (
-    invid int,
-    qs1 mediumtext not null,
-    qs2 mediumtext not null,
-    ……
-    qsn mediumtext not null
-) */
 create table tags (
 	id int primary key not null auto_increment,
     name nvarchar(20),
