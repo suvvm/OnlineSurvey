@@ -13,8 +13,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import qdu.suvvm.onlinesurvey.mapper.CmpMapper;
 import qdu.suvvm.onlinesurvey.mapper.TagMapper;
 import qdu.suvvm.onlinesurvey.mapper.UserMapper;
+import qdu.suvvm.onlinesurvey.pojo.Company;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
 import qdu.suvvm.onlinesurvey.pojo.User;
 
@@ -33,10 +35,20 @@ class OnlinesurveyApplicationTests {
 
     @Autowired
     private UserMapper userMapper;
-    /**
-     * @FunctionName: selectTest
-     * @Description: 用于测试数据库查询
-     */
+
+    @Autowired
+    private CmpMapper cmpMapper;
+
+    @Test
+    public void selectCmp() {
+        Company cmp = new Company();
+        cmp.setId(200000001);
+        List<Company> companies = cmpMapper.getCompanies(cmp);
+        for(Company company : companies) {
+            System.out.println(company.toString());
+        }
+    }
+
     @Test
     public void selectTag() {
         Tag t = new Tag();
