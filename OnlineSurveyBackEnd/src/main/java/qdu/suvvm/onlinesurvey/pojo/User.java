@@ -20,6 +20,7 @@ public class User {
 
     private Company company;
     private List<Tag> tags;
+    private List<Investigate> investigates;
 
     public Integer getId() {
         return id;
@@ -109,6 +110,10 @@ public class User {
 
     public void setTags(List<Tag> tags) { this.tags = tags; }
 
+    public List<Investigate> getInvestigates() { return investigates; }
+
+    public void setInvestigates(List<Investigate> investigates) { this.investigates = investigates; }
+
     @Override
     public String toString() {
         return "User{" +
@@ -124,6 +129,7 @@ public class User {
                 ", power=" + power +
                 ", company=" + company +
                 ", tags=" + tags +
+                ", investigates=" + investigates +
                 '}';
     }
 }

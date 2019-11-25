@@ -79,4 +79,18 @@ public class Investigate {
     public void setTime(Date time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "Investigate{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", visible=" + visible +
+                ", description='" + description + '\'' +
+                ", details='" + details + '\'' +
+                ", owner=" + owner +
+                ", number=" + number +
+                ", time=" + time +
+                '}';
+    }
 }

@@ -31,6 +31,9 @@ public interface InvMapper {
     @UpdateProvider(type = InvMapperProvider.class, method = "updateInv")
     public int updateInvestigate(Investigate inv);
 
+    // 根据用户id查询问卷
+    @Select("select * from investigates where ownerid = #{id}")
+    public Investigate getInvByUserId(Integer id);
 
 
     class InvMapperProvider{
