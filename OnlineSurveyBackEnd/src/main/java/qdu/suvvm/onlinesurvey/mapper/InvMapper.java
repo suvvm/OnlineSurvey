@@ -31,6 +31,8 @@ public interface InvMapper {
     @UpdateProvider(type = InvMapperProvider.class, method = "updateInv")
     public int updateInvestigate(Investigate inv);
 
+
+
     class InvMapperProvider{
         /**
          * @FunctionName: findInv
