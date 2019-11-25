@@ -59,4 +59,16 @@ public class Company {
     public void setOwner(User owner) {
         this.owner = owner;
     }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", forms='" + forms + '\'' +
+                ", domain='" + domain + '\'' +
+                ", owner=" + owner +
+                '}';
+    }
 }

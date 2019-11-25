@@ -1,7 +1,5 @@
 package qdu.suvvm.onlinesurvey.mapper;
 
-import javafx.beans.binding.When;
-import jdk.nashorn.internal.objects.annotations.Where;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
 import qdu.suvvm.onlinesurvey.pojo.User;
@@ -19,7 +17,8 @@ public interface UserMapper {
     @SelectProvider(type = UserMapperProvider.class, method="findUser")
     @Results({
             @Result(property = "id", column = "id", id = true),
-            @Result(property = "tags", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.TagMapper.getTagByUserId"))
+            @Result(property = "tags", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.TagMapper.getTagByUserId")),
+            @Result(property = "company", column = "id", one = @One(select = "qdu.suvvm.onlinesurvey.mapper.CmpMapper.getCompanyByUserId"))
     })
     public List<User> getUser(User user);
 
@@ -44,6 +43,10 @@ public interface UserMapper {
     @Insert("insert into usertag values(#{uid},#{tid})")
     public int insertUserTag(Integer uid, Integer tid);
 
+    // 根据公司id查询用户
+    @Select("select * from users where cmp_id=#{id}")
+    public User getUserByCompanyId(Integer id);
+
     /**
      * @ClassName: UserMapperProvider
      * @Description: user动态sql的Provider类
@@ -57,21 +60,6 @@ public interface UserMapper {
          * @Parameter:
          *  user 查询数据封装的用户类
          * @Return: 返回对应的sql语句
-         */
-        /*
-            select
-                *
-            from
-                user b
-            　　inner join
-               　　 tags m
-            　　on
-               　　 b.bid=m.m_bid
-            　　inner join
-               　　 category c
-            　　on
-            　　    m.m_cid=c.cid
-
          */
         public String findUser(User user) {
             return new SQL() {
@@ -101,6 +89,9 @@ public interface UserMapper {
                     }
                     if(user.getPower() != null) {
                         WHERE("power = #{power}");
+                    }
+                    if(user.getCompany() != null) {
+                        WHERE("cmp_id = #{company.id}");
                     }
                 }
             }.toString();
@@ -142,6 +133,9 @@ public interface UserMapper {
                     }
                     if(user.getPower() != null) {
                         SET("power = #{power}");
+                    }
+                    if(user.getCompany() != null) {
+                        SET("cmp_id = #{company.id}");
                     }
                     WHERE("id = #{id}");
                 }

@@ -17,6 +17,8 @@ public class User {
     private String avatar;
     private String imgbase64;
     private Integer power;
+
+    private Company company;
     private List<Tag> tags;
 
     public Integer getId() {
@@ -99,13 +101,13 @@ public class User {
         this.power = power;
     }
 
-    public List<Tag> getTags() {
-        return tags;
-    }
+    public Company getCompany() { return company; }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
+    public void setCompany(Company company) { this.company = company; }
+
+    public List<Tag> getTags() { return tags; }
+
+    public void setTags(List<Tag> tags) { this.tags = tags; }
 
     @Override
     public String toString() {
@@ -120,6 +122,7 @@ public class User {
                 ", avatar='" + avatar + '\'' +
                 ", imgbase64='" + imgbase64 + '\'' +
                 ", power=" + power +
+                ", company=" + company +
                 ", tags=" + tags +
                 '}';
     }
