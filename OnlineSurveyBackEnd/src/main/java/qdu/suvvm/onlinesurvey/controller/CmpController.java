@@ -41,6 +41,7 @@ public class CmpController {
         User user = new User();
         user.setId(Integer.parseInt(request.getParameter("ownerid")));
         user.setPower(1);
+
         company.setOwner(user);
         userMapper.updateUserById(user);
         int res = 0;
