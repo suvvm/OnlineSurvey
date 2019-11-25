@@ -13,7 +13,6 @@ public class Investigate {
     private String description;
     private String details;
     private User owner;
-    private Integer number;
     private Date time;
 
     public Integer getId() {
@@ -64,14 +63,6 @@ public class Investigate {
         this.owner = owner;
     }
 
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
     public Date getTime() {
         return time;
     }
@@ -89,7 +80,6 @@ public class Investigate {
                 ", description='" + description + '\'' +
                 ", details='" + details + '\'' +
                 ", owner=" + owner +
-                ", number=" + number +
                 ", time=" + time +
                 '}';
     }

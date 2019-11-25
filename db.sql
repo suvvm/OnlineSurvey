@@ -9,6 +9,7 @@ create table users (
     pnum nvarchar(20),
     email nvarchar(20),
     gender nvarchar(2),
+	cmp_id int,
     avatar mediumtext,
     imgbase64 mediumtext,
     power int
@@ -33,7 +34,6 @@ create table investigates (
     description nvarchar(200),
     details mediumtext,
     ownerid int,
-    number int,
     time datetime,
     foreign key(ownerid) references users(id)
 )auto_increment=300000001 default charset=utf8;

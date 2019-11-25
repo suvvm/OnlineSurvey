@@ -24,7 +24,7 @@ public interface InvMapper {
 
     // 插入investigate并获取自增id
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into investigates(name,visible,description,details,ownerid,number,time) values(#{name},#{visible},#{description},#{details},#{owner.id},#{number},#{time})")
+    @Insert("insert into investigates(name,visible,description,details,ownerid,time) values(#{name},#{visible},#{description},#{details},#{owner.id},#{time})")
     public int insertInvestigate(Investigate inv);
 
     // 根据id更新investigate
@@ -83,9 +83,6 @@ public interface InvMapper {
                     }
                     if(inv.getDetails() != null) {
                         SET("details = #{details}");
-                    }
-                    if(inv.getNumber() != null) {
-                        SET("number = #{number}");
                     }
                     if(inv.getTime() != null) {
                         SET("time = #{time}");
