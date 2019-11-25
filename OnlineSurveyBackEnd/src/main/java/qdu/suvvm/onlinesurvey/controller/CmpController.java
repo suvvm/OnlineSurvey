@@ -38,15 +38,17 @@ public class CmpController {
         company.setDescription(request.getParameter("description"));
         company.setForms(request.getParameter("forms"));
         company.setDomain(request.getParameter("domain"));
+
         User user = new User();
         user.setId(Integer.parseInt(request.getParameter("ownerid")));
-        user.setPower(1);
-
         company.setOwner(user);
-        userMapper.updateUserById(user);
+
         int res = 0;
         res = cmpMapper.insertCmp(company);
         if (res >= 0) {
+            user.setPower(1);
+            user.setCompany(company);
+            userMapper.updateUserById(user);
             return "success";
         }
         return "error";
