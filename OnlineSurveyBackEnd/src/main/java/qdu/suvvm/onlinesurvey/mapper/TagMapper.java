@@ -22,6 +22,10 @@ public interface TagMapper {
     })
     public List<Tag> selectTags(Tag tag);
 
+    // 获取无用户信息的tag
+    @SelectProvider(type = TagMapperProvider.class, method = "findTag")
+    public List<Tag> selectTagsWithoutUser(Tag tag);
+
     // 根据tag id查询用户
     @Select("select * from tags t inner join usertag ut on t.id=ut.tid where ut.uid=#{uid}")
     public Tag getTagByUserId(Integer uid);
