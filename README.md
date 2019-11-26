@@ -250,3 +250,76 @@
 2019年11月19日 GMT+8 下午10:40	[新增管理员申请页面](https://github.com/suvvm/OnlineSurvey/commit/d21cd30b60571ea155e44b60eeacdcbea83f4fe9) 
 
 2019年11月19日 GMT+8 下午10:40	[完成用户注册分类路由](https://github.com/suvvm/OnlineSurvey/commit/f4a3442fddd43fd6cc5778dd91003f7b1ac3a7a0) 
+
+2019年11月20日 GMT+8 上午11:50	[SmsController 替换过时方法](https://github.com/suvvm/OnlineSurvey/commit/9ce85cf8528e3ab5a17ddec1bccba56a9ef8e37d) 
+
+2019年11月20日 GMT+8 下午3:08	[配置导航栏](https://github.com/suvvm/OnlineSurvey/commit/ede197d023a15a21dc0feccc4656bc769f8968e7) 
+
+2019年11月20日 GMT+8 下午3:09	[引用js-pinyin](https://github.com/suvvm/OnlineSurvey/commit/98be2e0ed94756d2e9e577cd5ccab4a255c4cb85) 
+
+2019年11月21日 GMT+8 下午2:47	[添加insertTag的测试](https://github.com/suvvm/OnlineSurvey/commit/1e7de31c4b41e5fc9b05773b07f51c8c519600c4) 
+
+2019年11月21日 GMT+8 下午2:51	[创建处理tag相关请求的Controller TagController](https://github.com/suvvm/OnlineSurvey/commit/efacf131a0ea6646201f0dc547fb0909fcc7d63d) 
+
+2019年11月21日 GMT+8 下午2:52	[新增并在package.json中注册页面addtag](https://github.com/suvvm/OnlineSurvey/commit/6ce5c93c1192740b668c5f30461b32f9e95088d1) 
+
+2019年11月21日 GMT+8 下午2:53	[完成用户选择标签页的显示与选择功能](https://github.com/suvvm/OnlineSurvey/commit/bc9b2592e679ead4da391c971bb41adb22481f4f) 
+
+2019年11月21日 GMT+8 下午7:40	[mybatis完成user与tag多对多映射](https://github.com/suvvm/OnlineSurvey/commit/ff18956e9754722568b7540035d42dc899332745) 
+
+2019年11月21日 GMT+8 下午7:41	[添加对user与tag的查询测试](https://github.com/suvvm/OnlineSurvey/commit/c80a16f9d1d39fd90dc383e064adc2bbc3febc2c) 
+
+2019年11月21日 GMT+8 下午7:43	[UserControler 完成对添加user与tag关系的请求的处理](https://github.com/suvvm/OnlineSurvey/commit/7376e918e4bbc454edf7af53fd75c455e8029d1b) 
+
+2019年11月21日 GMT+8 下午8:45	[loginFV 修正cookies格式](https://github.com/suvvm/OnlineSurvey/commit/4e3bd079a44368580d91ef5a52e74fc789abe66b) 
+
+2019年11月21日 GMT+8 下午8:46	[registerOrdinaryUsers 完成用户选择标签功能](https://github.com/suvvm/OnlineSurvey/commit/d5c18d000ac2a4f27f4c2153abb05d8b7e12ee91) 
+
+2019年11月21日 GMT+8 下午9:12	[registerOrdinaryUsers 完善页面路由](https://github.com/suvvm/OnlineSurvey/commit/25dde5193b29f9188c1003b0f0921c43f9e94f62) 
+
+2019年11月21日 GMT+8 下午9:12	[添加静态资源文件sadPanda](https://github.com/suvvm/OnlineSurvey/commit/4d036f2ed40ae78caf4a527124c4299c9f94ad11) 
+
+2019年11月21日 GMT+8 下午9:14	[registerAdmin 完成管理员注册页面设计](https://github.com/suvvm/OnlineSurvey/commit/74c370240733a91fceb66aa8dcde5ee71b3ef486) 
+
+2019年11月21日 GMT+8 下午9:22	[修改表结构设计](https://github.com/suvvm/OnlineSurvey/commit/f6a9628a892acd02c6c91262f213157a7125c027) 
+
+2019年11月21日 GMT+8 下午9:32	[修改数据库表结构](https://github.com/suvvm/OnlineSurvey/commit/6fa17462192e1494336d0d7f54bc5b795a90f5c8) 
+
+2019年11月21日 GMT+8 下午10:06	[Investigate类修正数据结构](https://github.com/suvvm/OnlineSurvey/commit/e278febb2bf45bba325fd58f770926880fbeaa0d) 
+
+2019年11月21日 GMT+8 下午10:07	[添加针对investigates的数据访问的InvMapper](https://github.com/suvvm/OnlineSurvey/commit/5d82a0a1db87451e2212f11ed7c9fce847f47b57) 
+
+2019年11月25日 GMT+8 上午8:58	 [添加用户与公司一对一映射](https://github.com/suvvm/OnlineSurvey/commit/82a2924da116f10987add7763f5a9d775ded815b) 
+
+2019年11月25日 GMT+8 上午9:00	 [InvMapper 修正缩进格式](https://github.com/suvvm/OnlineSurvey/commit/2a3fe995ef7043026ab350f686dcc6c8aae4d969) 
+
+2019年11月25日 GMT+8 上午9:14	 [CmpController insertCmp修正对用户对应cmp_id的修改](https://github.com/suvvm/OnlineSurvey/commit/41082e3e5d9da37caa7d72750be6d0dd11161c04) 
+
+2019年11月25日 GMT+8 上午9:16	[添加对查询用户的测试](https://github.com/suvvm/OnlineSurvey/commit/559a9030c4dcea887a8a16b477be889b06b958ac) 
+
+2019年11月25日 GMT+8 上午9:37	[添加用户与问卷的一对多映射](https://github.com/suvvm/OnlineSurvey/commit/0bec659739658a3472dea260c652c574f35633a4) 
+
+2019年11月25日 GMT+8 下午9:37	[修改问卷表结构](https://github.com/suvvm/OnlineSurvey/commit/da71be55034e30fdb2d9375730f54c543fe349d0) 
+
+2019年11月26日 GMT+8 下午8:30	[重命名addTag为mdfTag 基本完成标签管理功能](https://github.com/suvvm/OnlineSurvey/commit/4bca323c44514e80d701435359dd9ebe1e0de2aa) 
+
+2019年11月26日 GMT+8 下午8:32	[TagMapper 添加不与user映射的tag查询方法](https://github.com/suvvm/OnlineSurvey/commit/32d401485afd1c7ed98456d5c3d25d0ed7d747e1) 
+
+2019年11月26日 GMT+8 下午8:33	[TagController 添加处理管理tag请求的方法](https://github.com/suvvm/OnlineSurvey/commit/1999e2181f745113f7ec3ec047a121f30f6d719a) 
+
+2019年11月26日 GMT+8 下午8:34	[修改原addtag页的注册信息为mdfTag](https://github.com/suvvm/OnlineSurvey/commit/8f095a9085d9d7d2440cbc47f83b27055264efcc) 
+
+2019年11月26日 GMT+8 下午8:34	[添加不与user映射的tag查询的测试方法](https://github.com/suvvm/OnlineSurvey/commit/ceb84a95fcbc3e16006a94651172bb73691ce820) 
+
+2019年11月26日 GMT+8 下午8:41	[mdfTag 添加下拉刷新功能](https://github.com/suvvm/OnlineSurvey/commit/2f969b14569a7fa4ac2fdea510f1a36fb11a46ad) 
+
+2019年11月26日 GMT+8 下午8:59	[mdfTag修改错误函数调用](https://github.com/suvvm/OnlineSurvey/commit/4839df3337b3e546134655d9c63e187fcea7c485) 
+
+2019年11月26日 GMT+8 下午10:04	[创建并注册新增问卷页面 addInvestigate](https://github.com/suvvm/OnlineSurvey/commit/748d213d75ac28233bb6a3bf9eaf298fb77fc94f) 
+
+2019年11月26日 GMT+8 下午10:05	[添加阿里云 aliyun-java-sdk-dm 依赖](https://github.com/suvvm/OnlineSurvey/commit/5fbe902712d743f71cecacf76ce5123fc65f48bd)
+
+2019年11月26日 GMT+8 下午10:06	[创建处理邮件发送请求的Controller EmailController](https://github.com/suvvm/OnlineSurvey/commit/ad9761f5ce9c340ff71610ee6390b33172b867f9) 
+
+2019年11月26日 GMT+8 下午10:07	[OnlinesurveyApplicationTests 添加发送邮件测试方法](https://github.com/suvvm/OnlineSurvey/commit/2b9a242eaecc60ee1c65e283a922471a3755d601) 
+
