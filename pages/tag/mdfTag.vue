@@ -1,31 +1,32 @@
 <template>
 	<view>
-		<van-button icon="share" size="large" type="primary" @click="submit()">提交修改</van-button>
-		<van-button icon="plus" size="large" type="info" @click="addTag()">添加标签</van-button>
-		<van-panel v-for="(item,key) in tags.list" v-bind:key="key" :title="item.name" :desc="item.description" :status="tags.status[key]">
-			<view slot="footer">
-				<van-button size="small" @click="modifyTag(key)">修改</van-button>
-				<van-button size="small" type="danger" @click="deleteTag(key)">删除</van-button>
-				<van-button size="small" @click="recoverTag(key)" v-if="tags.add[key] || tags.mdf[key] || tags.del[key]">恢复</van-button>
-			</view>
-		</van-panel>
-		
-		<van-popup v-model="showMdfPopup" position="bottom">
-			<van-cell-group>
-				<van-field v-model="tempMdfName" label="标签名" left-icon="coupon-o"/>
-				<van-field v-model="tempMdfDescription" label="描述" left-icon="comment-o"/>
-				<van-button size="large" @click="confirmTag()"  type="info">确认</van-button>
-			</van-cell-group>
-		</van-popup>
-		
-		<van-popup v-model="showAddPopup" position="bottom">
-			<van-cell-group>
-				<van-field v-model="tempMdfName" label="标签名" left-icon="coupon-o"/>
-				<van-field v-model="tempMdfDescription" label="描述" left-icon="comment-o"/>
-				<van-button size="large" @click="confirmAddTag()"  type="info">确认</van-button>
-			</van-cell-group>
-		</van-popup>
-		
+		<van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+			<van-button icon="share" size="large" type="primary" @click="submit()">提交修改</van-button>
+			<van-button icon="plus" size="large" type="info" @click="addTag()">添加标签</van-button>
+			<van-panel v-for="(item,key) in tags.list" v-bind:key="key" :title="item.name" :desc="item.description" :status="tags.status[key]">
+				<view slot="footer">
+					<van-button size="small" @click="modifyTag(key)">修改</van-button>
+					<van-button size="small" type="danger" @click="deleteTag(key)">删除</van-button>
+					<van-button size="small" @click="recoverTag(key)" v-if="tags.add[key] || tags.mdf[key] || tags.del[key]">恢复</van-button>
+				</view>
+			</van-panel>
+			
+			<van-popup v-model="showMdfPopup" position="bottom">
+				<van-cell-group>
+					<van-field v-model="tempMdfName" label="标签名" left-icon="coupon-o"/>
+					<van-field v-model="tempMdfDescription" label="描述" left-icon="comment-o"/>
+					<van-button size="large" @click="confirmTag()"  type="info">确认</van-button>
+				</van-cell-group>
+			</van-popup>
+			
+			<van-popup v-model="showAddPopup" position="bottom">
+				<van-cell-group>
+					<van-field v-model="tempMdfName" label="标签名" left-icon="coupon-o"/>
+					<van-field v-model="tempMdfDescription" label="描述" left-icon="comment-o"/>
+					<van-button size="large" @click="confirmAddTag()"  type="info">确认</van-button>
+				</van-cell-group>
+			</van-popup>
+		</van-pull-refresh>
 	</view>
 </template>
 
@@ -33,6 +34,7 @@
 	export default {
 		data() {
 			return {
+				isLoading: false,
 				tempMdfName: "",
 				tempMdfDescription: "",
 				tmepMdfKey: 0,
@@ -43,6 +45,7 @@
 			}
 		},
 		onLoad() {
+			
 			this.$toast.loading({
 				duration: 0,	// 持续展示 toast
 				forbidClick: true,	// 禁用背景点击
@@ -55,28 +58,57 @@
 			var rp = require('request-promise');
 			// 获取所有tag
 			rp('http://localhost:8080/getTags').then(res => {
-			        // 获取所有Tag成功
-					
-					this.tags.list = JSON.parse(res);
-					for (var i = 0; i < this.tags.list.length; i++) {
-					 	this.tags.del[i] = false;	// 为了方便判断用户删除的标签，以tag.del[i]标识第i个标签是否被删除，此操作也方便对删除操作的放弃\
-						this.tags.mdf[i] = false;	// 为了方便判断用户修改的标签，以tag.del[i]标识第i个标签是否被修改，此操作也方便对修改操作的放弃
-						this.tags.add[i] = false;
-						this.tags.status[i] = "无状态";
-					// 	console.log(this.tags[i]);
-					// 	console.log(this.tags.list[i]);					
-					}
-					console.log(this.tags);
-					this.$toast.clear();
-					this.$toast.success('加载成功');
-			    }).catch(err => {
-			        // 获取失败
-					this.$toast.clear();
-					this.$toast.fail('加载失败，请检查网络连接');
-					console.log(err)
-			    });
+				// 获取所有Tag成功
+				
+				this.tags.list = JSON.parse(res);
+				for (var i = 0; i < this.tags.list.length; i++) {
+					this.tags.del[i] = false;	// 为了方便判断用户删除的标签，以tag.del[i]标识第i个标签是否被删除，此操作也方便对删除操作的放弃\
+					this.tags.mdf[i] = false;	// 为了方便判断用户修改的标签，以tag.del[i]标识第i个标签是否被修改，此操作也方便对修改操作的放弃
+					this.tags.add[i] = false;
+					this.tags.status[i] = "无状态";
+				// 	console.log(this.tags[i]);
+				// 	console.log(this.tags.list[i]);					
+				}
+				console.log(this.tags);
+				this.$toast.clear();
+				this.$toast.success('加载成功');
+			}).catch(err => {
+				// 获取失败
+				this.$toast.clear();
+				this.$toast.fail('加载失败，请检查网络连接');
+				console.log(err)
+			});
 		},
 		methods: {
+			// 下拉刷新
+			onRefresh() {
+				setTimeout(() => {
+					this.isLoading = false;
+					if(this.$cookies.get("userInfo") != null){	// 获取当前用户信息
+						this.userInfo = this.$cookies.get("userInfo");
+					}
+					// console.log(this.userInfo);
+					var rp = require('request-promise');
+					// 获取所有tag
+					rp('http://localhost:8080/getTags').then(res => {
+						// 获取所有Tag成功
+						this.tags.list = JSON.parse(res);
+						for (var i = 0; i < this.tags.list.length; i++) {
+							this.tags.del[i] = false;	// 为了方便判断用户删除的标签，以tag.del[i]标识第i个标签是否被删除，此操作也方便对删除操作的放弃\
+							this.tags.mdf[i] = false;	// 为了方便判断用户修改的标签，以tag.del[i]标识第i个标签是否被修改，此操作也方便对修改操作的放弃
+							this.tags.add[i] = false;
+							this.tags.status[i] = "无状态";
+						// 	console.log(this.tags[i]);
+						// 	console.log(this.tags.list[i]);					
+						}
+						console.log(this.tags);
+						this.$toast.success('刷新成功');
+					}).catch(err => {
+						// 获取失败
+						console.log(err)
+					});
+				}, 500);
+			},
 			addTag() {
 				this.tempMdfName = "";
 				this.tempMdfDescription = "";
@@ -165,6 +197,7 @@
 				rp(options).then(res => {
 					this.$toast.clear();
 					this.$toast.success('提交成功');
+					onRefresh();
 					console.log(res);
 				}).catch(err => {
 					this.$toast.clear();
