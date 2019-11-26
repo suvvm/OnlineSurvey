@@ -36,9 +36,9 @@
 				"navigationBarTitleText": "普通用户"
 			}
 		},{
-			"path" : "pages/tag/addTag",
+			"path" : "pages/tag/mdfTag",
 			"style" : {
-				"navigationBarTitleText": "添加标签"
+				"navigationBarTitleText": "管理标签"
 			}
 		},{
 			"path" : "pages/register/rergisterCompany",
