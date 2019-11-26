@@ -134,6 +134,21 @@ class OnlinesurveyApplicationTests {
         }
     }
 
+    @Test
+    public void sendMailTest() {
+        String url = "/sendEmail";
+        try {
+            mockMvc.perform(
+                    MockMvcRequestBuilders.post(url)
+                            .accept(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                            .param("email","596253712@qq.com")
+                            .accept(MediaType.APPLICATION_JSON)
+            ).andDo(MockMvcResultHandlers.print()).andReturn();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Value("${privateInfo.accessKeyId}")
     private String ak_id;
 
