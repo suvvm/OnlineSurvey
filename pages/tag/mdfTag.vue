@@ -197,8 +197,8 @@
 				rp(options).then(res => {
 					this.$toast.clear();
 					this.$toast.success('提交成功');
-					onRefresh();
-					console.log(res);
+					this.onRefresh();
+					// console.log(res);
 				}).catch(err => {
 					this.$toast.clear();
 					this.$toast.fail('提交失败，请检查网络连接');
