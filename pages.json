@@ -38,7 +38,7 @@
 		},{
 			"path" : "pages/tag/mdfTag",
 			"style" : {
-				"navigationBarTitleText": "管理标签"
+				"navigationBarTitleText": "添加标签"
 			}
 		},{
 			"path" : "pages/register/rergisterCompany",
@@ -55,6 +55,12 @@
 			"path" : "pages/register/registerAdmin",
 			"style" : {
 				"navigationBarTitleText": "注册管理员"
+			}
+		}
+		,{
+			"path" : "pages/investigates/addInvestigates",
+			"style" : {
+				"navigationBarTitleText": "新建问卷"
 			}
 		}
         ,{
