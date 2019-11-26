@@ -53,8 +53,7 @@ class OnlinesurveyApplicationTests {
     public void selectTag() {
         Tag t = new Tag();
         // t.setId(400000001);
-        t.setName("秃头");
-        List<Tag> tags = tagMapper.selectTags(t);
+        List<Tag> tags = tagMapper.selectTagsWithoutUser(t);
         for(Tag tag : tags){
             System.out.println(tag.toString());
         }
