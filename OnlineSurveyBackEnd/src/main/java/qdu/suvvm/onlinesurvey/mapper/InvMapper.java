@@ -17,7 +17,7 @@ public interface InvMapper {
 
     // 根据动态sql查询investigate
     @SelectProvider(type = InvMapperProvider.class, method = "findInv")
-    public List<Investigate> gatInvestigate(Investigate inv);
+    public List<Investigate> getInvestigate(Investigate inv);
 
     // 根据id删除investigate
     @Delete("delete from investigates where id=#{id}")
