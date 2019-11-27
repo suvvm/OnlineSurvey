@@ -2,6 +2,10 @@
 	<view>
 		<van-button icon="share" size="large" type="primary" @click="submit()">提交审核</van-button>
 		<van-button icon="plus" size="large" type="info" @click="addTag()">新增问题</van-button>
+		<van-cell-group>
+			<van-field v-model="name" label="问卷名" placeholder="请输入问卷名" required />
+			<van-field v-model="description" rows="1" autosize label="问卷简介" type="textarea" placeholder="请输入简介"/>
+		</van-cell-group>
 		<van-collapse v-model="activeNames">
 		  <van-collapse-item title="选择标签" name="1">
 			  <van-checkbox-group v-model="result" :max="3">
@@ -88,6 +92,7 @@
 	export default {
 		data() {
 			return {
+				name: "",
 				questionList: [{stem:"徐英豪是不是沙雕",options:[{option:"A",value:"是"}],type:3}],
 				userInfo: {},
 				showAddQst: false,
@@ -100,8 +105,8 @@
 				mdfKey: 0,
 				tags: [],
 				activeNames: [],
-				result: []
-				
+				result: [],
+				description: ""
 			}
 		},
 		onLoad() {
@@ -187,11 +192,14 @@
 				});
 				
 				this.questionList.splice(0,1);
-				var rp = require('request-promise');
+				var rp = require('request-promise');	
 				var options = {
 					method: 'POST',
-					uri: 'http://localhost:8080',
+					uri: 'http://localhost:8080/insertInvestigate',
 					form: {
+						description: this.description,
+						name: this.name,
+						ownerId: this.userInfo.id,
 						invDetails: JSON.stringify(this.questionList),
 						tags: JSON.stringify(this.result)
 					}
@@ -199,7 +207,7 @@
 				rp(options).then(res => {
 					this.$toast.clear();
 					this.$toast.success('提交成功，请耐心等待审核');
-					this.onRefresh();
+					
 					// console.log(res);
 				}).catch(err => {
 					this.$toast.clear();
