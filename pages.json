@@ -69,6 +69,12 @@
 				"navigationBarTitleText": "审核问卷"
 			}
 		}
+		,{
+			"path" : "pages/investigates/verifyInvDetails",
+			"style" : {
+				"navigationBarTitleText": "审核详情"
+			}
+		}
         ,{
             "path" : "pages/user/user",
             "style" : {}
