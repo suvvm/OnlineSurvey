@@ -3,6 +3,7 @@ package qdu.suvvm.onlinesurvey.mapper;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
 import qdu.suvvm.onlinesurvey.pojo.Investigate;
+import qdu.suvvm.onlinesurvey.pojo.Tag;
 
 import java.util.List;
 
@@ -35,6 +36,9 @@ public interface InvMapper {
     @Select("select * from investigates where ownerid = #{id}")
     public Investigate getInvByUserId(Integer id);
 
+    // 插入问卷tag映射关系
+    @Insert("insert into invtag(iid,tid) values(#{inv.id},#{tag.id})")
+    public int insertInvTag(Investigate inv, Tag tag);
 
     class InvMapperProvider{
         /**
