@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<van-cell v-for="(item, key) in invList" v-bind:key="key" :title="item.name" :value="item.id" size="large" :label="item.description" clickable/>
+		<van-cell v-for="(item, key) in invList" v-bind:key="key" :title="item.name" :value="item.id" size="large" :label="item.description" clickable @click="verifyInvDetails(key)" />
 	</view>
 </template>
 
@@ -37,7 +37,14 @@
 			});
 		},
 		methods: {
-			
+			verifyInvDetails(key) {
+				this.$router.push({
+					path: '/pages/investigates/verifyInvDetails', 
+					query: {
+						invDetails: this.invList[key].id
+					}
+				});
+			}
 		}
 	}
 </script>
