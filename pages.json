@@ -63,6 +63,12 @@
 				"navigationBarTitleText": "新建问卷"
 			}
 		}
+		,{
+			"path" : "pages/investigates/verifyInvestigates",
+			"style" : {
+				"navigationBarTitleText": "审核问卷"
+			}
+		}
         ,{
             "path" : "pages/user/user",
             "style" : {}
