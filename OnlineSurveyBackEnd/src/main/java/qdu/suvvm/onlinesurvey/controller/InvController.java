@@ -66,6 +66,7 @@ public class InvController {
         investigate.setVisible(false);
         List<Investigate> invList = invMapper.getInvestigate(investigate);
         String res = JSONArray.toJSONString(invList);
+//        System.out.println("res!!!" + res);
         return res;
     }
 
