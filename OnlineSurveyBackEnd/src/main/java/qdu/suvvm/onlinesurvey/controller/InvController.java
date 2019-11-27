@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import qdu.suvvm.onlinesurvey.mapper.InvMapper;
 import qdu.suvvm.onlinesurvey.pojo.Investigate;
@@ -58,4 +59,14 @@ public class InvController {
         }
         return "error";
     }
+
+    @GetMapping("/getInvisibleInv")
+    public String getInvisibleInv(){
+        Investigate investigate = new Investigate();
+        investigate.setVisible(false);
+        List<Investigate> invList = invMapper.getInvestigate(investigate);
+        String res = JSONArray.toJSONString(invList);
+        return res;
+    }
+
 }
