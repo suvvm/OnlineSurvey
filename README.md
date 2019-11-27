@@ -323,3 +323,26 @@
 
 2019年11月26日 GMT+8 下午10:07	[OnlinesurveyApplicationTests 添加发送邮件测试方法](https://github.com/suvvm/OnlineSurvey/commit/2b9a242eaecc60ee1c65e283a922471a3755d601) 
 
+2019年11月26日 GMT+8 下午8:59	[addInvestigates 基本完成所需功能](https://github.com/suvvm/OnlineSurvey/commit/88038b7d2aed0046676814bd03caa398c898825a) 
+
+2019年11月26日 GMT+8 下午9:49	[addInvestigates 增加添加问卷请求发送的数据](https://github.com/suvvm/OnlineSurvey/commit/29ed88e0e238678bbc41a1dd22d3a931ac6782fc) 
+
+2019年11月26日 GMT+8 下午9:50	[InvMapper 添加插入问卷与tag映射关系的方法](https://github.com/suvvm/OnlineSurvey/commit/dd214c2a5b8c420cf72543c1ad6e5d96c2aaf213) 
+
+2019年11月26日 GMT+8 下午9:51	[创建处理问卷相关请求的Controller InvController](https://github.com/suvvm/OnlineSurvey/commit/d53adbf29684498454cb60aed79cba88d55f639b) 
+
+2019年11月26日 GMT+8 下午9:57	[创建并注册审核问卷页面 verifyInvestigates](https://github.com/suvvm/OnlineSurvey/commit/31b3b766e3cd91adb86947d759dbd686a9e52629) 
+
+2019年11月26日 GMT+8 下午9:59	[InvMapper 修改查询动态sql生成方法](https://github.com/suvvm/OnlineSurvey/commit/69b12f79366c46d1f547d4cc44b1d2670248ab09) 
+
+2019年11月26日 GMT+8 下午10:09	[InvMapper 修正查询方法名](https://github.com/suvvm/OnlineSurvey/commit/6812a6972381273f6041a1e2f997b1ea2b3bf21d) 
+
+2019年11月26日 GMT+8 下午10:10	[InvController 添加处理获取未审核问卷的请求](https://github.com/suvvm/OnlineSurvey/commit/8673fc39823a8a7c5527a6edfa85ee016e85063d) 
+
+2019年11月26日 GMT+8 下午10:24	[创建并注册审核详情页 verifyInvDetails](https://github.com/suvvm/OnlineSurvey/commit/6b7e32b5340e6a98f2464f47e5606c66de45e573) 
+
+2019年11月26日 GMT+8 下午10:25	[InvController 修改获取未审核问卷的方法](https://github.com/suvvm/OnlineSurvey/commit/053b4486c79a17f5d9080067856071150d0b0ceb) 
+
+2019年11月26日 GMT+8 下午10:26	[erifyInvestigates 添加问卷显示功能](https://github.com/suvvm/OnlineSurvey/commit/b5616df8046f7fabdfb2b17658d972738e347f84) 
+
+2019年11月26日 GMT+8 下午10:31	[verifyInvestigates 添加通过点击对应问卷单元格向verifyInvDetails传值路由](https://github.com/suvvm/OnlineSurvey/commit/7216a57c4f796235baeb3b72529e21f7708e7360) 
