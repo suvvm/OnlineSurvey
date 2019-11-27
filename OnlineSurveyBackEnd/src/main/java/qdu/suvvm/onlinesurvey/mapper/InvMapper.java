@@ -59,8 +59,11 @@ public interface InvMapper {
                     if(inv.getName() != null) {
                         WHERE("name=#{name}");
                     }
-                    if(inv.getOwner() != null){
+                    if(inv.getOwner() != null) {
                         WHERE("ownerid=#{owner.id}");
+                    }
+                    if(inv.getVisible() != null) {
+                        WHERE("visible=#{visible}");
                     }
                 }
             }.toString();
