@@ -141,7 +141,9 @@ class OnlinesurveyApplicationTests {
             mockMvc.perform(
                     MockMvcRequestBuilders.post(url)
                             .accept(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-                            .param("email","596253712@qq.com")
+                            .param("email","suvvm@foxmail.com")
+                            .param("title","测试title")
+                            .param("body","测试body")
                             .accept(MediaType.APPLICATION_JSON)
             ).andDo(MockMvcResultHandlers.print()).andReturn();
         } catch (Exception e) {
