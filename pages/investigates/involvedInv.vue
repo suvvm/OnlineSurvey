@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<van-panel :title="invName" :desc="invDescription" :status="statusText">
+		<h3 class="title">{{invName}}</h3>
+		<van-panel :title="invName" :desc="invDescription">
 			<view v-for="(item,key) in invDetails" :key="key">
 				<van-panel v-if="item.type == 0"  :title="item.stem" status="选择题">
 					<!-- <view v-for="(opt,num) in item.options" :key="num">
@@ -32,7 +33,6 @@
 				invDescription: "",
 				userInfo: {},
 				status: false,
-				statusText: "等待审核",
 				result: {resultlist:[]}
 			}
 		},
@@ -83,20 +83,18 @@
 		methods: {
 			toggle(key, num) {
 				this.$refs[`checkboxes`+`${key}`][num].toggle();
-				
-				
-				this.$forceUpdate();
-				console.log(key);
-				console.log(num);
-				console.log(this.$refs);
-				
-				console.log(this.invDetails[key].result);
-				
-				//this.$refs.checkboxes[index].toggle();
+				// this.$forceUpdate();
+				// console.log(key);
+				// console.log(num);
+				// console.log(this.$refs);
+				// console.log(this.invDetails[key].result);
 			}
 		}
 	}
 </script>
 
 <style>
+	.title{
+		text-align: center;
+	}
 </style>
