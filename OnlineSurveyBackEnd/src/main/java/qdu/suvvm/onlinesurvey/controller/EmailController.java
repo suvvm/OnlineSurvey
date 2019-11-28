@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import qdu.suvvm.onlinesurvey.utils.EmailUtil;
 
 /**
  * @ClassName: EmailController
@@ -26,23 +27,10 @@ public class EmailController {
     private String ak_secret;
 
     @PostMapping("/sendEmail")
-    public String sendEmail(@RequestParam("email") String email) {
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", ak_id, ak_secret);
-        IAcsClient client = new DefaultAcsClient(profile);
-        SingleSendMailRequest request = new SingleSendMailRequest();
-        request.setAccountName("popsurvey@mail.suvvm.work");
-        request.setFromAlias("SUVVM");
-        request.setAddressType(1);
-        request.setReplyToAddress(true);
-        request.setToAddress(email);
-        request.setSubject("PopSurvey审核失败");
-        request.setHtmlBody("您有问卷审核失败，请检查是否合规，修改后重新提交！");
-        try {
-            SingleSendMailResponse response = client.getAcsResponse(request);
-            // System.out.println(response);
-            return response.toString();
-        } catch (ClientException e) {
-            e.printStackTrace();
+    public String sendEmail(@RequestParam("email") String email, @RequestParam("title") String title, @RequestParam("body") String body) {
+        EmailUtil emailUtil = new EmailUtil();
+        if(emailUtil.sendEmail(email, title, body, ak_id, ak_secret)) {
+            return "success";
         }
         return "error";
     }
