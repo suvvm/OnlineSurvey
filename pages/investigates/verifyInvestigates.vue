@@ -41,7 +41,7 @@
 				this.$router.push({
 					path: '/pages/investigates/verifyInvDetails', 
 					query: {
-						invDetails: this.invList[key].id
+						invDetailsId: this.invList[key].id
 					}
 				});
 			}
