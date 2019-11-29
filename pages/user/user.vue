@@ -1,11 +1,12 @@
 <template>
 	<view class=''>
 
-		<view class='detail-container' :style ="note"></view>
+		<view class='detail-container' :style ="'background:url(data:image/png;base64,'+userInfo.avatar + ') no-repeat  center/cover'"></view>
 		<!--style='background: url(/testUserInfo/imgs/avatar.jpg) no-repeat  top/cover' -->
 		<view class='detail-mask'></view>
 		<view class='detail-info'>
-			<img src="../../testUserInfo/imgs/avatar_suvvm.jpg" class='detail-img'></img>
+			<img :src="'data:image/png;base64,'+userInfo.avatar" class='detail-img'/>
+			<!-- <img :src="'data:image/png;base64,'+imgfile" class="avatar"/> -->
 			<view class='detail'>
 				<view class='detail-nm'>{{userInfo.username}}</view>
 				<view>姓名：{{userInfo.name}}</view>
@@ -30,18 +31,36 @@
 		data() {
 			return {
 				text: "suvvm",
-				userInfo: {},
-				note: {
-				    backgroundImage: "url(" + require("../../testUserInfo/imgs/avatar_suvvm.jpg") + ")",
-				    backgroundRepeat: "no-repeat",
-				    backgroundPosition: "center",
-				}
+				userInfo: {avatar:""},
+			
 			}
 		},
 		onLoad() {
-			if(this.$cookies.get("userInfo") != null){
-				this.userInfo = this.$cookies.get("userInfo");
-			}
+			var rp = require('request-promise');
+			var options = {
+			    method: 'POST',
+			    uri: 'http://localhost:8080/getUserById',
+			    form: {
+			        id: this.$cookies.get("userInfo").id,
+			    }
+			};
+			rp(options).then(res => {
+				this.$toast.clear();
+				if(res == "error") {
+					this.$toast.fail('获取用户信息识别');
+				} else {
+					this.userInfo = JSON.parse(res);
+					var image = "data:image/png;base64," + this.userInfo.avatar;
+				
+					
+					this.$toast.success('获取用户信息识别成功');
+				}
+				// console.log(this.note.backgroundImage)
+			}).catch(err => {
+				this.$toast.clear();
+				this.$toast.fail('获取用户信息识别');
+				console.log(err)
+			});
 		},
 		methods: {
 			submit() {
