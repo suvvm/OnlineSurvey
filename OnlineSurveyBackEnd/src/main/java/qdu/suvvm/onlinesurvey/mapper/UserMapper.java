@@ -44,6 +44,10 @@ public interface UserMapper {
     @Insert("insert into usertag values(#{uid},#{tid})")
     public int insertUserTag(Integer uid, Integer tid);
 
+    // 添加user与inv的关系
+    @Insert("insert into userresults values(#{uid},#{iid},#{ans})")
+    public int insertUserResult(Integer uid, Integer iid, String ans);
+
     // 根据公司id查询用户
     @Select("select * from users where cmp_id=#{id}")
     public User getUserByCompanyId(Integer id);
