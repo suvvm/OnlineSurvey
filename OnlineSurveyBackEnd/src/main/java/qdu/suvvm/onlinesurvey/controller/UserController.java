@@ -103,4 +103,16 @@ public class UserController {
             userMapper.insertUserTag(Integer.parseInt(uid), tid);
         }
     }
+
+    @PostMapping("/insertUserInv")
+    public String insertUserInv(@RequestParam("uid") String uid, @RequestParam("iid") String iid, @RequestParam("ans") String ans) {
+//        System.out.println(uid);
+//        System.out.println(iid);
+//        System.out.println(ans);
+        int res = userMapper.insertUserResult(Integer.parseInt(uid), Integer.parseInt(iid), ans);
+        if(res > 0){
+            return "success";
+        }
+        return "error";
+    }
 }
