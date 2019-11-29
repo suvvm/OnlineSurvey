@@ -20,6 +20,7 @@
 				</van-panel>
 			</view>
 		</van-panel>
+		<van-button type="warning" size="large" @click="submit()">提交答案</van-button>
 	</view>
 </template>
 
@@ -60,7 +61,7 @@
 			rp(options).then(res => {
 				// 获取id对应问卷
 				var investigate = JSON.parse(res)[0];
-				 console.log(investigate);
+				// console.log(investigate);
 				this.invId = investigate.id;
 				this.invName = investigate.name;
 				this.invDetails = JSON.parse(investigate.details);
@@ -68,7 +69,7 @@
 					this.invDetails[i].answer = "";
 					this.result.resultlist[i] = [];
 				}
-				console.log(this.invDetails);
+				// console.log(this.invDetails);
 				this.invDescription = investigate.description;
 				this.$toast.clear();
 				this.$toast.success('成功');
@@ -87,7 +88,61 @@
 				// console.log(key);
 				// console.log(num);
 				// console.log(this.$refs);
-				// console.log(this.invDetails[key].result);
+				// console.log(this.result.resultlist);
+			},
+			submit() {
+				this.$toast.loading({
+					duration: 0,	// 持续展示 toast
+					forbidClick: true,	// 禁用背景点击
+					message: '提交中'
+				});
+				// console.log(this.invDetails);
+				var ans = [];
+				for(var i = 0; i < this.invDetails.length; i++) {
+					if(this.invDetails[i].type == 1){
+						if(this.invDetails[i].answer == "") {
+							this.$toast.clear();
+							this.$toast.fail('请填写简答题答案！');
+							return;
+						}
+						// console.log(this.invDetails[i].stem);
+						var tmp = {"stem":this.invDetails[i].stem,"res":{"value": this.invDetails[i].answer}};
+						ans.push(tmp);
+						// console.log(ans);
+						// console.log(this.invDetails[i]);
+						// console.log(this.result.resultlist[i][0]);
+					} else {
+						// console.log(this.result.resultlist[i]);
+						if(this.result.resultlist[i].length == 0) {
+							this.$toast.clear();
+							this.$toast.fail('请填写选择题答案！');
+							return;
+						}
+						// console.log(this.invDetails[i].stem);
+						var tmp = {"stem":this.invDetails[i].stem,"res":this.result.resultlist[i][0]};
+						ans.push(tmp);
+					}				
+				}
+				console.log(ans);
+				
+				var rp = require('request-promise');
+				var options = {
+				    method: 'POST',
+				    uri: 'http://localhost:8080/involveInv',
+				    form: {
+				        uid: this.userInfo.id,
+						iid: this.invId,
+						ans: JSON.stringify(ans)
+				    }
+				};
+				rp(options).then(res => {
+					this.$toast.clear();
+					this.$toast.success('提交成功');
+				}).catch(err => {
+					this.$toast.clear();
+					this.$toast.fail('提交失败，请检查网络连接');
+					console.log(err)
+				});
 			}
 		}
 	}
