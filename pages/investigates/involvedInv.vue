@@ -128,7 +128,7 @@
 				var rp = require('request-promise');
 				var options = {
 				    method: 'POST',
-				    uri: 'http://localhost:8080/involveInv',
+				    uri: 'http://localhost:8080/insertUserInv',
 				    form: {
 				        uid: this.userInfo.id,
 						iid: this.invId,
@@ -137,11 +137,15 @@
 				};
 				rp(options).then(res => {
 					this.$toast.clear();
-					this.$toast.success('提交成功');
+					if(res != "error"){
+						this.$toast.success('提交成功');
+					} else {
+						this.$toast.fail('提交失败，数据格式错误');
+					}
 				}).catch(err => {
 					this.$toast.clear();
 					this.$toast.fail('提交失败，请检查网络连接');
-					console.log(err)
+					console.log(err);
 				});
 			}
 		}
