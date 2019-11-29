@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +34,7 @@ public class DruidConfig {
      * @Return 返回监控注册的servlet对象
      */
     @Bean
+    @SuppressWarnings("unchecked")
     public ServletRegistrationBean statViewServlet() {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
 
@@ -51,6 +53,7 @@ public class DruidConfig {
      * @Return 返回过滤器配置对象
      */
     @Bean
+    @SuppressWarnings("unchecked")
     public FilterRegistrationBean webStatFilter() {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new WebStatFilter());

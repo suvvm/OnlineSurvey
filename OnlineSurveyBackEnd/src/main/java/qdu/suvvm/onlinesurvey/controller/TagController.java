@@ -2,7 +2,6 @@ package qdu.suvvm.onlinesurvey.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,12 +22,12 @@ import java.util.List;
 public class TagController {
     @Autowired
     private TagMapper tagMapper;
+
     @GetMapping("/getTags")
     public String getTags() {
         Tag tag = new Tag();
         List<Tag> tags = tagMapper.selectTagsWithoutUser(tag);
-        String res = JSON.toJSONString(tags);
-        return res;
+        return JSON.toJSONString(tags);
     }
 
     @PostMapping("/updateTags")
@@ -51,5 +50,5 @@ public class TagController {
         for(Tag tag : mdfTags) {
             tagMapper.updateTagById(tag);
         }
-    };
+    }
 }
