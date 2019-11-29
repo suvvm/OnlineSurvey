@@ -1,5 +1,6 @@
 package qdu.suvvm.onlinesurvey.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,6 +113,17 @@ public class UserController {
         int res = userMapper.insertUserResult(Integer.parseInt(uid), Integer.parseInt(iid), ans);
         if(res > 0){
             return "success";
+        }
+        return "error";
+    }
+
+    @PostMapping("/getUserById")
+    public String getUserById(@RequestParam("id") String id) {
+        User user = new User();
+        user.setId(Integer.parseInt(id));
+        List<User> users = userMapper.getUser(user);
+        if(!users.isEmpty()){
+            return JSON.toJSONString(users.get(0));
         }
         return "error";
     }
