@@ -5,7 +5,7 @@
 		<!--style='background: url(/testUserInfo/imgs/avatar.jpg) no-repeat  top/cover' -->
 		<view class='detail-mask'></view>
 		<view class='detail-info'>
-			<img src="../../testUserInfo/imgs/avatar.jpg" class='detail-img'></img>
+			<img src="../../testUserInfo/imgs/avatar_suvvm.jpg" class='detail-img'></img>
 			<view class='detail'>
 				<view class='detail-nm'>{{userInfo.username}}</view>
 				<view>姓名：{{userInfo.name}}</view>
@@ -32,7 +32,7 @@
 				text: "suvvm",
 				userInfo: {},
 				note: {
-				    backgroundImage: "url(" + require("../../testUserInfo/imgs/avatar.jpg") + ")",
+				    backgroundImage: "url(" + require("../../testUserInfo/imgs/avatar_suvvm.jpg") + ")",
 				    backgroundRepeat: "no-repeat",
 				    backgroundPosition: "center",
 				}
