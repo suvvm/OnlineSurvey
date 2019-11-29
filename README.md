@@ -323,26 +323,64 @@
 
 2019年11月26日 GMT+8 下午10:07	[OnlinesurveyApplicationTests 添加发送邮件测试方法](https://github.com/suvvm/OnlineSurvey/commit/2b9a242eaecc60ee1c65e283a922471a3755d601) 
 
-2019年11月26日 GMT+8 下午8:59	[addInvestigates 基本完成所需功能](https://github.com/suvvm/OnlineSurvey/commit/88038b7d2aed0046676814bd03caa398c898825a) 
+2019年11月27日 GMT+8 下午8:59	[addInvestigates 基本完成所需功能](https://github.com/suvvm/OnlineSurvey/commit/88038b7d2aed0046676814bd03caa398c898825a) 
 
-2019年11月26日 GMT+8 下午9:49	[addInvestigates 增加添加问卷请求发送的数据](https://github.com/suvvm/OnlineSurvey/commit/29ed88e0e238678bbc41a1dd22d3a931ac6782fc) 
+2019年11月27日 GMT+8 下午9:49	[addInvestigates 增加添加问卷请求发送的数据](https://github.com/suvvm/OnlineSurvey/commit/29ed88e0e238678bbc41a1dd22d3a931ac6782fc) 
 
-2019年11月26日 GMT+8 下午9:50	[InvMapper 添加插入问卷与tag映射关系的方法](https://github.com/suvvm/OnlineSurvey/commit/dd214c2a5b8c420cf72543c1ad6e5d96c2aaf213) 
+2019年11月27日 GMT+8 下午9:50	[InvMapper 添加插入问卷与tag映射关系的方法](https://github.com/suvvm/OnlineSurvey/commit/dd214c2a5b8c420cf72543c1ad6e5d96c2aaf213) 
 
-2019年11月26日 GMT+8 下午9:51	[创建处理问卷相关请求的Controller InvController](https://github.com/suvvm/OnlineSurvey/commit/d53adbf29684498454cb60aed79cba88d55f639b) 
+2019年11月27日 GMT+8 下午9:51	[创建处理问卷相关请求的Controller InvController](https://github.com/suvvm/OnlineSurvey/commit/d53adbf29684498454cb60aed79cba88d55f639b) 
 
-2019年11月26日 GMT+8 下午9:57	[创建并注册审核问卷页面 verifyInvestigates](https://github.com/suvvm/OnlineSurvey/commit/31b3b766e3cd91adb86947d759dbd686a9e52629) 
+2019年11月27日 GMT+8 下午9:57	[创建并注册审核问卷页面 verifyInvestigates](https://github.com/suvvm/OnlineSurvey/commit/31b3b766e3cd91adb86947d759dbd686a9e52629) 
 
-2019年11月26日 GMT+8 下午9:59	[InvMapper 修改查询动态sql生成方法](https://github.com/suvvm/OnlineSurvey/commit/69b12f79366c46d1f547d4cc44b1d2670248ab09) 
+2019年11月27日 GMT+8 下午9:59	[InvMapper 修改查询动态sql生成方法](https://github.com/suvvm/OnlineSurvey/commit/69b12f79366c46d1f547d4cc44b1d2670248ab09) 
 
-2019年11月26日 GMT+8 下午10:09	[InvMapper 修正查询方法名](https://github.com/suvvm/OnlineSurvey/commit/6812a6972381273f6041a1e2f997b1ea2b3bf21d) 
+2019年11月27日 GMT+8 下午10:09	[InvMapper 修正查询方法名](https://github.com/suvvm/OnlineSurvey/commit/6812a6972381273f6041a1e2f997b1ea2b3bf21d) 
 
-2019年11月26日 GMT+8 下午10:10	[InvController 添加处理获取未审核问卷的请求](https://github.com/suvvm/OnlineSurvey/commit/8673fc39823a8a7c5527a6edfa85ee016e85063d) 
+2019年11月27日 GMT+8 下午10:10	[InvController 添加处理获取未审核问卷的请求](https://github.com/suvvm/OnlineSurvey/commit/8673fc39823a8a7c5527a6edfa85ee016e85063d) 
 
-2019年11月26日 GMT+8 下午10:24	[创建并注册审核详情页 verifyInvDetails](https://github.com/suvvm/OnlineSurvey/commit/6b7e32b5340e6a98f2464f47e5606c66de45e573) 
+2019年11月27日 GMT+8 下午10:24	[创建并注册审核详情页 verifyInvDetails](https://github.com/suvvm/OnlineSurvey/commit/6b7e32b5340e6a98f2464f47e5606c66de45e573) 
 
-2019年11月26日 GMT+8 下午10:25	[InvController 修改获取未审核问卷的方法](https://github.com/suvvm/OnlineSurvey/commit/053b4486c79a17f5d9080067856071150d0b0ceb) 
+2019年11月27日 GMT+8 下午10:25	[InvController 修改获取未审核问卷的方法](https://github.com/suvvm/OnlineSurvey/commit/053b4486c79a17f5d9080067856071150d0b0ceb) 
 
-2019年11月26日 GMT+8 下午10:26	[erifyInvestigates 添加问卷显示功能](https://github.com/suvvm/OnlineSurvey/commit/b5616df8046f7fabdfb2b17658d972738e347f84) 
+2019年11月27日 GMT+8 下午10:26	[erifyInvestigates 添加问卷显示功能](https://github.com/suvvm/OnlineSurvey/commit/b5616df8046f7fabdfb2b17658d972738e347f84) 
 
-2019年11月26日 GMT+8 下午10:31	[verifyInvestigates 添加通过点击对应问卷单元格向verifyInvDetails传值路由](https://github.com/suvvm/OnlineSurvey/commit/7216a57c4f796235baeb3b72529e21f7708e7360) 
+2019年11月27日 GMT+8 下午10:31	[verifyInvestigates 添加通过点击对应问卷单元格向verifyInvDetails传值路由](https://github.com/suvvm/OnlineSurvey/commit/7216a57c4f796235baeb3b72529e21f7708e7360) 
+
+2019年11月28日 GMT+8 下午9:15	[提取邮件发送方法](https://github.com/suvvm/OnlineSurvey/commit/70ecde0cbfe5fcc0b98e2f93ef0c08c59a29f773) 
+
+2019年11月28日 GMT+8 下午9:16	[verifyInvestigates 修正变量名全部为驼峰命名法](https://github.com/suvvm/OnlineSurvey/commit/0a04c7f40abcaf5326bf9bdf8f020d203ea8ecdf) 
+
+2019年11月28日 GMT+8 下午9:17	[OnlinesurveyApplicationTests 修改邮件发送测试方法](https://github.com/suvvm/OnlineSurvey/commit/62dcb649264dd9b5482421f28c0eb0a2679b83b7) 
+
+2019年11月28日 GMT+8 下午9:18	[verifyInvDetails 审核页基本完成功能](https://github.com/suvvm/OnlineSurvey/commit/9f1151146bb21a8b50c4e54a0997d04bdece8c40) 
+
+2019年11月28日 GMT+8 下午9:20	[InvController 添加处理审核请求的方法](https://github.com/suvvm/OnlineSurvey/commit/dc0572a3a85b90161cc3590063e291ceff104897) 
+
+2019年11月28日 GMT+8 下午10:18	[创建并注册答题页面involvedInv](https://github.com/suvvm/OnlineSurvey/commit/deba7894102499700c80c8da710f199d44128bfa) 
+
+2019年11月28日 GMT+8 下午10:26	[involvedInv 完成问题显示与答案存储](https://github.com/suvvm/OnlineSurvey/commit/d167080a01dfae5685033fcaafd1d55f85e9c8e3) 
+
+2019年11月29日 GMT+8 下午8:59	[mUserMapper 添加插入用户作答表的方法](https://github.com/suvvm/OnlineSurvey/commit/d9fb0881938754eec23f573fb23a92e58594e407) 
+
+2019年11月29日 GMT+8 下午9:01	[消除部分warning](https://github.com/suvvm/OnlineSurvey/commit/5fc4a64b3a38cc77204aaa8bf7233e3db52565bc) 
+
+2019年11月29日 GMT+8 下午9:01	[involvedInv 基本完成用户作答功能](https://github.com/suvvm/OnlineSurvey/commit/4fce7a05f355ce52a83e24b409f6c463ca0c8b54) 
+
+2019年11月29日 GMT+8 下午9:28	[重命名suvvm头像文件avatar.jpg为avatar_suvvm.jpg](https://github.com/suvvm/OnlineSurvey/commit/b4720eb34de14e0ae4a10b278c95b32d2eeb830e) 
+
+2019年11月29日 GMT+8 下午9:29	[重命名suvvm人脸识别文件face.jpg为face_suvvm.jpg](https://github.com/suvvm/OnlineSurvey/commit/9d36d2d0ae4a47334ee2612dde7e8a6241b73121) 
+
+2019年11月29日 GMT+8 下午9:30	[添加测试用户静态图片文件](https://github.com/suvvm/OnlineSurvey/commit/3a695f3a2d48ae5dd416f24dd9388fe104c9dd9e) 
+
+2019年11月29日 GMT+8 下午9:31	[user 页修改临时图片地址](https://github.com/suvvm/OnlineSurvey/commit/f169dc6f6d298b325cb1f36d006049b7676f7d59) 
+
+2019年11月29日 GMT+8 下午9:33	[InvController 删除无用方法](https://github.com/suvvm/OnlineSurvey/commit/cc7319c4ba865d058be0a33a49cf90154f7b2e42) 
+
+2019年11月29日 GMT+8 下午9:35	[UserController 添加处理插入用户作答请求的方法](https://github.com/suvvm/OnlineSurvey/commit/da2df22bdde20143a8db9c0b1a987a1aaea3120d) 
+
+2019年11月29日 GMT+8 下午10:27	[test 测试由后端取出base64编码在前端显示文件](https://github.com/suvvm/OnlineSurvey/commit/5641367c98b7acded43754494e217e4e2ab90840) 
+
+2019年11月29日 GMT+8 下午10:27	[user 页面图片由临时图片转为后台图片](https://github.com/suvvm/OnlineSurvey/commit/a32ba13d62b185c8bd66e7b15d8de9b22f23f813) 
+
+2019年11月29日 GMT+8 下午10:28	[UserController 添加处理根据id获取用户全部信息的请求的方法](https://github.com/suvvm/OnlineSurvey/commit/0442c31a1d77e28a28d98a96ff6ca1fabbf73142) 
