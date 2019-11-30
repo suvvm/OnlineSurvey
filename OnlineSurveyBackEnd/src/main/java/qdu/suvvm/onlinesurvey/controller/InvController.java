@@ -111,4 +111,28 @@ public class InvController {
             invMapper.updateInvestigate(investigate);
         }
     }
+
+    @PostMapping("/mdfInvestigate")
+    public String mdfInvestigate(HttpServletRequest request) {
+        Investigate investigate = new Investigate();
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        String description = request.getParameter("description");
+        String name = request.getParameter("name");
+        String details = request.getParameter("invDetails");
+        investigate.setId(id);
+        if(!"null".equals(name)) {
+            investigate.setName(name);
+        }
+        if(!"null".equals(description)) {
+            investigate.setDescription(description);
+        }
+        if(!"null".equals(details)) {
+            investigate.setDetails(details);
+        }
+//        System.out.println(investigate);
+        if(invMapper.updateInvestigate(investigate) > 0) {
+            return "success";
+        }
+        return "error";
+    }
 }
