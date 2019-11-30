@@ -18,12 +18,29 @@
 		</view>
 		
 		<!-- 判断公司用户 管理员 普通用户后再做具体实现 -->
-		<van-cell title="单元格" icon="shop-o">
-		  <van-icon slot="right-icon" name="search" style="line-height: inherit;" />
-		</van-cell>
-		<text v-if="userInfo.power == 0">普通用户</text>
-		<text v-if="userInfo.power == 1">公司用户</text>
-		<text v-if="userInfo.power == 2">管理员</text>
+		<van-cell-group v-if="userInfo.power == 2">
+			<van-cell title="审核调查" icon="todo-list-o" is-link />
+			<van-cell title="管理公司" icon="friends-o" is-link />
+			<van-cell title="管理用户" icon="user-o" is-link />
+		</van-cell-group>
+		
+		<van-cell-group v-if="userInfo.power == 1">
+			<van-cell title="发布调查" icon="todo-list-o" is-link @click="toCreateInv()" />
+			<van-cell title="我的公司" icon="friends-o" is-link @click="toMyCmp()"/>
+			<van-cell title="管理调查" icon="orders-o" is-link />
+		</van-cell-group>
+		
+		<van-cell-group v-if="userInfo.power == 0">
+			<van-cell title="我的调查" icon="description" is-link />
+		</van-cell-group>
+		
+		<van-cell-group>
+			<van-cell title="修改个人信息" icon="records" is-link />
+		</van-cell-group>
+		
+		<van-cell-group v-if="userInfo.power != 2">
+			<van-cell title="联系我们" icon="chat-o" is-link />
+		</van-cell-group>
 		
 		<van-tabbar route>
 		  <van-tabbar-item icon="home-o" to="/home">首页</van-tabbar-item>
@@ -66,8 +83,15 @@
 			});
 		},
 		methods: {
-			submit() {
-				
+			toCreateInv() {
+				this.$router.push({
+					path: '/pages/investigates/addInvestigates', 
+				});
+			},
+			toMyCmp() {
+				this.$router.push({
+					path: '/pages/Company/userCompany', 
+				});
 			}
 		}
 	}
