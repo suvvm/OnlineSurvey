@@ -40,6 +40,7 @@
 		
 		<van-cell-group v-if="userInfo.power != 2">
 			<van-cell title="联系我们" icon="chat-o" is-link />
+			<van-cell title="退出登录" icon="down" is-link />
 		</van-cell-group>
 		
 		<van-tabbar route>
