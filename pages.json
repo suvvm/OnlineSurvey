@@ -93,6 +93,12 @@
 				"navigationBarTitleText": "调查信息"
 			}
 		}
+		,{
+			"path" : "pages/user/mdfUser",
+			"style" : {
+				"navigationBarTitleText": "修改信息"
+			}
+		}
         ,{
             "path" : "pages/user/user",
             "style" : {}
