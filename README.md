@@ -384,3 +384,42 @@
 2019年11月29日 GMT+8 下午10:27	[user 页面图片由临时图片转为后台图片](https://github.com/suvvm/OnlineSurvey/commit/a32ba13d62b185c8bd66e7b15d8de9b22f23f813) 
 
 2019年11月29日 GMT+8 下午10:28	[UserController 添加处理根据id获取用户全部信息的请求的方法](https://github.com/suvvm/OnlineSurvey/commit/0442c31a1d77e28a28d98a96ff6ca1fabbf73142) 
+
+2019年11月30日 GMT+8 上午11:34	[user 页更新用户判断机制](https://github.com/suvvm/OnlineSurvey/commit/b43387a5cf5b8851280c626b14ff053146997832)
+
+2019年11月30日 GMT+8 下午6:42	[CmpController 添加处理更新公司信息请求的方法](https://github.com/suvvm/OnlineSurvey/commit/a4ac01c745afbffefad147aa5ac394e4b76c45e0)
+
+2019年11月30日 GMT+8 下午6:43	[创建并完成公司管理页](https://github.com/suvvm/OnlineSurvey/commit/adf075bbf371c63e5d6543a0811e498e3999ddde)
+
+2019年11月30日 GMT+8 下午6:44	[创建公司用户管理调查页](https://github.com/suvvm/OnlineSurvey/commit/004b0b054e8503f699b90aeb0cb2ca7de50b6f1f)
+
+2019年11月30日 GMT+8 下午6:45	[创建调查修改页](https://github.com/suvvm/OnlineSurvey/commit/c8ad3517357c2c5b1359aa52ac3c53889d3165a0)
+
+2019年11月30日 GMT+8 下午6:47	[注册allCmpInv mdfInv userCompany至pages.json](https://github.com/suvvm/OnlineSurvey/commit/2da64edc41d527733641409330c25e70f644cc81)
+
+2019年11月30日 GMT+8 下午6:48	[user 用户页完善具体内容](https://github.com/suvvm/OnlineSurvey/commit/8bb6df134585a204d7ea61854196f9c5bc59ec7c)
+
+2019年11月30日 GMT+8 下午8:43	[InvMapper 修正update动态SQL生成方法中错误的表名](https://github.com/suvvm/OnlineSurvey/commit/7969c1fe8f030fd8c7bce148e6228fc0197cbc08)
+
+2019年11月30日 GMT+8 下午8:43	[InvController 添加处理修改问卷请求的方法](https://github.com/suvvm/OnlineSurvey/commit/25dbbb022171c9b1d63ac232a4a7814d06a46738)
+
+2019年11月30日 GMT+8 下午8:45	[测试分页方法](https://github.com/suvvm/OnlineSurvey/commit/f982bf830e3c572ac20b4469cb16e9e02d90e3f1)
+
+2019年11月30日 GMT+8 下午8:46	[mallCmpInv 功能基本完成](https://github.com/suvvm/OnlineSurvey/commit/8eac250b282d0556754f68ddc699629404930236)
+
+2019年11月30日 GMT+8 下午8:46	[添加分页功能](https://github.com/suvvm/OnlineSurvey/commit/015fd8df12e1118e0121a0cef04f3f1d1c397f21)
+
+2019年11月30日 GMT+8 下午8:47	[mdfInv 功能基本完成](https://github.com/suvvm/OnlineSurvey/commit/37e703b58684577e2f0d1400819796730cdeea44)
+
+2019年11月30日 GMT+8 下午8:50	[user 页添加登出按钮](https://github.com/suvvm/OnlineSurvey/commit/809f73c51789d1fb063c200db63be312c9711ebe)
+
+2019年11月30日 GMT+8 下午9:55	[UserController 添加处理更新用户请求的方法](https://github.com/suvvm/OnlineSurvey/commit/b7f92c2c0c14eb275a51df707974672446cec27b)
+
+2019年11月30日 GMT+8 下午9:56	[创建注册并完成用户更新页](https://github.com/suvvm/OnlineSurvey/commit/2b2d9fb33e21ff9fc371e4e5292ba2ed7c613251)
+
+2019年11月30日 GMT+8 下午10:05	[新增关于我们页](https://github.com/suvvm/OnlineSurvey/commit/9c1211993dc84d3014c1be7d68f4f132c3028258)
+
+2019年11月30日 GMT+8 下午10:05	[user 页更新部分路由](https://github.com/suvvm/OnlineSurvey/commit/19db8b7f0f06803ecd249cba7453c6c859ea0b40)
+
+2019年11月30日 GMT+8 下午10:14	[完成关于页面](https://github.com/suvvm/OnlineSurvey/commit/ef06d8ab70979f6fb7a25a53a0da71a7bc7675f6)
+
