@@ -78,7 +78,7 @@ public interface InvMapper {
         public String updateInv(Investigate inv) {
             return new SQL() {
                 {
-                    UPDATE("companies");
+                    UPDATE("investigates");
                     if(inv.getName() != null) {
                         SET("name = #{name}");
                     }
