@@ -40,7 +40,7 @@
 		
 		<van-cell-group v-if="userInfo.power != 2">
 			<van-cell title="关于我们" icon="chat-o" is-link @click="toAboutUs()"/>
-			<van-cell title="退出登录" icon="down" is-link />
+			<van-cell title="退出登录" icon="down" is-link @click="logout()"/>
 		</van-cell-group>
 		
 		<van-tabbar route>
@@ -107,6 +107,12 @@
 			toAboutUs() {
 				this.$router.push({
 					path: '/pages/AboutUs/AboutUs', 
+				});
+			},
+			logout() {
+				this.$cookies.remove("userInfo");
+				this.$router.push({
+					path: '/pages/index/index', 
 				});
 			}
 		}
