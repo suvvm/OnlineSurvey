@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<van-cell v-for="(item, key) in userInfo.investigates" v-bind:key="key" :title="item.name" :value="item.id" size="large" :label="item.description" clickable @click="cmpInvDetails(key)" />
+		<van-cell v-for="(item, key) in userInfo.investigates" v-bind:key="key" :title="item.name" :value="item.statusText" size="large" :label="item.description" clickable @click="cmpInvDetails(key)" />
 	</view>
 </template>
 
@@ -33,6 +33,14 @@
 				} else {
 					this.userInfo = JSON.parse(res);
 					console.log(this.userInfo);
+					for(var i = 0; i < this.userInfo.investigates.length; i++){
+						if(this.userInfo.investigates[i].visible){
+							this.userInfo.investigates[i].statusText = "已审核";
+						} else {
+							this.userInfo.investigates[i].statusText = "未审核";
+						}
+						
+					}
 					this.$toast.success('获取用户信息成功');
 				}
 				// console.log(this.note.backgroundImage)
