@@ -81,9 +81,21 @@
 				"navigationBarTitleText": "参与调查"
 			}
 		}
+		,{
+			"path" : "pages/investigates/allCmpInv",
+			"style" : {
+				"navigationBarTitleText": "本公司调查"
+			}
+		}
         ,{
             "path" : "pages/user/user",
             "style" : {}
+        }
+        ,{
+            "path" : "pages/Company/userCompany",
+            "style" : {
+				"navigationBarTitleText": "我的公司"
+			}
         }
     ],
 	"globalStyle": {
