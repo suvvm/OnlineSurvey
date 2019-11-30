@@ -1,6 +1,15 @@
 <template>
 	<view>
-		<van-cell v-for="(item, key) in invList" v-bind:key="key" :title="item.name" :value="item.id" size="large" :label="item.description" clickable @click="verifyInvDetails(key)" />
+		<van-cell v-if="(invList.length - (currentPage * 5 - 5)) < 5" v-for="item of invList.length % 5" v-bind:key="item" :title="invList[item+listBg - 1].name" :value="invList[item+listBg-1].id" size="large" :label="invList[item+listBg-1].description" clickable @click="verifyInvDetails(item+listBg-1)" />
+		<van-cell v-else v-for="item of 5" v-bind:key="item" :title="invList[item+listBg - 1].name" :value="invList[item+listBg-1].id" size="large" :label="invList[item+listBg-1].description" clickable @click="verifyInvDetails(item+listBg-1)" />
+		
+		<!-- <van-cell  v-if="(invList.length - (currentPage * 5 - 5)) < 5"  v-for="item of invList.length % 5" v-bind:key="item" >123</van-cell> -->
+		<van-pagination 
+		  v-model="currentPage" 
+		  :total-items="invList.length" 
+		  :items-per-page="5"
+		  @change="onPaginationChanged()"
+		/>
 	</view>
 </template>
 
@@ -8,7 +17,9 @@
 	export default {
 		data() {
 			return {
-				invList: []
+				invList: [{"name":"asd"}],
+				listBg: 0,
+				currentPage: 1
 			}
 		},
 		onLoad() {
@@ -44,6 +55,9 @@
 						invDetailsId: this.invList[key].id
 					}
 				});
+			},
+			onPaginationChanged() {
+				this.listBg = this.currentPage * 5 - 5;
 			}
 		}
 	}
