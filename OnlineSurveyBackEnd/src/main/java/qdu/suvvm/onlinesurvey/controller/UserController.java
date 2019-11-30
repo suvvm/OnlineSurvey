@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import qdu.suvvm.onlinesurvey.mapper.UserMapper;
 import qdu.suvvm.onlinesurvey.pojo.User;
 
+import javax.lang.model.element.NestingKind;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -124,6 +125,41 @@ public class UserController {
         List<User> users = userMapper.getUser(user);
         if(!users.isEmpty()){
             return JSON.toJSONString(users.get(0));
+        }
+        return "error";
+    }
+
+    @PostMapping("/updateUser")
+    public String updateUser(HttpServletRequest request) {
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        String username = request.getParameter("username");
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String password = request.getParameter("password");
+        String avatar = request.getParameter("avatar");
+        String imgBase64 = request.getParameter("imgBase64");
+        User user = new User();
+        user.setId(id);
+        if(!"null".equals(username)) {
+            user.setUsername(username);
+        }
+        if(!"null".equals(name)) {
+            user.setName(name);
+        }
+        if(!"null".equals(gender)) {
+            user.setGender(gender);
+        }
+        if(!"null".equals(password)) {
+            user.setPassword(password);
+        }
+        if(!"null".equals(avatar)) {
+            user.setAvatar(avatar);
+        }
+        if(!"null".equals(imgBase64)) {
+            user.setImgbase64(imgBase64);
+        }
+        if(userMapper.updateUserById(user) > 0) {
+            return "success";
         }
         return "error";
     }
