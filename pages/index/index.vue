@@ -41,7 +41,12 @@
 			}
 		},
 		onLoad() {
-
+			if(this.$cookies.get("userInfo") != null){	// 登录状态判断
+				this.$router.push({
+					path: '/pages/user/user'
+				})
+			}
+	
 		},
 		methods: {
 			toFVlogin() {
@@ -60,6 +65,8 @@
 					forbidClick: true,	// 禁用背景点击
 					message: '登录中'
 				});
+				
+				
 				
 				var rp = require('request-promise');
 				var options = {

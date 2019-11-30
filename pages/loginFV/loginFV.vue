@@ -30,6 +30,13 @@
 				err: '',
 			}
 		},
+		onLoad() {
+			if(this.$cookies.get("userInfo") != null){	// 登录状态判断
+				this.$router.push({
+					path: '/pages/user/user'
+				})
+			}
+		},
 		methods: {
 			afterRead(file) {
 				this.$toast.loading({
