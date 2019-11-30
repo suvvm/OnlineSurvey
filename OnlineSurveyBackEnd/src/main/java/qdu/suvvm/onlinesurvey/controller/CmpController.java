@@ -53,4 +53,34 @@ public class CmpController {
         }
         return "error";
     }
+
+    @PostMapping("/updateCompany")
+    public String updateCompany(HttpServletRequest request) {
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String forms = request.getParameter("forms");
+        String domain = request.getParameter("domain");
+        String description = request.getParameter("description");
+        Company company = new Company();
+        company.setId(id);
+        if(!name.equals("null")) {
+            company.setName(name);
+        }
+        if(!forms.equals("null")) {
+            company.setForms(forms);
+        }
+        if(!domain.equals("null")) {
+            company.setDomain(domain);
+        }
+        if(!description.equals("null")) {
+            company.setDescription(description);
+        }
+//        System.out.println(company);
+//        return "success";
+        if(cmpMapper.updateCmp(company) > 0) {
+            return "success";
+        }
+        return "error";
+
+    }
 }
