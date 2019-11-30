@@ -87,6 +87,12 @@
 				"navigationBarTitleText": "本公司调查"
 			}
 		}
+		,{
+			"path" : "pages/investigates/mdfInv",
+			"style" : {
+				"navigationBarTitleText": "调查信息"
+			}
+		}
         ,{
             "path" : "pages/user/user",
             "style" : {}
