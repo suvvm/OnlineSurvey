@@ -16,10 +16,18 @@
 				<view v-else>性别：女</view> 
 			</view>
 		</view>
+		
 		<!-- 判断公司用户 管理员 普通用户后再做具体实现 -->
+		<van-cell title="单元格" icon="shop-o">
+		  <van-icon slot="right-icon" name="search" style="line-height: inherit;" />
+		</van-cell>
+		<text v-if="userInfo.power == 0">普通用户</text>
+		<text v-if="userInfo.power == 1">公司用户</text>
+		<text v-if="userInfo.power == 2">管理员</text>
+		
 		<van-tabbar route>
-		  <van-tabbar-item icon="home-o" to="/home">标签</van-tabbar-item>
-		  <van-tabbar-item icon="search" to="/home">标签</van-tabbar-item>
+		  <van-tabbar-item icon="home-o" to="/home">首页</van-tabbar-item>
+		  <van-tabbar-item icon="search" to="/home">检索</van-tabbar-item>
 		  <van-tabbar-item icon="friends-o" to="/home">标签</van-tabbar-item>
 		  <van-tabbar-item icon="manager" to="/home">我的</van-tabbar-item>
 		</van-tabbar>
@@ -30,9 +38,7 @@
 	export default {
 		data() {
 			return {
-				text: "suvvm",
-				userInfo: {avatar:""},
-			
+				userInfo: {avatar:""}
 			}
 		},
 		onLoad() {
@@ -47,19 +53,16 @@
 			rp(options).then(res => {
 				this.$toast.clear();
 				if(res == "error") {
-					this.$toast.fail('获取用户信息识别');
+					this.$toast.fail('获取用户信息识别，未找到用户信息');
 				} else {
 					this.userInfo = JSON.parse(res);
-					var image = "data:image/png;base64," + this.userInfo.avatar;
-				
-					
-					this.$toast.success('获取用户信息识别成功');
+					this.$toast.success('获取用户信息成功');
 				}
 				// console.log(this.note.backgroundImage)
 			}).catch(err => {
 				this.$toast.clear();
-				this.$toast.fail('获取用户信息识别');
-				console.log(err)
+				this.$toast.fail('获取用户信息, 请检查网络连接');
+				console.log(err);
 			});
 		},
 		methods: {
