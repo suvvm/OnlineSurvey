@@ -27,7 +27,7 @@
 		<van-cell-group v-if="userInfo.power == 1">
 			<van-cell title="发布调查" icon="todo-list-o" is-link @click="toCreateInv()" />
 			<van-cell title="我的公司" icon="friends-o" is-link @click="toMyCmp()"/>
-			<van-cell title="管理调查" icon="orders-o" is-link />
+			<van-cell title="管理调查" icon="orders-o" is-link @click="toCmpInv()"/>
 		</van-cell-group>
 		
 		<van-cell-group v-if="userInfo.power == 0">
@@ -35,11 +35,11 @@
 		</van-cell-group>
 		
 		<van-cell-group>
-			<van-cell title="修改个人信息" icon="records" is-link />
+			<van-cell title="修改个人信息" icon="records" is-link @click="toMdfUserInf()"/>
 		</van-cell-group>
 		
 		<van-cell-group v-if="userInfo.power != 2">
-			<van-cell title="联系我们" icon="chat-o" is-link />
+			<van-cell title="关于我们" icon="chat-o" is-link @click="toAboutUs()"/>
 			<van-cell title="退出登录" icon="down" is-link />
 		</van-cell-group>
 		
@@ -92,6 +92,21 @@
 			toMyCmp() {
 				this.$router.push({
 					path: '/pages/Company/userCompany', 
+				});
+			},
+			toMdfUserInf() {
+				this.$router.push({
+					path: '/pages/user/mdfUser', 
+				});
+			},
+			toCmpInv() {
+				this.$router.push({
+					path: '/pages/investigates/allCmpInv', 
+				});
+			},
+			toAboutUs() {
+				this.$router.push({
+					path: '/pages/AboutUs/AboutUs', 
 				});
 			}
 		}
