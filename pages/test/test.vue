@@ -1,7 +1,15 @@
 <template>
 	
 	<view>
-		<img :src="'data:image/png;base64,'+imgfile" class="avatar"/>
+		<view v-for="item of 5">
+			{{testList[nowbg + item - 1]}}
+		</view>
+		<van-pagination
+		  v-model="currentPage" 
+		  :total-items="testList.length" 
+		  :items-per-page="5"
+		  @change="onPaginationChanged()"
+		/>
 	</view>
 </template>
 
@@ -10,7 +18,13 @@
 		data() {
 			return {
 				value: 50,
-				imgfile: ""
+				imgfile: "",
+				nowbg: 0,
+				currentPage: 1,
+				testList: [{"name":"1"},{"name":"2"},{"name":"3"},{"name":"4"},
+				{"name":"5"},{"name":"6"},{"name":"7"},{"name":"8"},{"name":"9"},
+				{"name":"10"},{"name":"11"},{"name":"12"},{"name":"13"},{"name":"14"},
+				{"name":"15"},{"name":"16"},{"name":"17"},{"name":"18"},{"name":"19"}]
 			}
 		},
 		onLoad() {
@@ -48,24 +62,11 @@
 			});
 		},
 		methods: {
-			onChange(value) {
-				this.$toast('当前值：' + value);
-			},
-			base64ImgtoFile(dataurl, filename = 'file') {
-			  let arr = dataurl.split(',')
-			  let mime = arr[0].match(/:(.*?);/)[1]
-			  let suffix = mime.split('/')[1]
-			  let bstr = atob(arr[1])
-			  let n = bstr.length
-			  let u8arr = new Uint8Array(n)
-			  while (n--) {
-			    u8arr[n] = bstr.charCodeAt(n)
-			  }
-			  return new File([u8arr], `${filename}.${suffix}`, {
-			    type: mime
-			  })
+			onPaginationChanged(){
+				this.nowbg = this.currentPage * 5 - 5
 			}
-		}
+		},
+		
 	}
 </script>
 
