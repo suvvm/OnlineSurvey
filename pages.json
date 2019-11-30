@@ -109,6 +109,10 @@
 				"navigationBarTitleText": "我的公司"
 			}
         }
+        ,{
+            "path" : "pages/AboutUs/AboutUs",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
