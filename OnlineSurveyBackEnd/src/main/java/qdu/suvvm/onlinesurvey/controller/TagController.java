@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import qdu.suvvm.onlinesurvey.mapper.TagMapper;
+import qdu.suvvm.onlinesurvey.pojo.Investigate;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,6 +51,29 @@ public class TagController {
         }
         for(Tag tag : mdfTags) {
             tagMapper.updateTagById(tag);
+        }
+    }
+
+    @PostMapping("/getRecommendByTag")
+    public String getTagById(@RequestParam("tagList") String tagList) {
+        List<Tag> tags = JSONArray.parseArray(tagList, Tag.class);
+        List<Tag> resTags = new ArrayList<>();
+        for(Tag tag : tags){
+            List<Tag> tmp =  tagMapper.selectTags(tag);
+            resTags.removeAll(tmp);
+            resTags.addAll(tmp);
+//            invList.containsAll(tagMapper.selectTags(tag));
+        }
+        List<Investigate> invList = new ArrayList<>();
+        for(Tag tag : resTags){
+            invList.removeAll(tag.getInvestigates());
+            invList.addAll(tag.getInvestigates());
+        }
+
+        if (!invList.isEmpty()) {
+            return JSONArray.toJSONString(invList);
+        } else {
+            return "null";
         }
     }
 }
