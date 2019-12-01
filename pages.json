@@ -41,7 +41,7 @@
 				"navigationBarTitleText": "添加标签"
 			}
 		},{
-			"path" : "pages/register/rergisterCompany",
+			"path" : "pages/register/registerCompany",
 			"style" : {
 				"navigationBarTitleText": "注册公司"
 			}
@@ -111,6 +111,18 @@
         }
         ,{
             "path" : "pages/AboutUs/AboutUs",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/home/home",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/categories/categories",
             "style" : {}
         }
     ],
