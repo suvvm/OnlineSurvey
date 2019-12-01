@@ -88,6 +88,12 @@
 			}
 		}
 		,{
+			"path" : "pages/home/todayInv",
+			"style" : {
+				"navigationBarTitleText": "今日问卷"
+			}
+		}
+		,{
 			"path" : "pages/investigates/mdfInv",
 			"style" : {
 				"navigationBarTitleText": "调查信息"
@@ -101,7 +107,9 @@
 		}
         ,{
             "path" : "pages/user/user",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "个人信息"
+			}
         }
         ,{
             "path" : "pages/Company/userCompany",
@@ -111,19 +119,27 @@
         }
         ,{
             "path" : "pages/AboutUs/AboutUs",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "关于我们"
+			}
         }
         ,{
             "path" : "pages/home/home",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "主页"
+			}
         }
         ,{
             "path" : "pages/search/search",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "搜索"
+			}
         }
         ,{
             "path" : "pages/categories/categories",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "分类"
+			}
         }
     ],
 	"globalStyle": {
