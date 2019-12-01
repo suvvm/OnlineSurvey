@@ -135,4 +135,20 @@ public class InvController {
         }
         return "error";
     }
+
+    @GetMapping("/getAllInv")
+    public String getAllInv() {
+        Investigate investigate = new Investigate();
+        List<Investigate> invList = invMapper.getInvestigate(investigate);
+        return JSONArray.toJSONString(invList);
+    }
+
+    @GetMapping("/getVisibleInv")
+    public String getVisibleInv() {
+        Investigate investigate = new Investigate();
+        investigate.setVisible(true);
+        List<Investigate> invList = invMapper.getInvestigate(investigate);
+        return JSONArray.toJSONString(invList);
+//        System.out.println("res!!!" + res);
+    }
 }
