@@ -48,7 +48,7 @@ public class UserController {
         int res = 0;
         res = userMapper.insertUser(user);
         if(res > 0){
-            return "success";
+            return JSON.toJSONString(user);
         }
         return "error";
     }
