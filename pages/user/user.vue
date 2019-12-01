@@ -21,8 +21,9 @@
 		<!-- 判断公司用户 管理员 普通用户后具体实现 -->
 		<!-- 管理员用户 -->
 		<van-cell-group v-if="userInfo.power == 2">
-			<van-cell title="审核调查" icon="todo-list-o" is-link />
+			<van-cell title="审核调查" icon="todo-list-o" is-link @click="toInvolvedInv()"/>
 			<van-cell title="管理公司" icon="friends-o" is-link />
+			<van-cell title="管理标签" icon="friends-o" is-link @click="toMdfTag()"/>
 			<van-cell title="管理用户" icon="user-o" is-link />
 		</van-cell-group>
 		<!-- 公司用户 -->
@@ -39,17 +40,20 @@
 		<van-cell-group>
 			<van-cell title="修改个人信息" icon="records" is-link @click="toMdfUserInf()"/>
 		</van-cell-group>
-		<!-- 全体用户通用 -->
+		<!-- 非管理员用户通用 -->
 		<van-cell-group v-if="userInfo.power != 2">
 			<van-cell title="关于我们" icon="chat-o" is-link @click="toAboutUs()"/>
+		</van-cell-group>
+		<!-- 全体用户通用 -->
+		<van-cell-group>
 			<van-cell title="退出登录" icon="down" is-link @click="logout()"/>
 		</van-cell-group>
 		<!-- 底部导航栏 -->
 		<van-tabbar route>
-		  <van-tabbar-item icon="home-o" to="/home">首页</van-tabbar-item>
-		  <van-tabbar-item icon="search" to="/home">检索</van-tabbar-item>
-		  <van-tabbar-item icon="friends-o" to="/home">标签</van-tabbar-item>
-		  <van-tabbar-item icon="manager" to="/home">我的</van-tabbar-item>
+		  <van-tabbar-item icon="home-o" to="/pages/home/home">首页</van-tabbar-item>
+		  <van-tabbar-item icon="search" to="/pages/search/search">检索</van-tabbar-item>
+		  <van-tabbar-item icon="friends-o" to="/pages/categories/categories">标签</van-tabbar-item>
+		  <van-tabbar-item icon="user-o" to="/pages/user/user">我的</van-tabbar-item>
 		</van-tabbar>
 	</view>
 </template>
@@ -109,6 +113,16 @@
 			toAboutUs() {	// 路由至关于我们页
 				this.$router.push({
 					path: '/pages/AboutUs/AboutUs', 
+				});
+			},
+			toInvolvedInv() {	// 路由至审核页
+				this.$router.push({
+					path: '/pages/investigates/verifyInvestigates', 
+				});
+			},
+			toMdfTag() {	// 路由至管理标签页
+				this.$router.push({
+					path: '/pages/tag/mdfTag', 
 				});
 			},
 			logout() {	// 推出登录方法
