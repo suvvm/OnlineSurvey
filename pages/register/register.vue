@@ -76,16 +76,15 @@
 					</van-button>
 			</van-field>
 		</van-cell-group>
-		<text v-if="imgfile != avatar">两张图片不同</text>
 		<van-cell-group>
 			<label>上传头像</label>
 			<van-uploader :after-read="afterReadAvatar" capture="camera"  multiple :max-count="1"/>
-			<text v-if="avatar != ''">选择完成</text>
+			<img :src="'data:image/png;base64,'+avatar" class='innerImg2'/>
 		</van-cell-group>
 		<van-cell-group>
-			<label>人脸识别验证数据</label>
+			<label>上传人脸</label>
 			<van-uploader :after-read="afterReadFace" capture="camera"  multiple :max-count="1"/>
-			<text v-if="imgfile != ''">选择完成</text>
+			<img :src="'data:image/png;base64,'+imgfile" class='innerImg2'/>
 		</van-cell-group>
 		<van-checkbox v-model="checked">同意<van-button @click="showPopup" class="xieyi">《注册协议》</van-button></van-checkbox>
 			<van-popup v-model="show" >《注册协议》</van-popup>
@@ -216,11 +215,11 @@
 					message: '注册中'
 				});
 				
-				if(this.sms != this.identifyCode || this.sms == ''){
-					this.$toast.clear();
-					this.$toast.fail('验证码错误，请准确填写验证码！');
-					return;
-				}
+				// if(this.sms != this.identifyCode || this.sms == ''){
+				// 	this.$toast.clear();
+				// 	this.$toast.fail('验证码错误，请准确填写验证码！');
+				// 	return;
+				// }
 					
 				// console.log("username:" + this.username + "password:" 
 				// + this.password + " name:" + this.name + " pnum:" + this.pnum 
@@ -247,8 +246,14 @@
 					this.$toast.clear();
 					this.$toast.fail('注册成功！');
 					// 以对应用户信息构建JSONObject
-					var userInfo = {"username":this.username,"name":this.name,"pnum":this.pnum,
-					"email":this.email,"gender":this.gender,"power":this.power};
+					
+					var user = JSON.parse(res);
+					// 提取用户信息
+					var userInfo = {"username":user.username,"name":user.name,"pnum":user.pnum,
+					"email":user.email,"gender":user.gender,"power":user.power,"id":user.id};
+					
+					console.log(userInfo);
+					
 					// 存cookies
 					this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
 					// 跳转到角色选择页
@@ -282,5 +287,13 @@
 	    border: 0;
 	    font-size: 1em;
 	    font-family: "Microsoft YaHei";
+	}
+	.innerImg{
+		width: 200rpx;
+		height: 200rpx;
+	}
+	.innerImg2{
+		width: 200rpx;
+		height: 250rpx;
 	}
 </style>
