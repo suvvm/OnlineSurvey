@@ -29,7 +29,7 @@
 		data() {
 			return {
 				active: 1,
-				radio: '1',
+				radio: 2,
 			}
 		},
 		onLoad() {
@@ -43,7 +43,7 @@
 					});
 				} else if(this.radio == 2) {
 					this.$router.push({
-						path: '/pages/register/registerCompleted', 
+						path: '/pages/register/registerCompany', 
 					});
 				} else {
 					this.$router.push({
