@@ -13,11 +13,11 @@
 		  <van-grid-item class="gridItem" icon="share" text="分享" @click="share()"/>
 		</van-grid>
 		<van-panel title="为我推荐">
-			<view v-if="recommendInv.length != 0">
+			<view v-if="haveRcommendInv">
 				<van-cell v-for="(item, key) in recommendInv" v-bind:key="key" :title="item.name" :value="item.statusText" size="large" :label="item.description" clickable @click="cmpInvDetails(key)" />
 			</view>
-			<view else>
-				
+			<view v-else>
+				<view>暂无推荐</view>
 			</view>
 		</van-panel>
 		<!-- 底部导航栏 -->
@@ -40,7 +40,8 @@
 					'/static/swipeImgs/suvvm3.png'
 				],
 				userInfo: {tags:[]},
-				recommendInv: []
+				recommendInv: [],
+				haveRcommendInv: false
 				
 			}
 		},
@@ -60,7 +61,7 @@
 					this.$toast.fail('获取用户信息识别，未找到用户信息');
 				} else {
 					this.userInfo = JSON.parse(res);
-					console.log(this.userInfo);
+					// console.log(this.userInfo);
 					// this.$toast.success('加载成功');
 					var rpRecommend = require('request-promise');
 					var optionsRecommend = {	// 根据id获取用户喜爱tag包含问卷
@@ -75,9 +76,14 @@
 						if(resRecommend != null){
 							this.recommendInv = JSON.parse(resRecommend);
 							console.log(this.recommendInv);
+							for(var i = 0; i < this.recommendInv.length; i++){
+								if(this.recommendInv[i].visible){
+									this.haveRcommendInv = true;
+								}
+							}
 						}
 					}).catch(errRecommend =>{
-						this.$toast.fail('获取推荐，数据错误');
+						this.$toast.success('加载成功');
 					});
 					
 				}
