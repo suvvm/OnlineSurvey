@@ -1,8 +1,12 @@
 <template>
 	<view>
-		<van-cell v-if="(invList.length - (currentPage * 5 - 5)) < 5" v-for="item of invList.length % 5" v-bind:key="item" :title="invList[item+listBg - 1].name" :value="invList[item+listBg-1].id" size="large" :label="invList[item+listBg-1].description" clickable @click="verifyInvDetails(item+listBg-1)" />
-		<van-cell v-else v-for="item of 5" v-bind:key="item" :title="invList[item+listBg - 1].name" :value="invList[item+listBg-1].id" size="large" :label="invList[item+listBg-1].description" clickable @click="verifyInvDetails(item+listBg-1)" />
-		
+		<view v-if="(invList.length - (currentPage * 5 - 5)) < 5">
+			<van-cell v-for="item of invList.length % 5" v-bind:key="item" :title="invList[item+listBg - 1].name" :value="invList[item+listBg-1].id" size="large" :label="invList[item+listBg-1].description" clickable @click="verifyInvDetails(item+listBg-1)" />
+		</view>
+		<view v-else>
+			<van-cell v-for="item of 5" v-bind:key="item" :title="invList[item+listBg - 1].name" :value="invList[item+listBg-1].id" size="large" :label="invList[item+listBg-1].description" clickable @click="verifyInvDetails(item+listBg-1)" />
+		</view>
+
 		<!-- <van-cell  v-if="(invList.length - (currentPage * 5 - 5)) < 5"  v-for="item of invList.length % 5" v-bind:key="item" >123</van-cell> -->
 		<van-pagination 
 		  v-model="currentPage" 
