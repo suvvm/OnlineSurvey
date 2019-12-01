@@ -1,91 +1,50 @@
 <template>
 	<view>
 		<van-cell-group>
-			<van-field
-				v-model="username"
-				label="用户名"
-				left-icon="contact"
-				placeholder="请输入用户名"
-			/>
-			<van-field
-				v-model="name"
-				label="姓名"
-				left-icon="user-circle-o"
-				placeholder="请输入真实姓名"
-			/>
-			<van-field
-				v-model="email"
-				label="邮箱"
-				left-icon="free-postage"
-				disabled
-				placeholder="请输入电子邮箱"
-			/>
-			<van-field
-				v-model="pnum"
-				label="手机号"
-				left-icon="phone-o"
-				placeholder="请输入手机号"
-				disabled
-				:error-message="errpnum"
-			/>		
-			<van-field
-				v-model="password"
-				label="密码"
-				type="password"
-				left-icon="label-o"
-				placeholder="请输入6-20位密码"
-				maxlength="20"
-					
-			/>
-			<van-field
-				v-model="password1"
-				type="password"
-				label="确认密码"
-				left-icon="label-o"
-				placeholder="请再次输入密码"
-				input="onPswChanged"
-				maxlength="20"
-				:error-message="err"		
-				@blur="onPswChanged"		
-			/>						
+			<van-field v-model="username" label="用户名" left-icon="contact" placeholder="请输入用户名"/>
+			<van-field v-model="name" label="姓名" left-icon="user-circle-o" placeholder="请输入真实姓名"/>
+			<van-field v-model="email" label="邮箱" left-icon="free-postage" disabled placeholder="请输入电子邮箱"/>
+			<van-field v-model="pnum" label="手机号" left-icon="phone-o" placeholder="请输入手机号" disabled :error-message="errpnum"/>		
+			<van-field v-model="password" label="密码" type="password" left-icon="label-o" placeholder="请输入6-20位密码" maxlength="20"/>
+			<van-field v-model="password1" type="password" label="确认密码" left-icon="label-o" placeholder="请再次输入密码" input="onPswChanged" maxlength="20" :error-message="err"	@blur="onPswChanged"/>						
 		</van-cell-group>
+		<!-- 性别选择 -->
 		<van-cell-group>
 			<van-radio-group v-model="gender">
-			  <van-cell-group>
-			    <van-cell title="我是男性" clickable @click="gender = '0'">
-			      <van-radio slot="right-icon" name="0" />
-			    </van-cell>
-			    <van-cell title="我是女性" clickable @click="gender = '1'">
-			      <van-radio slot="right-icon" name="1" />
-			    </van-cell>
-			  </van-cell-group>
+				<van-cell-group>
+					<van-cell title="我是男性" clickable @click="gender = '0'">
+						<van-radio slot="right-icon" name="0" />
+					</van-cell>
+					<van-cell title="我是女性" clickable @click="gender = '1'">
+						<van-radio slot="right-icon" name="1" />
+					</van-cell>
+				</van-cell-group>
 			</van-radio-group>
 		</van-cell-group>
+		<!-- 发送验证码，间隔60秒 -->
 		<van-cell-group>
-			<van-field
-				v-model="sms"
-				center
-				clearable
-				label="短信验证码"
-				left-icon="chat-o"
-				placeholder="请输入短信验证码">
+			<van-field v-model="sms" center clearable label="短信验证码" left-icon="chat-o" placeholder="请输入短信验证码">
 				<van-button slot="button" size="small" :disabled="disabled" @click="sentIdentify" type="primary">
 					<block v-if="count == 60">发送验证码</block>
 					<block v-else>
 						{{count}}
 					</block>
-					</van-button>
+				</van-button>
 			</van-field>
 		</van-cell-group>
-		<text v-if="imgfile != avatar">两张图片不同</text>
+		<!-- <text v-if="imgfile != avatar">两张图片不同</text> -->
+		<!-- 上传头像 -->
 		<van-cell-group>
 			<label>上传头像</label>
 			<van-uploader :after-read="afterReadAvatar" capture="camera"  multiple :max-count="1"/>
+			<!-- 根据base64码显示图片 -->
 			<img :src="'data:image/png;base64,'+avatar" class='innerImg'/>
 		</van-cell-group>
+		<!-- 上传人脸图 -->
 		<van-cell-group>
 			<label>人脸数据</label>
 			<van-uploader :after-read="afterReadFace" capture="camera"  multiple :max-count="1"/>
+			<!-- 根据base64码显示图片 -->
 			<img :src="'data:image/png;base64,'+imgfile" class='innerImg2'/>
 		</van-cell-group>
 		<van-button size="large" class="submit" type="info" @click="handleClick">提交修改</van-button>							
@@ -119,7 +78,7 @@
 		},
 		onLoad() {
 			var rp = require('request-promise');
-			var options = {
+			var options = {	// 根据id获取用户信息
 			    method: 'POST',
 			    uri: 'http://localhost:8080/getUserById',
 			    form: {

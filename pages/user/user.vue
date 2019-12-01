@@ -1,9 +1,10 @@
 <template>
 	<view class=''>
-
+		<!-- 以头像作为底部背景，在上方加遮罩层来美化界面 -->
 		<view class='detail-container' :style ="'background:url(data:image/png;base64,'+userInfo.avatar + ') no-repeat  center/cover'"></view>
 		<!--style='background: url(/testUserInfo/imgs/avatar.jpg) no-repeat  top/cover' -->
 		<view class='detail-mask'></view>
+		<!-- 显示用户基本信息 -->
 		<view class='detail-info'>
 			<img :src="'data:image/png;base64,'+userInfo.avatar" class='detail-img'/>
 			<!-- <img :src="'data:image/png;base64,'+imgfile" class="avatar"/> -->
@@ -17,32 +18,33 @@
 			</view>
 		</view>
 		
-		<!-- 判断公司用户 管理员 普通用户后再做具体实现 -->
+		<!-- 判断公司用户 管理员 普通用户后具体实现 -->
+		<!-- 管理员用户 -->
 		<van-cell-group v-if="userInfo.power == 2">
 			<van-cell title="审核调查" icon="todo-list-o" is-link />
 			<van-cell title="管理公司" icon="friends-o" is-link />
 			<van-cell title="管理用户" icon="user-o" is-link />
 		</van-cell-group>
-		
+		<!-- 公司用户 -->
 		<van-cell-group v-if="userInfo.power == 1">
 			<van-cell title="发布调查" icon="todo-list-o" is-link @click="toCreateInv()" />
 			<van-cell title="我的公司" icon="friends-o" is-link @click="toMyCmp()"/>
 			<van-cell title="管理调查" icon="orders-o" is-link @click="toCmpInv()"/>
 		</van-cell-group>
-		
+		<!-- 普通用户 -->
 		<van-cell-group v-if="userInfo.power == 0">
 			<van-cell title="我的调查" icon="description" is-link />
 		</van-cell-group>
-		
+		<!-- 全体用户通用 -->
 		<van-cell-group>
 			<van-cell title="修改个人信息" icon="records" is-link @click="toMdfUserInf()"/>
 		</van-cell-group>
-		
+		<!-- 全体用户通用 -->
 		<van-cell-group v-if="userInfo.power != 2">
 			<van-cell title="关于我们" icon="chat-o" is-link @click="toAboutUs()"/>
 			<van-cell title="退出登录" icon="down" is-link @click="logout()"/>
 		</van-cell-group>
-		
+		<!-- 底部导航栏 -->
 		<van-tabbar route>
 		  <van-tabbar-item icon="home-o" to="/home">首页</van-tabbar-item>
 		  <van-tabbar-item icon="search" to="/home">检索</van-tabbar-item>
@@ -61,14 +63,14 @@
 		},
 		onLoad() {
 			var rp = require('request-promise');
-			var options = {
+			var options = {	// 根据id获取用户包括头像与人脸数据的全部信息
 			    method: 'POST',
 			    uri: 'http://localhost:8080/getUserById',
 			    form: {
 			        id: this.$cookies.get("userInfo").id,
 			    }
 			};
-			rp(options).then(res => {
+			rp(options).then(res => {	// 请求成功
 				this.$toast.clear();
 				if(res == "error") {
 					this.$toast.fail('获取用户信息识别，未找到用户信息');
@@ -77,39 +79,39 @@
 					this.$toast.success('获取用户信息成功');
 				}
 				// console.log(this.note.backgroundImage)
-			}).catch(err => {
+			}).catch(err => {	// 请求失败
 				this.$toast.clear();
 				this.$toast.fail('获取用户信息, 请检查网络连接');
 				console.log(err);
 			});
 		},
 		methods: {
-			toCreateInv() {
+			toCreateInv() {	// 路由至发布调查页
 				this.$router.push({
 					path: '/pages/investigates/addInvestigates', 
 				});
 			},
-			toMyCmp() {
+			toMyCmp() {	// 路由至我的公司页
 				this.$router.push({
 					path: '/pages/Company/userCompany', 
 				});
 			},
-			toMdfUserInf() {
+			toMdfUserInf() {	// 路由至修改个人信息页
 				this.$router.push({
 					path: '/pages/user/mdfUser', 
 				});
 			},
-			toCmpInv() {
+			toCmpInv() {	// 路由至管理调查页
 				this.$router.push({
 					path: '/pages/investigates/allCmpInv', 
 				});
 			},
-			toAboutUs() {
+			toAboutUs() {	// 路由至关于我们页
 				this.$router.push({
 					path: '/pages/AboutUs/AboutUs', 
 				});
 			},
-			logout() {
+			logout() {	// 推出登录方法
 				this.$cookies.remove("userInfo");
 				this.$router.push({
 					path: '/pages/index/index', 
