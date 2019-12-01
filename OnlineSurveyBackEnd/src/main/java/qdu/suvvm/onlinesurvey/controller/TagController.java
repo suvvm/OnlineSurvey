@@ -11,8 +11,7 @@ import qdu.suvvm.onlinesurvey.mapper.TagMapper;
 import qdu.suvvm.onlinesurvey.pojo.Investigate;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassName: TagController
@@ -69,11 +68,25 @@ public class TagController {
             invList.removeAll(tag.getInvestigates());
             invList.addAll(tag.getInvestigates());
         }
-
+        invList = removeDuplicateAlarms(invList);
+        System.out.println(invList);
         if (!invList.isEmpty()) {
             return JSONArray.toJSONString(invList);
         } else {
             return "null";
         }
+    }
+    // 去重函数
+    private static List<Investigate> removeDuplicateAlarms(List<Investigate> alarms) {
+        Set<Investigate> set = new TreeSet<Investigate>(new Comparator<Investigate>() {
+            @Override
+            public int compare(Investigate o1, Investigate o2) {
+                return o1.getId().compareTo(o2.getId());
+            }
+        });
+        //为了保留最新，所以list需要使用reverse从后往前读取
+        Collections.reverse(alarms);
+        set.addAll(alarms);
+        return new ArrayList<Investigate>(set);
     }
 }
