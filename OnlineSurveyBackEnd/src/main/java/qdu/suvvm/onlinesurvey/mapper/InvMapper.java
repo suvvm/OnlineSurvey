@@ -17,6 +17,10 @@ public interface InvMapper {
 
     // 根据动态sql查询investigate
     @SelectProvider(type = InvMapperProvider.class, method = "findInv")
+    @Results({
+            @Result(property = "id", column = "id", id = true),
+            @Result(property = "tags", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.TagMapper.getTagByInvId"))
+    })
     public List<Investigate> getInvestigate(Investigate inv);
 
     // 根据id删除investigate
@@ -35,6 +39,10 @@ public interface InvMapper {
     // 根据用户id查询问卷
     @Select("select * from investigates where ownerid = #{id}")
     public Investigate getInvByUserId(Integer id);
+
+    // 根据Tagid查询问卷
+    @Select("select * from investigates i inner join invtag it on i.id = it.iid where it.tid=#{tid}")
+    public Investigate getInvByTagId(Integer tid);
 
     // 插入问卷tag映射关系
     @Insert("insert into invtag(iid,tid) values(#{inv.id},#{tag.id})")

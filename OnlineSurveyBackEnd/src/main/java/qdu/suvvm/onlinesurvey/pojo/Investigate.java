@@ -1,6 +1,7 @@
 package qdu.suvvm.onlinesurvey.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: SUVVM
@@ -14,6 +15,7 @@ public class Investigate {
     private String details;
     private User owner;
     private Date time;
+    private List<Tag> tags;
 
     public Integer getId() {
         return id;
@@ -71,6 +73,14 @@ public class Investigate {
         this.time = time;
     }
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public String toString() {
         return "Investigate{" +
@@ -81,6 +91,7 @@ public class Investigate {
                 ", details='" + details + '\'' +
                 ", owner=" + owner +
                 ", time=" + time +
+                ", tags=" + tags +
                 '}';
     }
 }

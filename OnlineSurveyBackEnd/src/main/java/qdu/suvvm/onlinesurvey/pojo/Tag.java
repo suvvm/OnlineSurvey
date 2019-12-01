@@ -11,6 +11,7 @@ public class Tag {
     private String name;
     private String description;
     private List<User> users;
+    private List<Investigate> investigates;
     public Integer getId() {
         return id;
     }
@@ -43,6 +44,14 @@ public class Tag {
         this.users = users;
     }
 
+    public List<Investigate> getInvestigates() {
+        return investigates;
+    }
+
+    public void setInvestigates(List<Investigate> investigates) {
+        this.investigates = investigates;
+    }
+
     @Override
     public String toString() {
         return "Tag{" +
@@ -50,6 +59,7 @@ public class Tag {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", users=" + users +
+                ", investigates=" + investigates +
                 '}';
     }
 }

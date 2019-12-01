@@ -2,6 +2,7 @@ package qdu.suvvm.onlinesurvey.mapper;
 
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
+import qdu.suvvm.onlinesurvey.pojo.Investigate;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
 import qdu.suvvm.onlinesurvey.pojo.User;
 
@@ -18,7 +19,8 @@ public interface TagMapper {
     @SelectProvider(type = TagMapperProvider.class, method = "findTag")
     @Results({
             @Result(property = "id", column = "id", id = true),
-            @Result(property = "users", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.UserMapper.getUserByTagId"))
+            @Result(property = "users", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.UserMapper.getUserByTagId")),
+            @Result(property = "investigates", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.InvMapper.getInvByTagId"))
     })
     public List<Tag> selectTags(Tag tag);
 
@@ -26,20 +28,28 @@ public interface TagMapper {
     @SelectProvider(type = TagMapperProvider.class, method = "findTag")
     public List<Tag> selectTagsWithoutUser(Tag tag);
 
-    // 根据tag id查询用户
+    // 根据用户id查询 tag
     @Select("select * from tags t inner join usertag ut on t.id=ut.tid where ut.uid=#{uid}")
     public Tag getTagByUserId(Integer uid);
+
+    // 根据问卷id查询 tag
+    @Select("select * from tags t inner join invtag it on t.id=it.tid where it.iid=#{iid}")
+    public Tag getTagByInvId(Integer iid);
 
     // 根据id删除tag
     @Delete("delete from tags where id = #{id}")
     public int deleteTagById(Integer id);
+
     // 插入tag
     @Options(useGeneratedKeys = true,keyProperty = "id")
     @Insert("insert into tags(name,description) values (#{name},#{description})")
     public int insertTag(Tag tag);
-    // 根据id更行tag
+
+    // 根据id更新tag
     @UpdateProvider(type = TagMapperProvider.class, method = "updateTag")
     public int updateTagById(Tag tag);
+
+
     /**
      * @ClassName: TagMapperProvider
      * @Description: tag动态sql的Provider类
