@@ -1,5 +1,6 @@
 package qdu.suvvm.onlinesurvey.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import qdu.suvvm.onlinesurvey.mapper.InvMapper;
 import qdu.suvvm.onlinesurvey.pojo.Investigate;
+import qdu.suvvm.onlinesurvey.pojo.Result;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
 import qdu.suvvm.onlinesurvey.pojo.User;
 import qdu.suvvm.onlinesurvey.utils.EmailUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -150,5 +153,20 @@ public class InvController {
         List<Investigate> invList = invMapper.getInvestigate(investigate);
         return JSONArray.toJSONString(invList);
 //        System.out.println("res!!!" + res);
+    }
+
+    @PostMapping("/getInvsByResults")
+    public String getHistoryByUId(@RequestParam("results") String reqResults) {
+        List<Result> results = JSONArray.parseArray(reqResults, Result.class);
+        List<Investigate> investigates = new ArrayList<>();
+        for(Result result : results) {
+            Investigate investigate = new Investigate();
+            investigate.setId(result.getIid());
+            investigates.addAll(invMapper.getInvestigate(investigate));
+        }
+        if(investigates.isEmpty()) {
+            return "null";
+        }
+        return JSONArray.toJSONString(investigates);
     }
 }
