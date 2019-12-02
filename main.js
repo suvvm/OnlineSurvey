@@ -4,7 +4,8 @@ import Vant from 'vant'
 import lrz from 'lrz'
 import VueCookies from 'vue-cookies'
 import pinyin from 'js-pinyin'
-
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 Vue.use(VueCookies)
 Vue.use(Vant)
 
