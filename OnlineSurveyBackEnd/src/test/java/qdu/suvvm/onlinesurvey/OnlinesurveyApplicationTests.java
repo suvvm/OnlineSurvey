@@ -14,9 +14,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import qdu.suvvm.onlinesurvey.mapper.CmpMapper;
+import qdu.suvvm.onlinesurvey.mapper.InvMapper;
 import qdu.suvvm.onlinesurvey.mapper.TagMapper;
 import qdu.suvvm.onlinesurvey.mapper.UserMapper;
 import qdu.suvvm.onlinesurvey.pojo.Company;
+import qdu.suvvm.onlinesurvey.pojo.Investigate;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
 import qdu.suvvm.onlinesurvey.pojo.User;
 
@@ -38,6 +40,9 @@ class OnlinesurveyApplicationTests {
 
     @Autowired
     private CmpMapper cmpMapper;
+
+    @Autowired
+    private InvMapper invMapper;
 
     @Test
     public void selectCmp() {
@@ -71,10 +76,20 @@ class OnlinesurveyApplicationTests {
     @Test
     public void selectUser() {
         User u = new User();
-        u.setName("江民民");
+        u.setId(100000003);
         List<User> users = userMapper.getUser(u);
         for(User user : users) {
-            System.out.println(user.toString());
+            System.out.println(user.getResults());
+        }
+    }
+
+    @Test
+    public void selectInv() {
+        Investigate investigate = new Investigate();
+        investigate.setId(300000002);
+        List<Investigate> investigates = invMapper.getInvestigate(investigate);
+        for(Investigate inv : investigates){
+            System.out.println(inv.getResults());
         }
     }
 
