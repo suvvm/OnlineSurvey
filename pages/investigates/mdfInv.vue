@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<van-button icon="share" size="large" type="primary" @click="submit()">提交审核</van-button>
+		<van-button v-if="investigate.visible" icon="plus" size="large" type="warning" @click="showRes()">查看结果</van-button>
 		<van-button icon="plus" size="large" type="info" @click="addTag()">新增问题</van-button>
 		<van-cell-group>
 			<van-field v-model="name" label="问卷名" placeholder="请输入问卷名" required />
@@ -199,6 +200,14 @@
 			confirmModify(key, type) {
 				this.showMdfQst = false;
 				this.$forceUpdate();
+			},
+			showRes() {
+				this.$router.push({
+					path: '/pages/investigates/invResult', 
+					query: {
+						invDetailsId: this.investigate.id
+					}
+				})
 			},
 			submit() {
 				this.$toast.loading({
