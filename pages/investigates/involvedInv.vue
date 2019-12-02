@@ -54,8 +54,8 @@
 			    method: 'POST',
 			    uri: 'http://localhost:8080/getInvestigate',
 			    form: {
-			        // id: this.$route.query.invDetailsId
-					id: 300000002
+			        id: this.$route.query.invDetailsId
+					// id: 300000002
 			    }
 			};
 			rp(options).then(res => {
