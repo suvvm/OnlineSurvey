@@ -19,7 +19,8 @@ public interface UserMapper {
             @Result(property = "id", column = "id", id = true),
             @Result(property = "tags", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.TagMapper.getTagByUserId")),
             @Result(property = "company", column = "id", one = @One(select = "qdu.suvvm.onlinesurvey.mapper.CmpMapper.getCompanyByUserId")),
-            @Result(property = "investigates", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.InvMapper.getInvByUserId"))
+            @Result(property = "investigates", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.InvMapper.getInvByUserId")),
+            @Result(property = "results", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.ResultMapper.getResultByUId"))
     })
     public List<User> getUser(User user);
 

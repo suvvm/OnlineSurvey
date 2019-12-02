@@ -16,6 +16,7 @@ public class Investigate {
     private User owner;
     private Date time;
     private List<Tag> tags;
+    private List<Result> results;
 
     public Integer getId() {
         return id;
@@ -81,6 +82,14 @@ public class Investigate {
         this.tags = tags;
     }
 
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
+
     @Override
     public String toString() {
         return "Investigate{" +
@@ -92,6 +101,7 @@ public class Investigate {
                 ", owner=" + owner +
                 ", time=" + time +
                 ", tags=" + tags +
+                ", results=" + results +
                 '}';
     }
 }

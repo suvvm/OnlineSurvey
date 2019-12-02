@@ -19,7 +19,8 @@ public interface InvMapper {
     @SelectProvider(type = InvMapperProvider.class, method = "findInv")
     @Results({
             @Result(property = "id", column = "id", id = true),
-            @Result(property = "tags", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.TagMapper.getTagByInvId"))
+            @Result(property = "tags", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.TagMapper.getTagByInvId")),
+            @Result(property = "results", column = "id", many = @Many(select = "qdu.suvvm.onlinesurvey.mapper.ResultMapper.getResultByIId"))
     })
     public List<Investigate> getInvestigate(Investigate inv);
 
@@ -100,7 +101,7 @@ public interface InvMapper {
                         SET("details = #{details}");
                     }
                     if(inv.getTime() != null) {
-                        SET("time = #{time}");
+                        SET("time =#{time}");
                     }
                     WHERE("id = #{id}");
                 }

@@ -21,6 +21,7 @@ public class User {
     private Company company;
     private List<Tag> tags;
     private List<Investigate> investigates;
+    private List<Result> results;
 
     public Integer getId() {
         return id;
@@ -114,6 +115,14 @@ public class User {
 
     public void setInvestigates(List<Investigate> investigates) { this.investigates = investigates; }
 
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -130,6 +139,7 @@ public class User {
                 ", company=" + company +
                 ", tags=" + tags +
                 ", investigates=" + investigates +
+                ", results=" + results +
                 '}';
     }
 }
