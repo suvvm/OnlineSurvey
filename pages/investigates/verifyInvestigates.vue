@@ -8,12 +8,7 @@
 		</view>
 
 		<!-- <van-cell  v-if="(invList.length - (currentPage * 5 - 5)) < 5"  v-for="item of invList.length % 5" v-bind:key="item" >123</van-cell> -->
-		<van-pagination 
-		  v-model="currentPage" 
-		  :total-items="invList.length" 
-		  :items-per-page="5"
-		  @change="onPaginationChanged()"
-		/>
+		<van-pagination  v-model="currentPage" :total-items="invList.length" :items-per-page="5" @change="onPaginationChanged()"/>
 	</view>
 </template>
 
