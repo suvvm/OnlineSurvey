@@ -52,7 +52,7 @@
 					var rp = require('request-promise');
 					var options = {
 						method: 'POST',
-						uri: 'http://localhost:8080/fVerify',
+						uri: 'http://101.201.70.76:8211/fVerify',
 						form: { 
 							pnum: this.pnum,
 							content_1: rst.base64.slice(23)

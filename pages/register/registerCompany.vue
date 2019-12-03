@@ -67,7 +67,7 @@
 				var rp = require('request-promise');
 				var options = {
 				    method: 'POST',
-				    uri: 'http://localhost:8080/insertCmp',
+				    uri: 'http://101.201.70.76:8211/insertCmp',
 				    form: {
 				        name: this.name,
 						forms: this.forms,

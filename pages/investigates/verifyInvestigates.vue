@@ -33,7 +33,7 @@
 			}
 			var rp = require('request-promise');
 			// 获取所有tag
-			rp('http://localhost:8080/getInvisibleInv').then(res => {
+			rp('http://101.201.70.76:8211/getInvisibleInv').then(res => {
 				// 获取所有Tag成功
 				this.invList = JSON.parse(res);
 				console.log(this.invList);

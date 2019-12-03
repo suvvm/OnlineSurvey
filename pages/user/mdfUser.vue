@@ -80,7 +80,7 @@
 			var rp = require('request-promise');
 			var options = {	// 根据id获取用户信息
 			    method: 'POST',
-			    uri: 'http://localhost:8080/getUserById',
+			    uri: 'http://101.201.70.76:8211/getUserById',
 			    form: {
 			        id: this.$cookies.get("userInfo").id,
 			    }
@@ -173,7 +173,7 @@
 				// 以表单形式向后端SmsController发送post请求
 				var options = {
 					method: 'POST',
-					uri: 'http://localhost:8080/getSms',
+					uri: 'http://101.201.70.76:8211/getSms',
 					form: {
 						// 发送手机号和验证码格式化的json串
 						mobile: this.pnum,
@@ -233,7 +233,7 @@
 				var rp = require('request-promise');
 				var options = {
 					method: 'POST',
-					uri: 'http://localhost:8080/updateUser',
+					uri: 'http://101.201.70.76:8211/updateUser',
 					form: {
 						// 模拟表单的形式向UserController发送insertUser请求
 						id: this.userInfo.id,
@@ -248,16 +248,8 @@
 				rp(options).then(res => {
 					// POST succeeded...
 					this.$toast.clear();
-					this.$toast.fail('注册成功！');
-					// 以对应用户信息构建JSONObject
-					var userInfo = {"username":this.username,"name":this.name,"pnum":this.pnum,
-					"email":this.email,"gender":this.gender,"power":this.power};
-					// 存cookies
-					this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
-					// 跳转到角色选择页
-					this.$router.push({
-						path: '/pages/register/registerRole', 
-					})
+					this.$toast.fail('修改成功！');
+
 					console.log(res)
 				}).catch(err => {
 					this.$toast.clear();

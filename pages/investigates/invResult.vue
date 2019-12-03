@@ -1,21 +1,16 @@
 <template>
 	<view>
 		<van-button type="info" size="large" @click="drawLine()">显示结果</van-button>
-		
-		
 		<view v-for="(item,key) in details" :key="key">
-			
 			<van-panel v-if="item.type == 0"  :title="item.stem" status="选择题">
 				<view v-for="(opt,num) in item.options" :key="num">
 					<van-field :value="opt.value" :label="opt.option" disabled/>
 				</view>
 				<view :id="'myChart'+key" :style="{width: '100%', height: '300px'}"></view>
 			</van-panel>
-			
 			<view v-else-if="item.type == 1">
 				<van-panel :title="item.stem" status="简答题"></van-panel>
 				<view v-for="(opt,num) in ans[key]" :key="num">
-					
 					<van-field v-if="show" :value="opt.value" disabled/>
 				</view>
 			</view>
@@ -53,7 +48,7 @@
 			var rp = require('request-promise');
 			var options = {
 			    method: 'POST',
-			    uri: 'http://localhost:8080/getInvestigate',
+			    uri: 'http://101.201.70.76:8211/getInvestigate',
 			    form: {
 			        // id: this.$route.query.invId
 					id: 300000002

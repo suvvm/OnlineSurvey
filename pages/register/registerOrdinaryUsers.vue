@@ -139,7 +139,7 @@
 			pinyin.setOptions({checkPolyphone: false, charCase: 0});
 			var rp = require('request-promise');
 			// 获取所有tag
-			rp('http://localhost:8080/getTags').then(res => {
+			rp('http://101.201.70.76:8211/getTags').then(res => {
 			        // 获取所有Tag成功
 					this.tags.list = JSON.parse(res);
 					for (var i = 0; i < this.tags.list.length; i++) {
@@ -184,7 +184,7 @@
 				var rp = require('request-promise');
 				var options = {
 				    method: 'POST',
-				    uri: 'http://localhost:8080/insertUserTag',
+				    uri: 'http://101.201.70.76:8211/insertUserTag',
 				    form: {
 						uid: this.userInfo.id,
 				        tags: resStr

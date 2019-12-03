@@ -115,7 +115,7 @@
 			}
 			var rp = require('request-promise');
 			// 获取所有tag
-			rp('http://localhost:8080/getTags').then(res => {
+			rp('http://101.201.70.76:8211/getTags').then(res => {
 				// 获取所有Tag成功
 				
 				this.tags = JSON.parse(res);

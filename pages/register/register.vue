@@ -188,7 +188,7 @@
 				// 以表单形式向后端SmsController发送post请求
 				var options = {
 					method: 'POST',
-					uri: 'http://localhost:8080/getSms',
+					uri: 'http://101.201.70.76:8211/getSms',
 					form: {
 						// 发送手机号和验证码格式化的json串
 						mobile: this.pnum,
@@ -227,7 +227,7 @@
 				var rp = require('request-promise');
 				var options = {
 					method: 'POST',
-					uri: 'http://localhost:8080/insertUser',
+					uri: 'http://101.201.70.76:8211/insertUser',
 					form: {
 						// 模拟表单的形式向UserController发送insertUser请求
 						username: this.username,

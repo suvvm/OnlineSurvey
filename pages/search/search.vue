@@ -29,7 +29,7 @@
 				message: '加载中'
 			});
 			var rp = require('request-promise');
-			rp('http://localhost:8080/getVisibleInv').then(res => {	// 请求成功
+			rp('http://101.201.70.76:8211/getVisibleInv').then(res => {	// 请求成功
 				this.$toast.clear();
 				if(res == "error") {
 					this.$toast.fail('获取问卷失败，未找到问卷信息');

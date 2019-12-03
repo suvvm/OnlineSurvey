@@ -126,7 +126,7 @@
 			var rp = require('request-promise');
 			var options = {
 			    method: 'POST',
-			    uri: 'http://localhost:8080/getInvestigate',
+			    uri: 'http://101.201.70.76:8211/getInvestigate',
 			    form: {
 			        id: this.$route.query.invId
 					// id: 300000002
@@ -228,7 +228,7 @@
 				var rp = require('request-promise');	
 				var options = {
 					method: 'POST',
-					uri: 'http://localhost:8080/mdfInvestigate',
+					uri: 'http://101.201.70.76:8211/mdfInvestigate',
 					form: {
 						id: this.investigate.id,
 						description: this.description,

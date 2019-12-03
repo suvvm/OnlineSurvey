@@ -22,19 +22,15 @@
 		<!-- 管理员用户 -->
 		<van-cell-group v-if="userInfo.power == 2">
 			<van-cell title="审核调查" icon="todo-list-o" is-link @click="toInvolvedInv()"/>
-			<van-cell title="管理公司" icon="friends-o" is-link />
+			<van-cell title="全部公司" icon="friends-o" is-link @click="toAllCmp()"/>
 			<van-cell title="管理标签" icon="friends-o" is-link @click="toMdfTag()"/>
-			<van-cell title="管理用户" icon="user-o" is-link />
+			<van-cell title="管理用户" icon="user-o" is-link @click="toAllUser()"/>
 		</van-cell-group>
 		<!-- 公司用户 -->
 		<van-cell-group v-if="userInfo.power == 1">
 			<van-cell title="发布调查" icon="todo-list-o" is-link @click="toCreateInv()" />
 			<van-cell title="我的公司" icon="friends-o" is-link @click="toMyCmp()"/>
 			<van-cell title="管理调查" icon="orders-o" is-link @click="toCmpInv()"/>
-		</van-cell-group>
-		<!-- 普通用户 -->
-		<van-cell-group v-if="userInfo.power == 0">
-			<van-cell title="我的调查" icon="description" is-link />
 		</van-cell-group>
 		<!-- 全体用户通用 -->
 		<van-cell-group>
@@ -68,7 +64,7 @@
 			var rp = require('request-promise');
 			var options = {	// 根据id获取用户包括头像与人脸数据的全部信息
 			    method: 'POST',
-			    uri: 'http://localhost:8080/getUserById',
+			    uri: 'http://101.201.70.76:8211/getUserById',
 			    form: {
 			        id: this.$cookies.get("userInfo").id,
 			    }
@@ -128,6 +124,16 @@
 				this.$cookies.remove("userInfo");
 				this.$router.push({
 					path: '/pages/index/index', 
+				});
+			},
+			toAllCmp() {
+				this.$router.push({
+					path: '/pages/Company/allCompany', 
+				});
+			},
+			toAllUser() {
+				this.$router.push({
+					path: '/pages/user/allUsers', 
 				});
 			}
 		}

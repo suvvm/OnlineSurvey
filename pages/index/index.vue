@@ -26,7 +26,7 @@
 		<van-cell-group class="btnGroup">
 			<van-button plain class="submit" type="primary"  size="large" @click="toRegister" hairline >立刻注册</van-button>
 			<van-button class="submit" type="primary"  size="large" @click="handleClick">确定</van-button>
-			<van-button plain class="submit" type="primary"  size="large" @click="toFVlogin" hairline>人脸识别登录</van-button>
+			<van-button plain class="submit" type="primary"  size="large" @click="toFVlogin" hairline>人脸识别</van-button>
 		</van-cell-group>
 	</view>
 </template>
@@ -46,7 +46,6 @@
 					path: '/pages/user/user'
 				})
 			}
-	
 		},
 		methods: {
 			toFVlogin() {
@@ -71,7 +70,7 @@
 				var rp = require('request-promise');
 				var options = {
 				    method: 'POST',
-				    uri: 'http://localhost:8080/login',
+				    uri: 'http://101.201.70.76:8211/login',
 				    form: {
 				        username: this.username,
 						password: this.password
