@@ -72,6 +72,7 @@
         "usingComponents" : true
     },
     "h5" : {
-        "template" : "model.html"
+        "template" : "model.html",
+        "domain" : "101.201.70.76:8210"
     }
 }
