@@ -111,6 +111,12 @@
 				"navigationBarTitleText": "修改信息"
 			}
 		}
+		,{
+			"path" : "pages/user/allUsers",
+			"style" : {
+				"navigationBarTitleText": "管理用户"
+			}
+		}
         ,{
             "path" : "pages/user/user",
             "style" : {
@@ -162,6 +168,12 @@
             "path" : "pages/categories/categories",
             "style" : {
 				"navigationBarTitleText": "分类"
+			}
+        }
+        ,{
+            "path" : "pages/Company/allCompany",
+            "style" : {
+				"navigationBarTitleText": "全部公司"
 			}
         }
     ],
