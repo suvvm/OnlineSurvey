@@ -3,12 +3,14 @@ package qdu.suvvm.onlinesurvey.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.codec.digest.Md5Crypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import qdu.suvvm.onlinesurvey.mapper.UserMapper;
 import qdu.suvvm.onlinesurvey.pojo.User;
+import qdu.suvvm.onlinesurvey.utils.MD5;
 
 import javax.lang.model.element.NestingKind;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +39,7 @@ public class UserController {
     public String insertUser(HttpServletRequest request) {
         User user = new User();
         user.setUsername(request.getParameter("username"));
-        user.setPassword(request.getParameter("password"));
+        user.setPassword(MD5.getMd5(request.getParameter("password")));
         user.setName(request.getParameter("name"));
         user.setPnum(request.getParameter("pnum"));
         user.setEmail(request.getParameter("email"));
@@ -65,7 +67,7 @@ public class UserController {
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
         User user = new User();
         user.setUsername(username); // 以传入的信息作为用户名查询用户
-        user.setPassword(password);
+        user.setPassword(MD5.getMd5(password));
         List<User> users = userMapper.getUser(user);
         if (users.isEmpty()) {  // 以传入的信息作为电话查询用户
             user.setUsername(null);
@@ -135,7 +137,7 @@ public class UserController {
         String username = request.getParameter("username");
         String name = request.getParameter("name");
         String gender = request.getParameter("gender");
-        String password = request.getParameter("password");
+        String password = MD5.getMd5(request.getParameter("password"));
         String avatar = request.getParameter("avatar");
         String imgBase64 = request.getParameter("imgBase64");
         User user = new User();
@@ -162,5 +164,31 @@ public class UserController {
             return "success";
         }
         return "error";
+    }
+
+    @PostMapping("/getUsers")
+    public String getUsers(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "username", required = false) String username,
+                           @RequestParam(value = "name", required = false) String name, @RequestParam(value = "pnum", required = false) String pnum,
+                           @RequestParam(value = "email", required = false) String email, @RequestParam(value = "gender", required = false) String gender,
+                           @RequestParam(value = "power", required = false) String power) {
+        User user = new User();
+        if(id != null)
+            user.setId(Integer.parseInt(id));
+        if(username != null)
+            user.setUsername(username);
+        if(name != null)
+            user.setName(name);
+        if(pnum != null)
+            user.setPnum(pnum);
+        if(email != null)
+            user.setEmail(email);
+        if(gender != null)
+            user.setGender(gender);
+        if(power != null)
+            user.setPower(Integer.parseInt(power));
+        List<User> users = userMapper.getUser(user);
+        if(users.isEmpty())
+            return "null";
+        return JSONArray.toJSONString(users);
     }
 }
