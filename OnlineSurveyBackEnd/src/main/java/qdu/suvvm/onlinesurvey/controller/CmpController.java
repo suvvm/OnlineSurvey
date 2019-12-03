@@ -1,7 +1,9 @@
 package qdu.suvvm.onlinesurvey.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import qdu.suvvm.onlinesurvey.mapper.CmpMapper;
 import qdu.suvvm.onlinesurvey.mapper.UserMapper;
@@ -9,6 +11,7 @@ import qdu.suvvm.onlinesurvey.pojo.Company;
 import qdu.suvvm.onlinesurvey.pojo.User;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @ClassName: CmpController
@@ -45,7 +48,7 @@ public class CmpController {
 
         int res = 0;
         res = cmpMapper.insertCmp(company);
-        if (res >= 0) {
+        if (res > 0) {
             user.setPower(1);
             user.setCompany(company);
             userMapper.updateUserById(user);
@@ -81,6 +84,24 @@ public class CmpController {
             return "success";
         }
         return "error";
+    }
 
+    @PostMapping("/getCompanies")
+    public String getCompany(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "name", required = false) String name, @RequestParam(value = "ownerId", required = false) String ownerId) {
+        Company company = new Company();
+        if(id != null)
+            company.setId(Integer.parseInt(id));
+        if(name != null)
+            company.setName(name);
+        if(ownerId != null){
+            User user = new User();
+            user.setId(Integer.parseInt(ownerId));
+            company.setOwner(user);
+        }
+        List<Company> companies = cmpMapper.getCompanies(company);
+        if(companies.isEmpty()) {
+            return "null";
+        }
+        return JSONArray.toJSONString(companies);
     }
 }
