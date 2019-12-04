@@ -15,7 +15,7 @@
 		  />
 		</van-cell-group> 
 		<van-uploader :after-read="afterRead">
-		  <van-button class="submit" icon="photo"  type="primary" size="large" >人脸识别登录</van-button>
+		  <van-button class="submit" icon="photo"  type="primary" size="large" capture="camera">人脸识别登录</van-button>
 		</van-uploader>
 		<van-button class="submit"  plain hairline size="large"  @click="toRegister"  type="primary">立刻注册</van-button>
 	</view>
@@ -44,6 +44,11 @@
 					forbidClick: true,	// 禁用背景点击
 					message: '识别中'
 				});
+				if(this.pnum == '') {
+					this.$toast.clear();
+					this.$toast.fail('请输入必填信息');
+					return;
+				}
 				// 压缩图片
 				lrz(file.file, {
 					quality: 0.7 

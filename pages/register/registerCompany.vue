@@ -64,6 +64,17 @@
 					message: '提交中'
 				});
 				
+				if(this.name == '' || this.forms == '' || this.domain == '' || this.description == '') {
+					this.$toast.clear();
+					this.$toast.fail('请填写必填信息');
+					return;
+				}
+				if(this.userInfo == null) {
+					this.$toast.clear();
+					this.$toast.fail('为找到用户');
+					return;
+				}
+				
 				var rp = require('request-promise');
 				var options = {
 				    method: 'POST',
@@ -82,7 +93,7 @@
 					this.$cookies.set("userInfo", this.userInfo, 60 * 60  * 24 * 7);
 					this.$toast.success('提交成功');
 					this.$router.push({
-						path: '/pages/user/user', 
+						path: '/pages/register/registerCompleted', 
 					});
 					console.log(res)
 				}).catch(err => {

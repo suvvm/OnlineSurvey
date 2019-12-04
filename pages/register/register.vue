@@ -144,7 +144,7 @@
 					this.$toast.fail("上传失败")
 				})
 				this.avatar = file.content.slice(23);
-				console.log(file.content.slice(23));
+				// console.log(file.content.slice(23));
 			},
 			
 			afterReadFace(file) {
@@ -159,7 +159,7 @@
 					this.$toast.fail("上传失败")
 				})
 				this.imgfile = file.content.slice(23);
-				console.log(file.content.slice(23));
+				// console.log(file.content.slice(23));
 			},
 			sentIdentify() {
 				// 发送验证码按钮倒计时
@@ -204,7 +204,7 @@
 					}	
 				}).catch(err => {
 				    // POST 失败
-					console.log(err);
+					// console.log(err);
 					this.$toast.fail('发送失败，请检查网络连接');
 				});
 			},
@@ -215,11 +215,19 @@
 					message: '注册中'
 				});
 				
-				// if(this.sms != this.identifyCode || this.sms == ''){
-				// 	this.$toast.clear();
-				// 	this.$toast.fail('验证码错误，请准确填写验证码！');
-				// 	return;
-				// }
+				if(this.sms == '' || this.username == '' || this.password == '' || this.name == '' ||
+					this.pnum == '' || this.email == '' || this.avatar == '' || this.imgfile == '') {
+						this.$toast.clear();
+						this.$toast.fail('请填写必填信息');
+						return;
+					}
+				
+				
+				if(this.sms != this.identifyCode){
+					this.$toast.clear();
+					this.$toast.fail('验证码错误，请准确填写验证码！');
+					return;
+				}
 					
 				// console.log("username:" + this.username + "password:" 
 				// + this.password + " name:" + this.name + " pnum:" + this.pnum 
@@ -252,7 +260,7 @@
 					var userInfo = {"username":user.username,"name":user.name,"pnum":user.pnum,
 					"email":user.email,"gender":user.gender,"power":user.power,"id":user.id};
 					
-					console.log(userInfo);
+					// console.log(userInfo);
 					
 					// 存cookies
 					this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
@@ -260,12 +268,12 @@
 					this.$router.push({
 						path: '/pages/register/registerRole', 
 					})
-					console.log(res)
+					// console.log(res);
 				}).catch(err => {
 					this.$toast.clear();
 					this.$toast.fail('注册失败，请检查网络连接！');
 						// POST failed...
-					console.log(err)
+					// console.log(err);
 				});
 			}
 		}

@@ -2,26 +2,13 @@
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<van-cell-group class="uinfoGroup">
-			<van-field
-				v-model="username"
-				required
-				clearable
-				label="用户名"
-				right-icon="question-o"
-				placeholder="请输入用户名"
+			<van-field v-model="username" required clearable label="用户名"
+				right-icon="question-o" placeholder="请输入用户名"
 				@click-right-icon="$toast('可输入用户名手机号或邮箱')"
-				rows="1"
-				autosize
-			/>
+				rows="1" autosize />
 		</van-cell-group> 
 		<van-cell-group class="uinfoGroup">
-			<van-field
-				v-model="password"
-				type="password"
-				label="密	码"
-				placeholder="请输入密码"
-				required
-			/>
+			<van-field v-model="password" type="password" label="密	码" placeholder="请输入密码" required />
 		</van-cell-group>
 		<van-cell-group class="btnGroup">
 			<van-button plain class="submit" type="primary"  size="large" @click="toRegister" hairline >立刻注册</van-button>
@@ -65,7 +52,11 @@
 					message: '登录中'
 				});
 				
-				
+				if(this.username == '' || this.password == ''){
+					this.$toast.clear();
+					this.$toast.fail('请输入必填信息');
+					return;
+				}
 				
 				var rp = require('request-promise');
 				var options = {
