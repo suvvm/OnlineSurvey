@@ -24,6 +24,11 @@ public class TagController {
     @Autowired
     private TagMapper tagMapper;
 
+    /**
+     * @FunctionName: getTags
+     * @Description: 处理获取标签的请求
+     * @Return: 返回由取得的标签数据列表转换为的JSONString
+     */
     @GetMapping("/getTags")
     public String getTags() {
         Tag tag = new Tag();
@@ -31,52 +36,81 @@ public class TagController {
         return JSON.toJSONString(tags);
     }
 
+    /**
+     * @FunctionName: updateTags
+     * @Description: 处理添加、修改、删除标签的请求
+     * @Parameter:
+     *  add 客户机请求中要添加的标签信息
+     *  del 客户机请求中要删除的标签信息
+     *  mdf 客户机请求中要修改的标签信息
+     */
     @PostMapping("/updateTags")
     public void updateTags(@RequestParam(value = "add") String add, @RequestParam(value = "del") String del, @RequestParam(value = "mdf") String mdf) {
 //        System.out.println(add);
+        // 将添加标签的信息恢复为标签列表
         List<Tag> addTags = JSONArray.parseArray(add, Tag.class);
 //        System.out.println("addLen:" + addTags.size());
 //        System.out.println(del);
+        // 将删除标签的信息恢复为标签列表
         List<Tag> delTags = JSONArray.parseArray(del, Tag.class);
 //        System.out.println("delLen:" + delTags.size());
 //        System.out.println(mdf);
+        // 将修改标签的信息恢复为标签列表
         List<Tag> mdfTags = JSONArray.parseArray(mdf, Tag.class);
 //        System.out.println("mdfLen:" + mdfTags.size());
-        for(Tag tag : addTags) {
+        for(Tag tag : addTags) {    // 遍历添加标签列表添加标签
             tagMapper.insertTag(tag);
         }
-        for(Tag tag : delTags) {
+        for(Tag tag : delTags) {    // 遍历删除标签列表删除标签
             tagMapper.deleteTagById(tag.getId());
         }
-        for(Tag tag : mdfTags) {
+        for(Tag tag : mdfTags) {    // 遍历修改标签列表修改标签
             tagMapper.updateTagById(tag);
         }
     }
 
+    /**
+     * @FunctionName: getTagById
+     * @Description: 处理根据标签推荐问卷的请求
+     * @Parameter:
+     *  tagList 客户机请求中提供的标签列表
+     * @Return: 返回由取得的问卷数据列表转换为的JSONString
+     */
     @PostMapping("/getRecommendByTag")
     public String getTagById(@RequestParam("tagList") String tagList) {
+        // 将标签列表JSON串恢复为标签列表
         List<Tag> tags = JSONArray.parseArray(tagList, Tag.class);
+
         List<Tag> resTags = new ArrayList<>();
-        for(Tag tag : tags){
+        for(Tag tag : tags){    // 补全标签信息，由于标签与问卷为多对多映射，所以在补全信息的过程中可以获得该标签对应的问卷信息
             List<Tag> tmp =  tagMapper.selectTags(tag);
+            // 去重操作
             resTags.removeAll(tmp);
             resTags.addAll(tmp);
 //            invList.containsAll(tagMapper.selectTags(tag));
         }
         List<Investigate> invList = new ArrayList<>();
-        for(Tag tag : resTags){
+        for(Tag tag : resTags){ // 遍历补全后的标签信息 获取其对应问卷
+            // 由于数据结构太过复杂，所以这里去重可能失效，需要手动去重
             invList.removeAll(tag.getInvestigates());
             invList.addAll(tag.getInvestigates());
         }
-        invList = removeDuplicateAlarms(invList);
-        System.out.println(invList);
-        if (!invList.isEmpty()) {
+        invList = removeDuplicateAlarms(invList);   // 手动去重
+//        System.out.println(invList);
+        if (!invList.isEmpty()) {   // 推荐不为空
             return JSONArray.toJSONString(invList);
         } else {
             return "null";
         }
     }
-    // 去重函数
+
+    /**
+     * @FunctionName: removeDuplicateAlarms
+     * @Description: 问卷列表手动去重函数，根据id去重
+     * @Parameter:
+     *  alarms 要执行去重操作的问卷列表
+     * @Return: 返回去重后的问卷列表
+     */
     private static List<Investigate> removeDuplicateAlarms(List<Investigate> alarms) {
         Set<Investigate> set = new TreeSet<Investigate>(new Comparator<Investigate>() {
             @Override

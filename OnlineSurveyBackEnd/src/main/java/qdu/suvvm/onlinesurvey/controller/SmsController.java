@@ -25,10 +25,10 @@ import java.util.Map;
 public class SmsController {
 
     @Value("${privateInfo.accessKeyId}")
-    private String ak_id;
+    private String ak_id;   // 阿里ak_id配置在application-privateInfo中，由于是敏感数据并未上传
 
     @Value("${privateInfo.accessKeySecret}")
-    private String ak_secret;
+    private String ak_secret;   // 阿里ak_secret配置在application-privateInfo中，由于是敏感数据并未上传
 
     /**
      * @FunctionName: getSms

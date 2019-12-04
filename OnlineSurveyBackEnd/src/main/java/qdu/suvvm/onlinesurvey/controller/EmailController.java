@@ -14,22 +14,31 @@ import qdu.suvvm.onlinesurvey.utils.EmailUtil;
 
 /**
  * @ClassName: EmailController
- * @Description: TODO
+ * @Description: 邮件发送Controller
  * @Author: SUVVM
  * @Date: 2019/11/26 21:20
  */
 @RestController
 public class EmailController {
     @Value("${privateInfo.accessKeyId}")
-    private String ak_id;
+    private String ak_id;   // 阿里ak_id配置在application-privateInfo中，由于是敏感数据并未上传
 
     @Value("${privateInfo.accessKeySecret}")
-    private String ak_secret;
+    private String ak_secret;   // 阿里ak_secret配置在application-privateInfo中，由于是敏感数据并未上传
 
+    /**
+     * @FunctionName: sendEmail
+     * @Description: 处理发送邮件请求
+     * @Parameter:
+     *  email 客户机请求中要接收邮件的邮箱地址
+     *  title 客户机请求中邮件标题
+     *  body 客户机请求中邮件内容
+     * @Return: 成功返回"success"，失败返回"error"
+     */
     @PostMapping("/sendEmail")
     public String sendEmail(@RequestParam("email") String email, @RequestParam("title") String title, @RequestParam("body") String body) {
         EmailUtil emailUtil = new EmailUtil();
-        if(emailUtil.sendEmail(email, title, body, ak_id, ak_secret)) {
+        if(emailUtil.sendEmail(email, title, body, ak_id, ak_secret)) { // 发送邮件
             return "success";
         }
         return "error";

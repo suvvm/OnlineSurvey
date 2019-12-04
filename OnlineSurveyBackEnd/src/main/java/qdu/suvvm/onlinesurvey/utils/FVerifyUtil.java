@@ -18,7 +18,7 @@ import java.util.Locale;
 
 /**
  * @ClassName: FVerifyUtil
- * @Description: TODO
+ * @Description: 人脸识别
  * @Author: SUVVM
  * @Date: 2019/11/18 22:22
  */

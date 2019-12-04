@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * @ClassName: MD5
- * @Description: TODO
+ * @Description: MD5加密
  * @Author: SUVVM
  * @Date: 2019/11/19 19:24
  */

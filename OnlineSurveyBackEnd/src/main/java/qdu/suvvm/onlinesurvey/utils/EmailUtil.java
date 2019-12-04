@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @ClassName: EmailUtil
- * @Description: TODO
+ * @Description: 发送邮件
  * @Author: SUVVM
  * @Date: 2019/11/28 20:48
  */

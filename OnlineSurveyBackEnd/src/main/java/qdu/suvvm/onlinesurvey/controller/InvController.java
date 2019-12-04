@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * @ClassName: InvController
- * @Description: TODO
+ * @Description: 处理问卷相关请求
  * @Author: SUVVM
  * @Date: 2019/11/27 21:00
  */
@@ -32,13 +32,21 @@ public class InvController {
     private InvMapper invMapper;
 
     @Value("${privateInfo.accessKeyId}")
-    private String ak_id;
+    private String ak_id;    // 阿里ak_id配置在application-privateInfo中，由于是敏感数据并未上传
 
     @Value("${privateInfo.accessKeySecret}")
-    private String ak_secret;
+    private String ak_secret;   // 阿里ak_secret配置在application-privateInfo中，由于是敏感数据并未上传
 
+    /**
+     * @FunctionName: insertInvestigate
+     * @Description: 处理插入问卷的请求
+     * @Parameter:
+     *  request 客户机请求
+     * @Return: 成功返回"success"，失败返回"error"
+     */
     @PostMapping("/insertInvestigate")
     public String insertInvestigate(HttpServletRequest request) {
+        // 获取客户机请求数据
         String details = request.getParameter("invDetails");
         String tags = request.getParameter("tags");
         String name = request.getParameter("name");
@@ -52,6 +60,7 @@ public class InvController {
 //        System.out.println(ownerId);
         List<Tag> tagList = JSONArray.parseArray(tags, Tag.class);
 
+        // 根据客户机请求数据初始化问卷信息
         Investigate investigate = new Investigate();
         investigate.setName(name);
         investigate.setDescription(description);
@@ -60,29 +69,42 @@ public class InvController {
         investigate.setOwner(owner);
         investigate.setTime(new Date());
 
-        int res = invMapper.insertInvestigate(investigate);
+        int res = invMapper.insertInvestigate(investigate); // 插入问卷
 
-        for (Tag tag : tagList) {
+        for (Tag tag : tagList) {   // 遍历标签列表添加问卷与标签对应关系
             invMapper.insertInvTag(investigate, tag);
         }
-        if(res > 0) {
+        if(res > 0) {   // 问卷表受影响行数大于0
             return "success";
         }
         return "error";
     }
 
+    /**
+     * @FunctionName: getInvisibleInv
+     * @Description: 处理获取未审核问卷的请求
+     * @Return: 返回由取得的数据转换为的JSONString
+     */
     @GetMapping("/getInvisibleInv")
     public String getInvisibleInv() {
         Investigate investigate = new Investigate();
-        investigate.setVisible(false);
-        List<Investigate> invList = invMapper.getInvestigate(investigate);
+        investigate.setVisible(false);  //未审核问卷
+        List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
         String res = JSONArray.toJSONString(invList);
 //        System.out.println("res!!!" + res);
         return res;
     }
 
+    /**
+     * @FunctionName: getInvestigate
+     * @Description: 处理获得问卷的请求
+     * @Parameter:
+     *  request 客户机请求
+     * @Return: 成功返回由取得的数据转换为的JSONString，数据为空返回"null"
+     */
     @PostMapping("/getInvestigate")
     public String getInvestigate(HttpServletRequest request) {
+        // 根据客户机请求初始化问卷信息
         Investigate investigate = new Investigate();
         if(request.getParameter("id") != null) {
             investigate.setId(Integer.parseInt(request.getParameter("id")));
@@ -95,28 +117,47 @@ public class InvController {
             owner.setId(Integer.parseInt(request.getParameter("ownerId")));
             investigate.setOwner(owner);
         }
-        List<Investigate> invList = invMapper.getInvestigate(investigate);
-        if(!invList.isEmpty()) {
+
+        List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
+        if(!invList.isEmpty()) {    // 结果不为空
             return JSONArray.toJSONString(invList);
         }
         return "null";
     }
 
+    /**
+     * @FunctionName: verifyInv
+     * @Description: 处理审核问卷的请求
+     * @Parameter:
+     *  id 客户机请求中的问卷id
+     *  flag 客户机请求中的审核信息
+     *  email 客户机请求中的用户邮箱
+     *  userName 客户机请求中的用户名
+     *  invName 客户机请求中的问卷
+     */
     @PostMapping("/verifyInv")
     public void verifyInv(@RequestParam("id") String id, @RequestParam("status") String flag, @RequestParam("email") String email, @RequestParam("username") String userName, @RequestParam("ivnName") String invName) {
-        if(flag == "0"){
+        if(flag == "0"){    // 如果审核未通过，向用户发送提示邮件
             EmailUtil emailUtil = new EmailUtil();
             emailUtil.sendEmail(email, "PopSurvey审核未通过", "尊敬的 " + userName + "，您的问卷 " + invName + " 审核未通过，请及时修改！", ak_id, ak_secret);
-        } else {
+        } else {    // 更新对应问卷visible属性为true
             Investigate investigate = new Investigate();
             investigate.setId(Integer.parseInt(id));
             investigate.setVisible(true);
-            invMapper.updateInvestigate(investigate);
+            invMapper.updateInvestigate(investigate);   // 更新问卷
         }
     }
 
+    /**
+     * @FunctionName: mdfInvestigate
+     * @Description: 处理修改问卷的请求
+     * @Parameter:
+     *  request 客户机请求
+     * @Return: 修改成功返回"success"，修改失败返回"error"
+     */
     @PostMapping("/mdfInvestigate")
     public String mdfInvestigate(HttpServletRequest request) {
+        // 根据客户机请求初始化问卷信息
         Investigate investigate = new Investigate();
         Integer id = Integer.parseInt(request.getParameter("id"));
         String description = request.getParameter("description");
@@ -133,36 +174,55 @@ public class InvController {
             investigate.setDetails(details);
         }
 //        System.out.println(investigate);
-        if(invMapper.updateInvestigate(investigate) > 0) {
+        if(invMapper.updateInvestigate(investigate) > 0) {  // 更新问卷判断受影响行数
             return "success";
         }
         return "error";
     }
 
+    /**
+     * @FunctionName: getAllInv
+     * @Description: 处理获取全部问卷的请求
+     * @Return: 返回全部问卷列表转换为的JSONString
+     */
     @GetMapping("/getAllInv")
     public String getAllInv() {
         Investigate investigate = new Investigate();
-        List<Investigate> invList = invMapper.getInvestigate(investigate);
+        List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
         return JSONArray.toJSONString(invList);
     }
 
+    /**
+     * @FunctionName: getVisibleInv
+     * @Description: 处理获取全部已审核问卷的请求
+     * @Return: 返回全部问卷列表转换为的JSONString
+     */
     @GetMapping("/getVisibleInv")
     public String getVisibleInv() {
         Investigate investigate = new Investigate();
         investigate.setVisible(true);
-        List<Investigate> invList = invMapper.getInvestigate(investigate);
+        List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
         return JSONArray.toJSONString(invList);
 //        System.out.println("res!!!" + res);
     }
 
+    /**
+     * @FunctionName: getHistoryByUId
+     * @Description: 处理根据作答获取问卷的请求
+     * @Parameter:
+     *  reqResults 客户机请求中的回答列表JSON串
+     * @Return: 返回问卷列表转换为的JSONString，数据为空返回null
+     */
     @PostMapping("/getInvsByResults")
     public String getHistoryByUId(@RequestParam("results") String reqResults) {
+        // 将回答列表恢复
         List<Result> results = JSONArray.parseArray(reqResults, Result.class);
+        // investigates记录要查询的问卷信息
         List<Investigate> investigates = new ArrayList<>();
-        for(Result result : results) {
+        for(Result result : results) {  // 遍历回答查询问卷
             Investigate investigate = new Investigate();
-            investigate.setId(result.getIid());
-            investigates.addAll(invMapper.getInvestigate(investigate));
+            investigate.setId(result.getIid()); //根据回答中的问卷id初始问卷信息
+            investigates.addAll(invMapper.getInvestigate(investigate)); // 查询问卷
         }
         if(investigates.isEmpty()) {
             return "null";
