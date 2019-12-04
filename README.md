@@ -538,3 +538,10 @@
 2019年12月4日 GMT+8 下午8:07	[打包为安卓app](https://github.com/suvvm/OnlineSurvey/commit/2d9e8427d47b05e648e7ab1fe8696833f82ea9e9)
 
 2019年12月4日 GMT+8 下午8:07	项目开发基本完成，进入调试阶段
+
+2019年12月4日 GMT+8 下午10:01	[删除计划表](https://github.com/suvvm/OnlineSurvey/commit/103d068ab4ed4e24b685688788831d56b55d3f30)
+
+2019年12月4日 GMT+8 下午10:01	[删除测试Controller](https://github.com/suvvm/OnlineSurvey/commit/11db3c49dc20d32dd233a181e4527a41998751c2)
+
+2019年12月4日 GMT+8 下午10:01	[完善后端注释](https://github.com/suvvm/OnlineSurvey/commit/cd84ad5d12a8780946b79557d8955cff4753be25)
+
