@@ -423,3 +423,118 @@
 
 2019年11月30日 GMT+8 下午10:14	[完成关于页面](https://github.com/suvvm/OnlineSurvey/commit/ef06d8ab70979f6fb7a25a53a0da71a7bc7675f6)
 
+2019年11月30日 GMT+8 下午11:26	[两登录页添加加载时判断登录状态跳转](https://github.com/suvvm/OnlineSurvey/commit/0317d8e11a64f8fa3c32950696d532865c64a2fa)
+
+2019年11月30日 GMT+8 下午11:27	[user 添加登出方法](https://github.com/suvvm/OnlineSurvey/commit/63cd08f35b537b7f2f7d7a926a04dc4139fd8d83)
+
+2019年12月1日 GMT+8 下午7:15	[UserController 修改插入用户返回数据](https://github.com/suvvm/OnlineSurvey/commit/22b01199bffc272e9d8e0e398e07d94417f3e344)
+
+2019年12月1日 GMT+8 下午7:15	[user 添加部分路由](https://github.com/suvvm/OnlineSurvey/commit/b0669f1f3ad34d177ee36c358bc052f5359e76b4)
+
+2019年12月1日 GMT+8 下午7:17	[verifyInvestigates 修正错误的分页方法](https://github.com/suvvm/OnlineSurvey/commit/9adf63c627ca5b13167bb6757e2cf9a2bcfd7053)
+
+2019年12月1日 GMT+8 下午7:17	[registerCompany 修改radio数据格式](https://github.com/suvvm/OnlineSurvey/commit/62bd8465de064df3da08da08b8d0f7553729a9db)
+
+2019年12月1日 GMT+8 下午7:20	[重命名rergisterCompany为registerCompany](https://github.com/suvvm/OnlineSurvey/commit/2c380001a9776ea3d01693600618a498571a1ecb)
+
+2019年12月1日 GMT+8 下午7:22	[添加测试用户静态头像与识别文件](https://github.com/suvvm/OnlineSurvey/commit/77d0f0b5b08eefb0065b916e8a10338991c136ec)
+
+2019年12月1日 GMT+8 下午7:24	[创建分类索引页categories](https://github.com/suvvm/OnlineSurvey/commit/05fcaf93dee645f62d529de7290100cd5f319809)
+
+2019年12月1日 GMT+8 下午7:25	[创建home页](https://github.com/suvvm/OnlineSurvey/commit/1c5090296be0c2c53aac406249c0a9512668e925)
+
+2019年12月1日 GMT+8 下午7:25	[创建搜索页](https://github.com/suvvm/OnlineSurvey/commit/a335bd6798e133da13c82c6350e5bda8f82f92b6)
+
+2019年12月1日 GMT+8 下午7:26	[将home search categories页注册至pages.json](https://github.com/suvvm/OnlineSurvey/commit/dae6cbc1658c393bc0ba777ac0984083a620927c)
+
+2019年12月1日 GMT+8 下午9:25	[完成tag与investigate多对多映射](https://github.com/suvvm/OnlineSurvey/commit/4955b5725747213af37c517bfcca14ca4157fb57)
+
+2019年12月1日 GMT+8 下午9:27	[TagController 添加处理推荐请求的方法](https://github.com/suvvm/OnlineSurvey/commit/50b7ff0e5b6710462801ffdd83a185dcf6a6372d)
+
+2019年12月1日 GMT+8 下午9:28	[部分完善home页](https://github.com/suvvm/OnlineSurvey/commit/6fc1fa54044ab6b5395e9809f8a62833d7da386a)
+
+2019年12月1日 GMT+8 下午9:28	[添加首页滚动图片组资源](https://github.com/suvvm/OnlineSurvey/commit/338f88f3c4b9f8cd706d1d596432c137f948f7cf)
+
+2019年12月1日 GMT+8 下午10:13	[新建并注册页面todayInv](https://github.com/suvvm/OnlineSurvey/commit/800f100620af107f35d22df067068016f8df26f4)
+
+2019年12月1日 GMT+8 下午10:14	[TagController 推荐请求添加去重方法](https://github.com/suvvm/OnlineSurvey/commit/3fdd172d4b0420db844d375b7b8d3057b9c4c618)
+
+2019年12月1日 GMT+8 下午10:15	[InvController 添加处理获取全部可见问卷与获取全部问卷请求的方法](https://github.com/suvvm/OnlineSurvey/commit/69ba32ede825d972b611b4f3801ce487b5cffdbc)
+
+2019年12月1日 GMT+8 下午10:15	[home 完成推荐功能](https://github.com/suvvm/OnlineSurvey/commit/89048679fd5460974e70d980ce848d9acc5c4403)
+
+2019年12月1日 GMT+8 下午10:33	[安装echarts](https://github.com/suvvm/OnlineSurvey/commit/9f03bc15857e363f1b5777b4d11ee2b9209ac5b9)
+
+2019年12月2日 GMT+8 下午10:14	[添加回答持久化类与mapper 建立用户与回答 问卷与回答的一对多映射](https://github.com/suvvm/OnlineSurvey/commit/e364215d838b08f75f5cff374c0a23c01def6a3d)
+
+2019年12月2日 GMT+8 下午10:15	[InvController 添加处理通过回答查找问卷请求的方法](https://github.com/suvvm/OnlineSurvey/commit/f1afe5bf492e81727e603e7522469833481192ff)
+
+2019年12月2日 GMT+8 下午10:16	[添加查找问卷的测试方法](https://github.com/suvvm/OnlineSurvey/commit/a085638fe5372766172d69e9432252edca3b465b)
+
+2019年12月2日 GMT+8 下午10:18	[创建并注册全部问卷页 历史页 我的回答页 问卷结果页](https://github.com/suvvm/OnlineSurvey/commit/2e7be63f83873337b5c0f79d3507aab113bf371e)
+
+2019年12月2日 GMT+8 下午10:18	[引用echarts](https://github.com/suvvm/OnlineSurvey/commit/d8a874bf45f50ecd40321dc0dc4b8a54c1b0be0b)
+
+2019年12月2日 GMT+8 下午10:19	[基本完成home页](https://github.com/suvvm/OnlineSurvey/commit/b8d2ce9daba06d52132821fef55b9e76c6862fa2)
+
+2019年12月2日 GMT+8 下午10:19	[基本完成查看今日问卷页](https://github.com/suvvm/OnlineSurvey/commit/1e8792635325468dac3cd53a6fc6af6f829c876a)
+
+2019年12月2日 GMT+8 下午10:20	[involvedInv 修正缩进](https://github.com/suvvm/OnlineSurvey/commit/892374ede8b9facc6d210e4b5963d8db752a28aa)
+
+2019年12月2日 GMT+8 下午10:21	[mdfInv 添加查看结果按钮](https://github.com/suvvm/OnlineSurvey/commit/651707ec63dbfcd13f518192dcdb7913b353e930)
+
+2019年12月2日 GMT+8 下午10:22	[verifyInvestigates 修正部分功能](https://github.com/suvvm/OnlineSurvey/commit/61261301d9ea68f92122daa0ea835568ff85f9af)
+
+2019年12月2日 GMT+8 下午10:22	[完成搜索功能](https://github.com/suvvm/OnlineSurvey/commit/b72913f4b5f8fb021e70cba131c7af48f0db70d6)
+
+2019年12月2日 GMT+8 下午10:23	[测试图表](https://github.com/suvvm/OnlineSurvey/commit/93373c1101bc6578f0a05e5fe992a901c33efdd7)
+
+2019年12月2日 GMT+8 下午10:23	[修改导航栏](https://github.com/suvvm/OnlineSurvey/commit/2e969c0e3e46589c6de26615f4cae7a821a3442f)
+
+2019年12月3日 GMT+8 下午7:54	[更新maven配置文件pox.xml](https://github.com/suvvm/OnlineSurvey/commit/2309b28516b443d4daf48f7001f199e89cbb679a)
+
+2019年12月3日 GMT+8 下午7:56	[CmpController 修正getCompany方法返回值](https://github.com/suvvm/OnlineSurvey/commit/d89eb7c186b3b8622099a0ae1ce09c8b70864d8b)
+
+2019年12月3日 GMT+8 下午7:57	[UserController 密码加密方式改为md5](https://github.com/suvvm/OnlineSurvey/commit/95f2290cca8dbe9604b79d99f75773a9d34e84d5)
+
+2019年12月3日 GMT+8 下午7:58	[application.yml 数据库配置改为服务配置 部署端口配置为8211](https://github.com/suvvm/OnlineSurvey/commit/affefd23f1bb234cc0251fec0cf7ed1cf7f413c3)
+
+2019年12月3日 GMT+8 下午8:00	[重新生成数据库sql文件并重命名为onlineSurvey.sql](https://github.com/suvvm/OnlineSurvey/commit/a28a422d41532f0cfc439fd9e4cd9f786e6eeb78)
+
+2019年12月3日 GMT+8 下午8:02	[更新数据请求连接为服务器相应地址](https://github.com/suvvm/OnlineSurvey/commit/e889c6587994cddaa6148c14ed10c6fa73fbe868)
+
+2019年12月3日 GMT+8 下午8:05	[创建并注册页面allCompany 与allUsers](https://github.com/suvvm/OnlineSurvey/commit/e1f28678ec899113440639537f7fcbd4d9039149)
+
+2019年12月3日 GMT+8 下午8:05	[生成部署文件](https://github.com/suvvm/OnlineSurvey/commit/7172ddc3c453895a6e5b686b676e0233fa6fd586)
+
+2019年12月4日 GMT+8 下午3:43	[UserController 创建处理提升用户权限请求的方法](https://github.com/suvvm/OnlineSurvey/commit/bde13521b65884b2e551d3c9d708fd55f3897387)
+
+2019年12月4日 GMT+8 下午3:43	后台工程打包上传服务器
+
+2019年12月4日 GMT+8 下午3:43	服务器后台功能启动
+
+2019年12月4日 GMT+8 下午3:44	[修正请求地址为后端服务器地址](https://github.com/suvvm/OnlineSurvey/commit/a2330cfedac91c45b4a00ef8c8b69edfeb1644e2)
+
+2019年12月4日 GMT+8 下午3:45	[添加空数据判断](https://github.com/suvvm/OnlineSurvey/commit/30690f235fd79d1ae7c9c119039aa19dda13bff2)
+
+2019年12月4日 GMT+8 下午3:47	[userCompany更新请求地址为后端服务器地址](https://github.com/suvvm/OnlineSurvey/commit/eeb5a62b4f87ebdd34509a729a950f47ecce989f)
+
+2019年12月4日 GMT+8 下午3:48	[allCmpInv添加下拉刷新方法](https://github.com/suvvm/OnlineSurvey/commit/0077fa47abc07ae0c2fc7fa4d2676a58ae516b08)
+
+2019年12月4日 GMT+8 下午3:49	[allUsers添加排序方法](https://github.com/suvvm/OnlineSurvey/commit/ef37a386de7ec43e5f6f6bf8a69a5150c0e22684)
+
+2019年12月4日 GMT+8 下午3:49	[user 管理员可以访问数据监控页](https://github.com/suvvm/OnlineSurvey/commit/2333e7e15f91fb68e4c5e0bcef3c35b3a7ce3d0a)
+
+2019年12月4日 GMT+8 下午3:50	[vue前端打包发布](https://github.com/suvvm/OnlineSurvey/commit/2fad845cd7f7b4d4133eb12a4d3a31f7629892e7)
+
+2019年12月4日 GMT+8 下午3:50	vue前端上传服务器
+
+2019年12月4日 GMT+8 下午3:50	配置服务器相关端口
+
+2019年12月4日 GMT+8 下午3:50	配置nginx
+
+2019年12月4日 GMT+8 下午7:45	[添加webApp打包工程](https://github.com/suvvm/OnlineSurvey/commit/d63b8e257eb4ee85d39ef7ad69b0f7e11fa45aea)
+
+2019年12月4日 GMT+8 下午8:07	[打包为安卓app](https://github.com/suvvm/OnlineSurvey/commit/2d9e8427d47b05e648e7ab1fe8696833f82ea9e9)
+
+2019年12月4日 GMT+8 下午8:07	项目开发基本完成，进入调试阶段
