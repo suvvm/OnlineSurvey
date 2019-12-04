@@ -25,6 +25,7 @@
 			<van-cell title="全部公司" icon="friends-o" is-link @click="toAllCmp()"/>
 			<van-cell title="管理标签" icon="friends-o" is-link @click="toMdfTag()"/>
 			<van-cell title="管理用户" icon="user-o" is-link @click="toAllUser()"/>
+			<van-cell title="数据监控" icon="browsing-history-o" is-link @click="toData()"/>
 		</van-cell-group>
 		<!-- 公司用户 -->
 		<van-cell-group v-if="userInfo.power == 1">
@@ -135,6 +136,9 @@
 				this.$router.push({
 					path: '/pages/user/allUsers', 
 				});
+			},
+			toData() {
+				window.location.href = 'http://101.201.70.76:8211/druid'; 
 			}
 		}
 	}
