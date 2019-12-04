@@ -191,4 +191,15 @@ public class UserController {
             return "null";
         return JSONArray.toJSONString(users);
     }
+
+    @PostMapping("/userEOP")
+    public String userEOP(@RequestParam(value = "id") String id, @RequestParam(value = "power") String power) {
+        User user = new User();
+        user.setId(Integer.parseInt(id));
+        user.setPower(Integer.parseInt(power));
+        if(userMapper.updateUserById(user) > 0) {
+            return "success";
+        }
+        return "error";
+    }
 }
