@@ -111,7 +111,7 @@
 				var rp = require('request-promise');
 				var options = {
 					method: 'POST',
-					uri: 'http://localhost:8080/updateCompany',
+					uri: 'http://101.201.70.76:8211/updateCompany',
 					form: {
 						id: this.userInfo.company.id,
 						name: this.mdfCompany.name,
