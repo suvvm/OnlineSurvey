@@ -8,7 +8,7 @@
 		
 		<van-grid class="grid">
 		  <van-grid-item class="gridItem" icon="clock-o" text="今日问卷" @click="toTodayInv()"/>
-		  <van-grid-item class="gridItem" icon="gold-coin-o" text="全部问卷" @click="toAllInv()"/>
+		  <van-grid-item class="gridItem" icon="orders-o" text="全部问卷" @click="toAllInv()"/>
 		  <van-grid-item class="gridItem" icon="todo-list-o" text="历史"  @click="toHistory()"/>
 		  <van-grid-item class="gridItem" icon="share" text="分享" @click="share()"/>
 		</van-grid>
@@ -53,7 +53,7 @@
 			var rp = require('request-promise');
 			var options = {	// 根据id获取用户包括头像与人脸数据的全部信息
 			    method: 'POST',
-			    uri: 'http://localhost:8080/getUserById',
+			    uri: 'http://101.201.70.76:8211/getUserById',
 			    form: {
 			        id: this.$cookies.get("userInfo").id,
 			    }
@@ -70,7 +70,7 @@
 					var rpRecommend = require('request-promise');
 					var optionsRecommend = {	// 根据id获取用户喜爱tag包含问卷
 					    method: 'POST',
-					    uri: 'http://localhost:8080/getRecommendByTag',
+					    uri: 'http://101.201.70.76:8211/getRecommendByTag',
 					    form: {
 					        tagList: JSON.stringify(this.userInfo.tags),
 					    }

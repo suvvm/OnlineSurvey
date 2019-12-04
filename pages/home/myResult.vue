@@ -48,7 +48,7 @@
 			var rp = require('request-promise');
 			var options = {
 			    method: 'POST',
-			    uri: 'http://localhost:8080/getInvestigate',
+			    uri: 'http://101.201.70.76:8211/getInvestigate',
 			    form: {
 			        id: this.$route.query.invDetailsId
 					// id: 300000002
@@ -56,7 +56,7 @@
 			};
 			var optionsuser = {
 			    method: 'POST',
-			    uri: 'http://localhost:8080/getUserById',
+			    uri: 'http://101.201.70.76:8211/getUserById',
 			    form: {
 			        id: this.$cookies.get("userInfo").id,
 			    }

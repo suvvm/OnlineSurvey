@@ -5,7 +5,7 @@
 				<van-cell v-for="item of todayInv.length % 5" is-link  v-bind:key="item" :title="todayInv[item+listBg - 1].name" size="large" :label="todayInv[item+listBg-1].description" clickable @click="toInvDetails(item+listBg-1)" />
 			</view>
 			<view v-else>
-				<van-cell v-for="item of 5" v-bind:key="item" is-link  :title="todayInv[item+listBg - 1].name" size="large" :label="todayInv[item+listBg-1].description" clickable @click="verifyInvDetails(item+listBg-1)" />
+				<van-cell v-for="item of 5" v-bind:key="item" is-link  :title="todayInv[item+listBg - 1].name" size="large" :label="todayInv[item+listBg-1].description" clickable @click="toInvDetails(item+listBg-1)" />
 			</view>
 			<van-pagination  v-model="currentPage" :total-items="todayInv.length" :items-per-page="5" @change="onPaginationChanged()"/>
 		</view>
@@ -37,7 +37,7 @@
 				message: '加载中'
 			});
 			var rp = require('request-promise');
-			rp('http://localhost:8080/getVisibleInv').then(res => {	// 请求成功
+			rp('http://101.201.70.76:8211/getVisibleInv').then(res => {	// 请求成功
 				this.$toast.clear();
 				if(res == "error") {
 					this.$toast.fail('获取问卷失败，未找到问卷信息');

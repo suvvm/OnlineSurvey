@@ -30,7 +30,7 @@
 			var rp = require('request-promise');
 			var options = {	// 根据id获取用户包括头像与人脸数据的全部信息
 			    method: 'POST',
-			    uri: 'http://localhost:8080/getUserById',
+			    uri: 'http://101.201.70.76:8211/getUserById',
 			    form: {
 			        id: this.$cookies.get("userInfo").id,
 			    }
@@ -47,7 +47,7 @@
 					
 					var optionsInv = {	// 根据id获取用户包括头像与人脸数据的全部信息
 						method: 'POST',
-						uri: 'http://localhost:8080/getInvsByResults',
+						uri: 'http://101.201.70.76:8211/getInvsByResults',
 						form: {
 							results: JSON.stringify(this.userInfo.results)
 						}
