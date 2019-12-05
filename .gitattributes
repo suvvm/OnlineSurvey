@@ -2,3 +2,5 @@
 *.css linguist-language=Vue
 *.js linguist-language=Vue
 *.java linguist-language=Vue
+*.sql linguist-language=Vue
+*.json linguist-language=Vue
