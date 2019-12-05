@@ -69,10 +69,11 @@
 				};
 				rp(options).then(res => {
 					this.$toast.clear();
-					if(res == null) {
+					if(res == "null") {
 						this.$toast.fail('用户名或密码错误');
 					} else {
 						var userInfo = JSON.parse(res);
+						console.log(userInfo);
 						this.$cookies.set("userInfo", userInfo, 60 * 60  * 24 * 7);
 						this.$toast.success('登录成功');
 						this.$router.push({
