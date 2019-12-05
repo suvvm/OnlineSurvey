@@ -195,7 +195,7 @@
 				var rp = require('request-promise');	
 				var options = {
 					method: 'POST',
-					uri: 'http://localhost:8080/insertInvestigate',
+					uri: 'http://101.201.70.76:8211/insertInvestigate',
 					form: {
 						description: this.description,
 						name: this.name,
