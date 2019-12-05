@@ -545,3 +545,37 @@
 
 2019年12月4日 GMT+8 下午10:01	[完善后端注释](https://github.com/suvvm/OnlineSurvey/commit/cd84ad5d12a8780946b79557d8955cff4753be25)
 
+2019年12月5日 GMT+8 下午7:58	[index 修正登录错误判断处理](https://github.com/suvvm/OnlineSurvey/commit/4ade8628816a89144b25fba96e87d9da5c665c2f)
+
+2019年12月5日 GMT+8 下午7:59	[addInvestigates 修正提交地址为服务器后端对应地址](https://github.com/suvvm/OnlineSurvey/commit/1f5c414b76b040c1e7a56e62bfac3bc75a6d5d9e)
+
+2019年12月5日 GMT+8 下午8:06	[前端重新打包](https://github.com/suvvm/OnlineSurvey/commit/4b9f9c2ff5134f4ae54212318676cfbed384826d)
+
+2019年12月5日 GMT+8 下午8:06	服务器前端内容更新
+
+## 6.项目使用
+
+- 可根据项目中的popSurvey.apk安装安卓客户端
+
+- 打包好的前端[index.zip](https://github.com/suvvm/OnlineSurvey/blob/master/unpackage/dist/build/h5/index.zip)可直接部署在nginx服务器中
+
+- 打包好的后端需要对应个人数据信息于数据库信息，并未上传
+- OnlineSurveyBackEnd为idea由idea中Spring Initializr生成的项目，可直接导入idea
+
+## 7.后端项目配置
+
+- 本项目使用数据库为mysql8.0 建库sql文件为目录下的 [onlineSurvey.sql](https://github.com/suvvm/OnlineSurvey/blob/master/onlineSurvey.sql)
+
+- OnlineSurveyBackEnd可直接导入idea
+
+- 导入后需要在[application.yml](https://github.com/suvvm/OnlineSurvey/blob/master/OnlineSurveyBackEnd/src/main/resources/application.yml)中修改对应数据库配置
+
+- 使用人脸识别、短信服务、邮件发送需在阿里云开通对应服务，并在[resources](https://github.com/suvvm/OnlineSurvey/tree/master/OnlineSurveyBackEnd/src/main/resources)中新建配置文件 application-privateInfo.yml
+
+  ```yaml
+  privateInfo:
+    accessKeyId: 阿里云ak_id
+    accessKeySecret: 阿里云ak_secret
+  ```
+
+  
