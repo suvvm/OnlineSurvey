@@ -2,9 +2,7 @@ package qdu.suvvm.onlinesurvey.mapper;
 
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.jdbc.SQL;
-import qdu.suvvm.onlinesurvey.pojo.Investigate;
 import qdu.suvvm.onlinesurvey.pojo.Tag;
-import qdu.suvvm.onlinesurvey.pojo.User;
 
 import java.util.List;
 

@@ -3,7 +3,6 @@ package qdu.suvvm.onlinesurvey.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.codec.digest.Md5Crypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,7 +11,6 @@ import qdu.suvvm.onlinesurvey.mapper.UserMapper;
 import qdu.suvvm.onlinesurvey.pojo.User;
 import qdu.suvvm.onlinesurvey.utils.MD5;
 
-import javax.lang.model.element.NestingKind;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
