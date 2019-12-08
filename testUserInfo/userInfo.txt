@@ -1,2 +1,35 @@
 userName: suvvm
 password: poiuytrewq
+power: 公司用户
+
+userName: suvam
+password: poiuytrewq
+power: 用户
+
+userName: suvbm
+password: poiuytrewq
+power: 用户
+
+userName: suvcm
+password: poiuytrewq
+power: 用户
+
+userName: suvdm
+password: poiuytrewq
+power: 用户
+
+userName: suvjm
+password: poiuytrewq
+power: 管理员
+
+userName: suvem
+password: poiuytrewq
+power: 公司用户
+
+serName: suvfm
+password: poiuytrewq
+power: 公司用户
+
+serName: suvhm
+password: poiuytrewq
+power: 公司用户
