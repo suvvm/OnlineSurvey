@@ -42,59 +42,66 @@
 			}
 		},
 		onLoad() {
+			this.$toast.loading({
+				duration: 0,	// 持续展示 toast
+				forbidClick: true,	// 禁用背景点击
+				message: '加载中'
+			});
 			var rp = require('request-promise');
-			var options = {
+			var options = {	// 根据用户id获取该用户全部信息
 			    method: 'POST',
 			    uri: 'http://101.201.70.76:8211/getUserById',
 			    form: {
 			        id: this.$cookies.get("userInfo").id,
 			    }
 			};
-			rp(options).then(res => {
+			rp(options).then(res => {	// 请求成功
 				this.$toast.clear();
 				if(res == "error") {
 					this.$toast.fail('获取用户信息识别，未找到用户信息');
 				} else {
-					this.userInfo = JSON.parse(res);
-					console.log(this.userInfo)
+					this.userInfo = JSON.parse(res);	// 以获得的json串构造用户
+					// console.log(this.userInfo);
 					this.$toast.success('获取用户信息成功');
 				}
 				// console.log(this.note.backgroundImage)
 			}).catch(err => {
 				this.$toast.clear();
 				this.$toast.fail('获取用户信息, 请检查网络连接');
-				console.log(err);
+				// console.log(err);
 			});
 		},
 		methods: {
-			showMdfPopup() {
-				if(this.mdfCompany.name == ""){
+			showMdfPopup() {	// 显示修改信息弹出层
+				if(this.mdfCompany.name == ""){	// 若为首次打开修改弹出层，将弹出层绑定数据信息更新为用户对应公司信息
 					this.mdfCompany.name = this.userInfo.company.name;
 					this.mdfCompany.forms = this.userInfo.company.forms;
 					this.mdfCompany.domain = this.userInfo.company.domain;
 					this.mdfCompany.description = this.userInfo.company.description;
 				}
-				this.showMdf = true;
+				this.showMdf = true;	// 显示修改信息弹出层
 			},
-			confirmMdf() {
-				this.modified = true;
-				this.$forceUpdate();
-				this.showMdf = false;
+			confirmMdf() {	// 确认修改
+				this.modified = true;	// 将修改标识改为true
+				this.$forceUpdate();	// 重新渲染页面
+				this.showMdf = false;	// 隐藏弹出层
 			},
-			cancelMdf() {
+			cancelMdf() {	// 撤销修改
+				// 将对应修改数据还原为修改前公司数据即可
 				this.mdfCompany.name = this.userInfo.company.name;
 				this.mdfCompany.forms = this.userInfo.company.forms;
 				this.mdfCompany.domain = this.userInfo.company.domain;
 				this.mdfCompany.description = this.userInfo.company.description;
-				this.modified = false;
-				this.$forceUpdate();
+				this.modified = false;	// 将修改标识改为fasle
+				this.$forceUpdate();	// 重新渲染页面
 			},
-			submit() {
+			submit() {	// 提交
 				this.$toast.loading({
 					duration: 0,	// 持续展示 toast
 					forbidClick: true,	// 禁用背景点击
 					message: '提交中'
 				});
+				// 判断对应修改公司属性是否与先前相同，若相同证明该属性未被修改，将其内容改为字符串"null"
 				if(this.mdfCompany.name == this.userInfo.company.name) {
 					this.mdfCompany.name = "null";
 				}
@@ -109,7 +116,7 @@
 				}
 				// console.log(this.mdfCompany);
 				var rp = require('request-promise');
-				var options = {
+				var options = {	// 更新公司请求配置
 					method: 'POST',
 					uri: 'http://101.201.70.76:8211/updateCompany',
 					form: {
@@ -120,17 +127,17 @@
 						description: this.mdfCompany.description
 					}
 				};
-				rp(options).then(res => {
+				rp(options).then(res => {	// 请求成功
 					this.$toast.clear();
 					if(res == "error") {
 						this.$toast.fail('提交失败，数据格式错误');
 					} else {
-						this.modified = false;
+						this.modified = false;	// 将修改标记更新为false
 						this.$toast.success('提交成功');
 					}
 				}).catch(err => {
 					this.$toast.success('提交失败，请检查网络连接');
-					console.log(err)
+					// console.log(err);
 				});
 				
 				

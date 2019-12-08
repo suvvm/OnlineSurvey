@@ -19,7 +19,7 @@
 			}
 		},
 		methods: {
-			toSuvvmBlog() {
+			toSuvvmBlog() {	// 跳转至作者博客
 				window.location.href = 'https://www.suvvm.work/'; 
 			}
 		}
