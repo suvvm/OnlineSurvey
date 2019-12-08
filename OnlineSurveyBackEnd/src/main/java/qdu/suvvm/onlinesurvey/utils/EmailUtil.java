@@ -6,7 +6,6 @@ import com.aliyuncs.dm.model.v20151123.SingleSendMailRequest;
 import com.aliyuncs.dm.model.v20151123.SingleSendMailResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
-import org.springframework.beans.factory.annotation.Value;
 
 /**
  * @ClassName: EmailUtil
