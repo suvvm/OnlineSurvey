@@ -68,11 +68,11 @@
 			});
 		},
 		methods: {
-			onPaginationChanged() {
+			onPaginationChanged() {	// 翻页
 				this.listBg = this.currentPage * 5 - 5;
 			},
 			toMyResult(key) {
-				this.$router.push({
+				this.$router.push({	// 根据问卷id路由至详细作答信息页
 					path: '/pages/home/myResult', 
 					query: {
 						invDetailsId: this.invList[key].id
