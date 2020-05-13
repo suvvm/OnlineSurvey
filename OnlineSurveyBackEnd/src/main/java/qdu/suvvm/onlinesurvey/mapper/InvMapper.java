@@ -33,6 +33,9 @@ public interface InvMapper {
     @Insert("insert into investigates(name,visible,description,details,ownerid,time) values(#{name},#{visible},#{description},#{details},#{owner.id},#{time})")
     public int insertInvestigate(Investigate inv);
 
+    @Insert("insert into investigates(id,name,visible,description,details,ownerid,time) values(#{id},#{name},#{visible},#{description},#{details},#{owner.id},#{time})")
+    public int insertInvestigateAllProperties(Investigate inv);
+
     // 根据id更新investigate
     @UpdateProvider(type = InvMapperProvider.class, method = "updateInv")
     public int updateInvestigate(Investigate inv);
@@ -48,6 +51,15 @@ public interface InvMapper {
     // 插入问卷tag映射关系
     @Insert("insert into invtag(iid,tid) values(#{inv.id},#{tag.id})")
     public int insertInvTag(Investigate inv, Tag tag);
+
+    // 插入问卷tag映射关系
+    @Insert("insert into invtag values(#{iid},#{tid})")
+    public int insertInvTagById(Integer iid, Integer tid);
+
+
+    // 删除问卷tag关系
+    @Delete("delete from invtag where iid=#{iid} and tid=#{tid}")
+    public int deleteInvTag(Integer iid, Integer tid);
 
     class InvMapperProvider{
         /**

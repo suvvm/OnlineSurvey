@@ -1,11 +1,14 @@
 package qdu.suvvm.onlinesurvey.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 /**
  * @Author: SUVVM
  * @Date: 2019/11/12 16:43
  */
+@Component
 public class User {
     private Integer id;
     private String username;
@@ -121,6 +124,21 @@ public class User {
 
     public void setResults(List<Result> results) {
         this.results = results;
+    }
+
+    public void reSetUser(Integer id, String username, String password, String name, String pnum, String email,
+                          String gender, String avatar, String imgbase64, Integer power, Company company) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.pnum = pnum;
+        this.email = email;
+        this.gender = gender;
+        this.avatar = avatar;
+        this.imgbase64 = imgbase64;
+        this.power = power;
+        this.company = company;
     }
 
     @Override

@@ -1,9 +1,11 @@
 <template>
-	
 	<view>
-	<view>66</view>
-	<div id="myChart" :style="{width: '100%', height: '300px'}"></div>
-
+		
+	<van-field
+		v-model="testText"
+		label="用户名"
+	/>
+	<van-button class="submit" type="primary"  size="large" @click="handleClick">确定</van-button>
 	</view>
 </template>
 
@@ -11,30 +13,23 @@
 	export default {
 		data () {
 			return {
-				
+				testText: ""
 			}
 		},
-		mounted(){
-			this.drawLine();
-		},
 		methods: {
-			drawLine(){
-				// 基于准备好的dom，初始化echarts实例
-				let myChart = this.$echarts.init(document.getElementById('myChart'),null,{ renderer: 'svg' })
-				// 绘制图表
-				// myChart.init(document,null,{ renderer : 'svg' });
-				myChart.setOption({
-					title: { text: '在Vue中使用echarts' },
-					tooltip: {},
-					xAxis: {
-						data: ["zjp","hjt","jzm","ysk","lxn","lsq"]
-					},
-					yAxis: {},
-					series: [{
-						name: 'nb',
-						type: 'bar',
-						data: [5, 20, 36, 10, 10, 20]
-					}]
+			handleClick() {
+				var rp = require('request-promise');
+				var options = {
+				    method: 'POST',
+				    uri: 'http://localhost:8080/testDemom/TestServlet',
+				    form: {
+				        testText: this.testText,
+				    }
+				};
+				rp(options).then(res => {	
+					console.log(res)
+				}).catch(err => {
+					console.log(err)
 				});
 			}
 		}

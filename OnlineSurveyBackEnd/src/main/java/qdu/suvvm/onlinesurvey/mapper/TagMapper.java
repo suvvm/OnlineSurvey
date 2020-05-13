@@ -43,6 +43,9 @@ public interface TagMapper {
     @Insert("insert into tags(name,description) values (#{name},#{description})")
     public int insertTag(Tag tag);
 
+    @Insert("insert into tags(id,name,description) values (#{id},#{name},#{description})")
+    public int insertTagAllProperties(Tag tag);
+
     // 根据id更新tag
     @UpdateProvider(type = TagMapperProvider.class, method = "updateTag")
     public int updateTagById(Tag tag);

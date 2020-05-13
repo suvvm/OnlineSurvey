@@ -30,6 +30,9 @@ public interface CmpMapper {
     @Insert("insert into companies(name,description,forms,domain,ownerid) values(#{name},#{description},#{forms},#{domain},#{owner.id})")
     public int insertCmp(Company cmp);
 
+    @Insert("insert into companies(id,name,description,forms,domain,ownerid) values(#{id},#{name},#{description},#{forms},#{domain},#{owner.id})")
+    public int insertCmpAllProperties(Company cmp);
+
     // 根据id更新company
     @UpdateProvider(type = CmpMapperProvider.class, method = "updateCmp")
     public int updateCmp(Company cmp);
@@ -64,6 +67,12 @@ public interface CmpMapper {
                     }
                     if(cmp.getOwner() != null) {
                         WHERE("ownerid = #{owner.id}");
+                    }
+                    if(cmp.getForms() != null) {
+                        WHERE("forms = #{forms}");
+                    }
+                    if(cmp.getDomain() != null) {
+                        WHERE("domain = #{domain}");
                     }
                 }
             }.toString();

@@ -1,11 +1,14 @@
 package qdu.suvvm.onlinesurvey.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 /**
  * @Author: SUVVM
  * @Date: 2019/11/12 16:58
  */
+@Component
 public class Tag {
     private Integer id;
     private String name;
@@ -50,6 +53,12 @@ public class Tag {
 
     public void setInvestigates(List<Investigate> investigates) {
         this.investigates = investigates;
+    }
+
+    public void reSetTag(Integer id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
     @Override

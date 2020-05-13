@@ -23,6 +23,9 @@ public interface ResultMapper {
     @Delete("delete from userresults where iid=#{iid}")
     public int deleteResultByIId(Integer iid);
 
+    @Delete("delete from userresults where iid=#{iid} and uid=#{uid}")
+    public int deleteResultByUidAndIId(Integer uid,Integer iid);
+
     // 插入investigate并获取自增id
     @Options(useGeneratedKeys = true, keyProperty = "id")
     @Insert("insert into userresults(uid,iid,ans) values(#{uid},#{iid},#{ans})")

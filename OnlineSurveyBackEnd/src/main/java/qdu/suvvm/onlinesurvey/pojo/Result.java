@@ -1,11 +1,14 @@
 package qdu.suvvm.onlinesurvey.pojo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @ClassName: Result
  * @Description: TODO
  * @Author: SUVVM
  * @Date: 2019/12/2 18:29
  */
+@Component
 public class Result {
     private Integer uid;
     private Integer iid;
@@ -32,6 +35,12 @@ public class Result {
     }
 
     public void setAns(String ans) {
+        this.ans = ans;
+    }
+
+    public void reSetResult(Integer uid, Integer iid, String ans) {
+        this.uid = uid;
+        this.iid = iid;
         this.ans = ans;
     }
 

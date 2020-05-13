@@ -37,6 +37,10 @@ public interface UserMapper {
     @Insert("insert into users(username,password,name,pnum,email,gender,avatar,imgbase64,power) values(#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power})")
     public int insertUser(User user);
 
+    // 非自增id插入user
+    @Insert("insert into users(id,username,password,name,pnum,email,gender,avatar,imgbase64,power) values(#{id},#{username},#{password},#{name},#{pnum},#{email},#{gender},#{avatar},#{imgbase64},#{power})")
+    public int insertUserAllProperties(User user);
+
     // 根据id更新user
     @UpdateProvider(type = UserMapperProvider.class, method = "updateUser")
     public int updateUserById(User user);
@@ -44,6 +48,10 @@ public interface UserMapper {
     // 添加user与tag关系
     @Insert("insert into usertag values(#{uid},#{tid})")
     public int insertUserTag(Integer uid, Integer tid);
+
+    // 删除user与tag关系
+    @Delete("delete from usertag where uid=#{uid} and tid=#{tid}")
+    public int deleteUserTag(Integer uid, Integer tid);
 
     // 添加user与inv的关系
     @Insert("insert into userresults values(#{uid},#{iid},#{ans})")

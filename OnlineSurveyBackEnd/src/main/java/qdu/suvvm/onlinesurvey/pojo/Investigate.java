@@ -1,5 +1,7 @@
 package qdu.suvvm.onlinesurvey.pojo;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +9,7 @@ import java.util.List;
  * @Author: SUVVM
  * @Date: 2019/11/12 16:54
  */
+@Component
 public class Investigate {
     private Integer id;
     private String name;
@@ -88,6 +91,16 @@ public class Investigate {
 
     public void setResults(List<Result> results) {
         this.results = results;
+    }
+
+    public void reSetInvestigate(Integer id, String name, Boolean visible, String description, String details, User owner, Date time) {
+        this.id = id;
+        this.name = name;
+        this.visible = visible;
+        this.description = description;
+        this.details = details;
+        this.owner = owner;
+        this.time = time;
     }
 
     @Override

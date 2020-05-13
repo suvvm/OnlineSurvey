@@ -1,9 +1,12 @@
 package qdu.suvvm.onlinesurvey.pojo;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @Author: SUVVM
  * @Date: 2019/11/12 16:52
  */
+@Component
 public class Company {
     private Integer id;
     private String name;
@@ -57,6 +60,15 @@ public class Company {
     }
 
     public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public void reSetCompany(Integer id, String name, String description, String forms, String domain, User owner) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.forms = forms;
+        this.domain = domain;
         this.owner = owner;
     }
 

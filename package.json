@@ -9,6 +9,7 @@
   "author": "suvvm",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^13.7.4",
     "echarts": "^4.5.0",
     "js-pinyin": "^0.1.9",
     "lrz": "^4.9.40",
