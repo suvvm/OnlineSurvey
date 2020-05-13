@@ -27,6 +27,12 @@ public class CmpController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private Company company;
+
+    @Autowired
+    private User user;
+
     /**
      * @FunctionName: insertCmp
      * @Description: 处理插入公司的请求
@@ -36,25 +42,35 @@ public class CmpController {
      */
     @PostMapping("/insertCmp")
     public String insertCmp(HttpServletRequest request) {
-        Company company = new Company();
-        company.setName(request.getParameter("name"));
-        company.setDescription(request.getParameter("description"));
-        company.setForms(request.getParameter("forms"));
-        company.setDomain(request.getParameter("domain"));
+        company.reSetCompany(null, null, null, null, null, null);
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
 
-        User user = new User();
-        user.setId(Integer.parseInt(request.getParameter("ownerid")));
-        company.setOwner(user);
+        try {
+            company.setName(request.getParameter("name"));
+            company.setDescription(request.getParameter("description"));
+            company.setForms(request.getParameter("forms"));
+            company.setDomain(request.getParameter("domain"));
 
-        int res = 0;
-        res = cmpMapper.insertCmp(company); // 插入公司
-        if (res > 0) {  // 受影响行数大于0
-            user.setPower(1);
-            user.setCompany(company);
-            userMapper.updateUserById(user);    // 更新用户权限
-            return "success";
+            // User user = new User();
+            user.setId(Integer.parseInt(request.getParameter("ownerid")));
+            company.setOwner(user);
+
+            int res = 0;
+            res = cmpMapper.insertCmp(company); // 插入公司
+            if (res > 0) {  // 受影响行数大于0
+                user.setPower(1);
+                user.setCompany(company);
+                userMapper.updateUserById(user);    // 更新用户权限
+                return "success";
+            }
+            return "error";
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
+            company.reSetCompany(null, null, null, null, null, null);
         }
-        return "error";
+
     }
 
     /**
@@ -66,33 +82,39 @@ public class CmpController {
      */
     @PostMapping("/updateCompany")
     public String updateCompany(HttpServletRequest request) {
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String forms = request.getParameter("forms");
-        String domain = request.getParameter("domain");
-        String description = request.getParameter("description");
-        Company company = new Company();
-        // 根据客户机请求数据初始化公司信息
-        company.setId(id);
-        if(!name.equals("null")) {
-            company.setName(name);
-        }
-        if(!forms.equals("null")) {
-            company.setForms(forms);
-        }
-        if(!domain.equals("null")) {
-            company.setDomain(domain);
-        }
-        if(!description.equals("null")) {
-            company.setDescription(description);
-        }
+        company.reSetCompany(null, null, null, null, null, null);
+        try {
+            Integer id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            String forms = request.getParameter("forms");
+            String domain = request.getParameter("domain");
+            String description = request.getParameter("description");
+
+            // 根据客户机请求数据初始化公司信息
+            company.setId(id);
+            if(!name.equals("null")) {
+                company.setName(name);
+            }
+            if(!forms.equals("null")) {
+                company.setForms(forms);
+            }
+            if(!domain.equals("null")) {
+                company.setDomain(domain);
+            }
+            if(!description.equals("null")) {
+                company.setDescription(description);
+            }
 
 //        System.out.println(company);
 //        return "success";
-        if(cmpMapper.updateCmp(company) > 0) {  // 更新公司受影响行数大于0
-            return "success";
+            if(cmpMapper.updateCmp(company) > 0) {  // 更新公司受影响行数大于0
+                return "success";
+            }
+            return "error";
+        } finally {
+            company.reSetCompany(null, null, null, null, null, null);
         }
-        return "error";
+
     }
 
     /**
@@ -106,22 +128,31 @@ public class CmpController {
      */
     @PostMapping("/getCompanies")
     public String getCompany(@RequestParam(value = "id", required = false) String id, @RequestParam(value = "name", required = false) String name, @RequestParam(value = "ownerId", required = false) String ownerId) {
-        Company company = new Company();
-        // 根据客户机数据初始化公司信息
-        if(id != null)
-            company.setId(Integer.parseInt(id));
-        if(name != null)
-            company.setName(name);
-        if(ownerId != null){
-            User user = new User();
-            user.setId(Integer.parseInt(ownerId));
-            company.setOwner(user);
+        company.reSetCompany(null, null, null, null, null, null);
+
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+
+        try { // 根据客户机数据初始化公司信息
+            if(id != null)
+                company.setId(Integer.parseInt(id));
+            if(name != null)
+                company.setName(name);
+            if(ownerId != null){
+                user.setId(Integer.parseInt(ownerId));
+                company.setOwner(user);
+            }
+            List<Company> companies = cmpMapper.getCompanies(company);  // 查询公司
+            if(companies.isEmpty()) {   // 查询后列表为空
+                return "null";
+            }
+            // fastJson 将companies转为JSONString
+            return JSONArray.toJSONString(companies);
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
+            company.reSetCompany(null, null, null, null, null, null);
         }
-        List<Company> companies = cmpMapper.getCompanies(company);  // 查询公司
-        if(companies.isEmpty()) {   // 查询后列表为空
-            return "null";
-        }
-        // fastJson 将companies转为JSONString
-        return JSONArray.toJSONString(companies);
+
     }
 }

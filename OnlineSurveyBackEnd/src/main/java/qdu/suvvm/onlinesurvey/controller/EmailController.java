@@ -1,5 +1,6 @@
 package qdu.suvvm.onlinesurvey.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,8 @@ public class EmailController {
     @Value("${privateInfo.accessKeySecret}")
     private String ak_secret;   // 阿里ak_secret配置在application-privateInfo中，由于是敏感数据并未上传
 
+    @Autowired
+    private EmailUtil emailUtil;
     /**
      * @FunctionName: sendEmail
      * @Description: 处理发送邮件请求
@@ -31,7 +34,6 @@ public class EmailController {
      */
     @PostMapping("/sendEmail")
     public String sendEmail(@RequestParam("email") String email, @RequestParam("title") String title, @RequestParam("body") String body) {
-        EmailUtil emailUtil = new EmailUtil();
         if(emailUtil.sendEmail(email, title, body, ak_id, ak_secret)) { // 发送邮件
             return "success";
         }

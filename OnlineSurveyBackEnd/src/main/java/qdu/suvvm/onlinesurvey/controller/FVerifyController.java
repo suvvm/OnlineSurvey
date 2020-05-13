@@ -30,6 +30,8 @@ public class FVerifyController {
     @Value("${privateInfo.accessKeySecret}")
     private String ak_secret;    // 阿里ak_secret配置在application-privateInfo中，由于是敏感数据并未上传
 
+    @Autowired
+    private User user;
     /**
      * @FunctionName: FVerify
      * @Description: 处理人脸识别的请求
@@ -40,9 +42,12 @@ public class FVerifyController {
      */
     @PostMapping(value = "/fVerify")
     public String FVerify(@RequestParam("pnum") String pnum, @RequestParam("content_1") String content_1) {
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+
         int type = 1;
         String url = "https://dtplus-cn-shanghai.data.aliyuncs.com/face/verify";
-        User user = new User();
+
         user.setPnum(pnum); // 将传入数据作为手机号查询用户
         List<User> users = userMapper.getUser(user);
         if (users.isEmpty()) {
@@ -78,6 +83,10 @@ public class FVerifyController {
             return res;
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
+
         }
 
         return "error";

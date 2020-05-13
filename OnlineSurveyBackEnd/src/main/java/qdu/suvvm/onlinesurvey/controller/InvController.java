@@ -30,6 +30,15 @@ public class InvController {
     @Autowired
     private InvMapper invMapper;
 
+    @Autowired
+    private User owner;
+
+    @Autowired
+    private Investigate investigate;
+
+    @Autowired
+    private EmailUtil emailUtil;
+
     @Value("${privateInfo.accessKeyId}")
     private String ak_id;    // 阿里ak_id配置在application-privateInfo中，由于是敏感数据并未上传
 
@@ -45,38 +54,48 @@ public class InvController {
      */
     @PostMapping("/insertInvestigate")
     public String insertInvestigate(HttpServletRequest request) {
+        owner.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+        investigate.reSetInvestigate(null,null,null,null,null,null,null);
         // 获取客户机请求数据
-        String details = request.getParameter("invDetails");
-        String tags = request.getParameter("tags");
-        String name = request.getParameter("name");
-        String description = request.getParameter("description");
-        Integer ownerId = Integer.parseInt(request.getParameter("ownerId"));
-        User owner = new User();
-        owner.setId(ownerId);
+        try {
+            String details = request.getParameter("invDetails");
+            String tags = request.getParameter("tags");
+            String name = request.getParameter("name");
+            String description = request.getParameter("description");
+            Integer ownerId = Integer.parseInt(request.getParameter("ownerId"));
+
+            owner.setId(ownerId);
 //        System.out.println(details);
 //        System.out.println(tags);
 //        System.out.println(name);
 //        System.out.println(ownerId);
-        List<Tag> tagList = JSONArray.parseArray(tags, Tag.class);
+            List<Tag> tagList = JSONArray.parseArray(tags, Tag.class);
 
-        // 根据客户机请求数据初始化问卷信息
-        Investigate investigate = new Investigate();
-        investigate.setName(name);
-        investigate.setDescription(description);
-        investigate.setVisible(false);
-        investigate.setDetails(details);
-        investigate.setOwner(owner);
-        investigate.setTime(new Date());
+            // 根据客户机请求数据初始化问卷信息
 
-        int res = invMapper.insertInvestigate(investigate); // 插入问卷
+            investigate.setName(name);
+            investigate.setDescription(description);
+            investigate.setVisible(false);
+            investigate.setDetails(details);
+            investigate.setOwner(owner);
+            investigate.setTime(new Date());
 
-        for (Tag tag : tagList) {   // 遍历标签列表添加问卷与标签对应关系
-            invMapper.insertInvTag(investigate, tag);
+            int res = invMapper.insertInvestigate(investigate); // 插入问卷
+
+            for (Tag tag : tagList) {   // 遍历标签列表添加问卷与标签对应关系
+                invMapper.insertInvTag(investigate, tag);
+            }
+            if(res > 0) {   // 问卷表受影响行数大于0
+                return "success";
+            }
+            return "error";
+        } finally {
+            owner.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
+            investigate.reSetInvestigate(null,null,null,null,null,null,null);
         }
-        if(res > 0) {   // 问卷表受影响行数大于0
-            return "success";
-        }
-        return "error";
+
     }
 
     /**
@@ -86,12 +105,17 @@ public class InvController {
      */
     @GetMapping("/getInvisibleInv")
     public String getInvisibleInv() {
-        Investigate investigate = new Investigate();
-        investigate.setVisible(false);  //未审核问卷
-        List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
-        String res = JSONArray.toJSONString(invList);
+        investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        try {
+            investigate.setVisible(false);  //未审核问卷
+            List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
+            String res = JSONArray.toJSONString(invList);
 //        System.out.println("res!!!" + res);
-        return res;
+            return res;
+        } finally {
+            investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        }
+
     }
 
     /**
@@ -104,24 +128,32 @@ public class InvController {
     @PostMapping("/getInvestigate")
     public String getInvestigate(HttpServletRequest request) {
         // 根据客户机请求初始化问卷信息
-        Investigate investigate = new Investigate();
-        if(request.getParameter("id") != null) {
-            investigate.setId(Integer.parseInt(request.getParameter("id")));
-        }
-        if(request.getParameter("name") != null) {
-            investigate.setName(request.getParameter("name"));
-        }
-        if(request.getParameter("ownerId") != null) {
-            User owner = new User();
-            owner.setId(Integer.parseInt(request.getParameter("ownerId")));
-            investigate.setOwner(owner);
+        owner.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+        investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        try {
+            if(request.getParameter("id") != null) {
+                investigate.setId(Integer.parseInt(request.getParameter("id")));
+            }
+            if(request.getParameter("name") != null) {
+                investigate.setName(request.getParameter("name"));
+            }
+            if(request.getParameter("ownerId") != null) {
+                owner.setId(Integer.parseInt(request.getParameter("ownerId")));
+                investigate.setOwner(owner);
+            }
+
+            List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
+            if(!invList.isEmpty()) {    // 结果不为空
+                return JSONArray.toJSONString(invList);
+            }
+            return "null";
+        } finally {
+            owner.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
+            investigate.reSetInvestigate(null,null,null,null,null,null,null);
         }
 
-        List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
-        if(!invList.isEmpty()) {    // 结果不为空
-            return JSONArray.toJSONString(invList);
-        }
-        return "null";
     }
 
     /**
@@ -136,15 +168,20 @@ public class InvController {
      */
     @PostMapping("/verifyInv")
     public void verifyInv(@RequestParam("id") String id, @RequestParam("status") String flag, @RequestParam("email") String email, @RequestParam("username") String userName, @RequestParam("ivnName") String invName) {
-        if(flag == "0"){    // 如果审核未通过，向用户发送提示邮件
-            EmailUtil emailUtil = new EmailUtil();
-            emailUtil.sendEmail(email, "PopSurvey审核未通过", "尊敬的 " + userName + "，您的问卷 " + invName + " 审核未通过，请及时修改！", ak_id, ak_secret);
-        } else {    // 更新对应问卷visible属性为true
-            Investigate investigate = new Investigate();
-            investigate.setId(Integer.parseInt(id));
-            investigate.setVisible(true);
-            invMapper.updateInvestigate(investigate);   // 更新问卷
+        investigate.reSetInvestigate(null,null,null,null,null,null,null);
+
+        try {
+            if(flag == "0"){    // 如果审核未通过，向用户发送提示邮件
+                emailUtil.sendEmail(email, "PopSurvey审核未通过", "尊敬的 " + userName + "，您的问卷 " + invName + " 审核未通过，请及时修改！", ak_id, ak_secret);
+            } else {    // 更新对应问卷visible属性为true
+                investigate.setId(Integer.parseInt(id));
+                investigate.setVisible(true);
+                invMapper.updateInvestigate(investigate);   // 更新问卷
+            }
+        } finally {
+            investigate.reSetInvestigate(null,null,null,null,null,null,null);
         }
+
     }
 
     /**
@@ -157,26 +194,30 @@ public class InvController {
     @PostMapping("/mdfInvestigate")
     public String mdfInvestigate(HttpServletRequest request) {
         // 根据客户机请求初始化问卷信息
-        Investigate investigate = new Investigate();
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        String description = request.getParameter("description");
-        String name = request.getParameter("name");
-        String details = request.getParameter("invDetails");
-        investigate.setId(id);
-        if(!"null".equals(name)) {
-            investigate.setName(name);
-        }
-        if(!"null".equals(description)) {
-            investigate.setDescription(description);
-        }
-        if(!"null".equals(details)) {
-            investigate.setDetails(details);
-        }
+        investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        try {
+            Integer id = Integer.parseInt(request.getParameter("id"));
+            String description = request.getParameter("description");
+            String name = request.getParameter("name");
+            String details = request.getParameter("invDetails");
+            investigate.setId(id);
+            if(!"null".equals(name)) {
+                investigate.setName(name);
+            }
+            if(!"null".equals(description)) {
+                investigate.setDescription(description);
+            }
+            if(!"null".equals(details)) {
+                investigate.setDetails(details);
+            }
 //        System.out.println(investigate);
-        if(invMapper.updateInvestigate(investigate) > 0) {  // 更新问卷判断受影响行数
-            return "success";
+            if(invMapper.updateInvestigate(investigate) > 0) {  // 更新问卷判断受影响行数
+                return "success";
+            }
+            return "error";
+        } finally {
+            investigate.reSetInvestigate(null,null,null,null,null,null,null);
         }
-        return "error";
     }
 
     /**
@@ -186,9 +227,13 @@ public class InvController {
      */
     @GetMapping("/getAllInv")
     public String getAllInv() {
-        Investigate investigate = new Investigate();
-        List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
-        return JSONArray.toJSONString(invList);
+        investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        try {
+            List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
+            return JSONArray.toJSONString(invList);
+        } finally {
+            investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        }
     }
 
     /**
@@ -198,11 +243,15 @@ public class InvController {
      */
     @GetMapping("/getVisibleInv")
     public String getVisibleInv() {
-        Investigate investigate = new Investigate();
-        investigate.setVisible(true);
-        List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
-        return JSONArray.toJSONString(invList);
+        investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        try {
+            investigate.setVisible(true);
+            List<Investigate> invList = invMapper.getInvestigate(investigate);  // 查询问卷
+            return JSONArray.toJSONString(invList);
 //        System.out.println("res!!!" + res);
+        } finally {
+            investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        }
     }
 
     /**
@@ -214,18 +263,23 @@ public class InvController {
      */
     @PostMapping("/getInvsByResults")
     public String getHistoryByUId(@RequestParam("results") String reqResults) {
-        // 将回答列表恢复
-        List<Result> results = JSONArray.parseArray(reqResults, Result.class);
-        // investigates记录要查询的问卷信息
-        List<Investigate> investigates = new ArrayList<>();
-        for(Result result : results) {  // 遍历回答查询问卷
-            Investigate investigate = new Investigate();
-            investigate.setId(result.getIid()); //根据回答中的问卷id初始问卷信息
-            investigates.addAll(invMapper.getInvestigate(investigate)); // 查询问卷
+        investigate.reSetInvestigate(null,null,null,null,null,null,null);
+        try {
+            // 将回答列表恢复
+            List<Result> results = JSONArray.parseArray(reqResults, Result.class);
+            // investigates记录要查询的问卷信息
+            List<Investigate> investigates = new ArrayList<>();
+            for(Result result : results) {  // 遍历回答查询问卷
+
+                investigate.setId(result.getIid()); //根据回答中的问卷id初始问卷信息
+                investigates.addAll(invMapper.getInvestigate(investigate)); // 查询问卷
+            }
+            if(investigates.isEmpty()) {
+                return "null";
+            }
+            return JSONArray.toJSONString(investigates);
+        } finally {
+            investigate.reSetInvestigate(null,null,null,null,null,null,null);
         }
-        if(investigates.isEmpty()) {
-            return "null";
-        }
-        return JSONArray.toJSONString(investigates);
     }
 }

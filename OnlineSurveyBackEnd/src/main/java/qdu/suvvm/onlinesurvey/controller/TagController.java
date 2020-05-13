@@ -23,6 +23,8 @@ import java.util.*;
 public class TagController {
     @Autowired
     private TagMapper tagMapper;
+    @Autowired
+    private Tag tag;
 
     /**
      * @FunctionName: getTags
@@ -31,9 +33,13 @@ public class TagController {
      */
     @GetMapping("/getTags")
     public String getTags() {
-        Tag tag = new Tag();
-        List<Tag> tags = tagMapper.selectTagsWithoutUser(tag);
-        return JSON.toJSONString(tags);
+        tag.reSetTag(null, null,null);
+        try {
+            List<Tag> tags = tagMapper.selectTagsWithoutUser(tag);
+            return JSON.toJSONString(tags);
+        } finally {
+            tag.reSetTag(null, null,null);
+        }
     }
 
     /**
@@ -70,7 +76,7 @@ public class TagController {
     }
 
     /**
-     * @FunctionName: getTagById
+     * @FunctionName: getRecommendByTag
      * @Description: 处理根据标签推荐问卷的请求
      * @Parameter:
      *  tagList 客户机请求中提供的标签列表

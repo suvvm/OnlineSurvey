@@ -6,6 +6,7 @@ import com.aliyuncs.dm.model.v20151123.SingleSendMailRequest;
 import com.aliyuncs.dm.model.v20151123.SingleSendMailResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
+import org.springframework.stereotype.Component;
 
 /**
  * @ClassName: EmailUtil
@@ -13,6 +14,7 @@ import com.aliyuncs.profile.DefaultProfile;
  * @Author: SUVVM
  * @Date: 2019/11/28 20:48
  */
+@Component
 public class EmailUtil {
     public boolean sendEmail(String email, String title, String body, String ak_id, String ak_secret) {
 //        System.out.println("ak_id:" + ak_id);

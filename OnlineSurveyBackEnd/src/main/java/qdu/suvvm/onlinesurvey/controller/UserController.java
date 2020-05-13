@@ -28,6 +28,9 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private User user;
+
     /**
      * @FunctionName: insertUser
      * @Description: 处理插入用户的请求
@@ -39,22 +42,28 @@ public class UserController {
     @PostMapping("/insertUser")
     public String insertUser(HttpServletRequest request) {
         // 根据客户机请求初始化用户信息
-        User user = new User();
-        user.setUsername(request.getParameter("username"));
-        user.setPassword(MD5.getMd5(request.getParameter("password")));
-        user.setName(request.getParameter("name"));
-        user.setPnum(request.getParameter("pnum"));
-        user.setEmail(request.getParameter("email"));
-        user.setGender(request.getParameter("gender"));
-        user.setAvatar(request.getParameter("avatar"));
-        user.setImgbase64(request.getParameter("imgbase64"));
-        user.setPower(Integer.parseInt(request.getParameter("power")));
-        int res = 0;
-        res = userMapper.insertUser(user);  // 插入用户并返回受影响行数
-        if(res > 0){    // 受影响行数大于0
-            return JSON.toJSONString(user);
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+        try {
+            user.setUsername(request.getParameter("username"));
+            user.setPassword(MD5.getMd5(request.getParameter("password")));
+            user.setName(request.getParameter("name"));
+            user.setPnum(request.getParameter("pnum"));
+            user.setEmail(request.getParameter("email"));
+            user.setGender(request.getParameter("gender"));
+            user.setAvatar(request.getParameter("avatar"));
+            user.setImgbase64(request.getParameter("imgbase64"));
+            user.setPower(Integer.parseInt(request.getParameter("power")));
+            int res = 0;
+            res = userMapper.insertUser(user);  // 插入用户并返回受影响行数
+            if(res > 0){    // 受影响行数大于0
+                return JSON.toJSONString(user);
+            }
+            return "error";
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
         }
-        return "error";
     }
 
     /**
@@ -67,36 +76,42 @@ public class UserController {
      */
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
-        User user = new User();
-        user.setUsername(username); // 以传入的信息作为用户名查询用户
-        user.setPassword(MD5.getMd5(password));
-        List<User> users = userMapper.getUser(user);   // 查询用户
-        if (users.isEmpty()) {  // 以传入的信息作为电话查询用户
-            user.setUsername(null);
-            user.setPnum(username);
-            users = userMapper.getUser(user);   // 查询用户
-            if (users.isEmpty()) {  // 以传入的信息作为邮箱查询用户
-                user.setPnum(null);
-                user.setEmail(username);
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+        try {
+            user.setUsername(username); // 以传入的信息作为用户名查询用户
+            user.setPassword(MD5.getMd5(password));
+            List<User> users = userMapper.getUser(user);   // 查询用户
+            if (users.isEmpty()) {  // 以传入的信息作为电话查询用户
+                user.setUsername(null);
+                user.setPnum(username);
                 users = userMapper.getUser(user);   // 查询用户
-                if (users.isEmpty()) {
-                    return "null";
+                if (users.isEmpty()) {  // 以传入的信息作为邮箱查询用户
+                    user.setPnum(null);
+                    user.setEmail(username);
+                    users = userMapper.getUser(user);   // 查询用户
+                    if (users.isEmpty()) {
+                        return "null";
+                    }
                 }
             }
-        }
 
-        // 创建JSONObject将查询到的用户数据都装入JSON对象
-        JSONObject resObj = new JSONObject();
-        resObj.put("id", users.get(0).getId());
-        resObj.put("username", users.get(0).getUsername());
-        resObj.put("name", users.get(0).getName());
-        resObj.put("email", users.get(0).getEmail());
-        resObj.put("gender", users.get(0).getGender().toString());
-        resObj.put("power", users.get(0).getPower());
+            // 创建JSONObject将查询到的用户数据都装入JSON对象
+            JSONObject resObj = new JSONObject();
+            resObj.put("id", users.get(0).getId());
+            resObj.put("username", users.get(0).getUsername());
+            resObj.put("name", users.get(0).getName());
+            resObj.put("email", users.get(0).getEmail());
+            resObj.put("gender", users.get(0).getGender().toString());
+            resObj.put("power", users.get(0).getPower());
 //        resObj.put("avatar", users.get(0).getAvatar());
 
-        // 将JSON对象转为JSON串发送给前端
-        return resObj.toJSONString();
+            // 将JSON对象转为JSON串发送给前端
+            return resObj.toJSONString();
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
+        }
     }
 
     /**
@@ -150,13 +165,19 @@ public class UserController {
     @PostMapping("/getUserById")
     public String getUserById(@RequestParam("id") String id) {
         // 根据客户机请求中的id初始化用户信息
-        User user = new User();
-        user.setId(Integer.parseInt(id));
-        List<User> users = userMapper.getUser(user);    // 查询用户
-        if(!users.isEmpty()){   // 有数据
-            return JSON.toJSONString(users.get(0));
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+        try {
+            user.setId(Integer.parseInt(id));
+            List<User> users = userMapper.getUser(user);    // 查询用户
+            if(!users.isEmpty()){   // 有数据
+                return JSON.toJSONString(users.get(0));
+            }
+            return "error";
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
         }
-        return "error";
     }
 
     /**
@@ -168,39 +189,46 @@ public class UserController {
      */
     @PostMapping("/updateUser")
     public String updateUser(HttpServletRequest request) {
-        // 获取客户机请求中的数据
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        String username = request.getParameter("username");
-        String name = request.getParameter("name");
-        String gender = request.getParameter("gender");
-        String password = MD5.getMd5(request.getParameter("password"));
-        String avatar = request.getParameter("avatar");
-        String imgBase64 = request.getParameter("imgBase64");
-        // 根据客户机请求数据初始化用户信息
-        User user = new User();
-        user.setId(id);
-        if(!"null".equals(username)) {
-            user.setUsername(username);
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+        try {
+            // 获取客户机请求中的数据
+            Integer id = Integer.parseInt(request.getParameter("id"));
+            String username = request.getParameter("username");
+            String name = request.getParameter("name");
+            String gender = request.getParameter("gender");
+            String password = MD5.getMd5(request.getParameter("password"));
+            String avatar = request.getParameter("avatar");
+            String imgBase64 = request.getParameter("imgBase64");
+            // 根据客户机请求数据初始化用户信息
+
+            user.setId(id);
+            if(!"null".equals(username)) {
+                user.setUsername(username);
+            }
+            if(!"null".equals(name)) {
+                user.setName(name);
+            }
+            if(!"null".equals(gender)) {
+                user.setGender(gender);
+            }
+            if(!"null".equals(password)) {
+                user.setPassword(password);
+            }
+            if(!"null".equals(avatar)) {
+                user.setAvatar(avatar);
+            }
+            if(!"null".equals(imgBase64)) {
+                user.setImgbase64(imgBase64);
+            }
+            if(userMapper.updateUserById(user) > 0) {   // 更新用户受影响行数大于0
+                return "success";
+            }
+            return "error";
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
         }
-        if(!"null".equals(name)) {
-            user.setName(name);
-        }
-        if(!"null".equals(gender)) {
-            user.setGender(gender);
-        }
-        if(!"null".equals(password)) {
-            user.setPassword(password);
-        }
-        if(!"null".equals(avatar)) {
-            user.setAvatar(avatar);
-        }
-        if(!"null".equals(imgBase64)) {
-            user.setImgbase64(imgBase64);
-        }
-        if(userMapper.updateUserById(user) > 0) {   // 更新用户受影响行数大于0
-            return "success";
-        }
-        return "error";
     }
 
 
@@ -222,26 +250,33 @@ public class UserController {
                            @RequestParam(value = "name", required = false) String name, @RequestParam(value = "pnum", required = false) String pnum,
                            @RequestParam(value = "email", required = false) String email, @RequestParam(value = "gender", required = false) String gender,
                            @RequestParam(value = "power", required = false) String power) {
-        // 根据客户机请求数据初始化用户信息
-        User user = new User();
-        if(id != null)
-            user.setId(Integer.parseInt(id));
-        if(username != null)
-            user.setUsername(username);
-        if(name != null)
-            user.setName(name);
-        if(pnum != null)
-            user.setPnum(pnum);
-        if(email != null)
-            user.setEmail(email);
-        if(gender != null)
-            user.setGender(gender);
-        if(power != null)
-            user.setPower(Integer.parseInt(power));
-        List<User> users = userMapper.getUser(user);    // 查询用户
-        if(users.isEmpty()) // 数据为空
-            return "null";
-        return JSONArray.toJSONString(users);
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+        try {
+            // 根据客户机请求数据初始化用户信息
+            if(id != null)
+                user.setId(Integer.parseInt(id));
+            if(username != null)
+                user.setUsername(username);
+            if(name != null)
+                user.setName(name);
+            if(pnum != null)
+                user.setPnum(pnum);
+            if(email != null)
+                user.setEmail(email);
+            if(gender != null)
+                user.setGender(gender);
+            if(power != null)
+                user.setPower(Integer.parseInt(power));
+            List<User> users = userMapper.getUser(user);    // 查询用户
+            if(users.isEmpty()) // 数据为空
+                return "null";
+            return JSONArray.toJSONString(users);
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
+        }
+
     }
 
     /**
@@ -254,13 +289,19 @@ public class UserController {
      */
     @PostMapping("/userEOP")
     public String userEOP(@RequestParam(value = "id") String id, @RequestParam(value = "power") String power) {
-        // 根据客户机请求数据初始化用户信息
-        User user = new User();
-        user.setId(Integer.parseInt(id));
-        user.setPower(Integer.parseInt(power));
-        if(userMapper.updateUserById(user) > 0) {   // 更新信息
-            return "success";
+        user.reSetUser(null, null, null, null, null,
+                null, null, null, null, null, null);
+        try {
+            // 根据客户机请求数据初始化用户信息
+            user.setId(Integer.parseInt(id));
+            user.setPower(Integer.parseInt(power));
+            if(userMapper.updateUserById(user) > 0) {   // 更新信息
+                return "success";
+            }
+            return "error";
+        } finally {
+            user.reSetUser(null, null, null, null, null,
+                    null, null, null, null, null, null);
         }
-        return "error";
     }
 }
